@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>NgrokApi</PackageId>
+    <Title>NgrokApi</Title>
+    <Authors>inconshreveable</Authors>
+    <Company>ngrok</Company>
+    <Copyright>ngrok, Inc.</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ProjectUrl>https://github.com/ngrok/ngrok-api-dotnet</ProjectUrl>
+    <PackageVersion>0.0.0</PackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+</Project>
