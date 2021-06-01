@@ -5,101 +5,158 @@ easier to consume in C# and .NET.
 
 ## Installation
 
-Installation is as simple as using `go get`.
+This library is published on [nuget](https://www.nuget.org/packages/NgrokApi/)
 
-    go get github.com/ngrok/ngrok-api-go/v3
+    dotnet add package NgrokApi --version 0.2.0
 
 ## Documentation
 
-A quickstart guide and a full API reference are included in the [ngrok go API documentation on pkg.go.dev](https://pkg.go.dev/github.com/ngrok/ngrok-api-go/v3)
+All objects, methods and properties are documented with the .NET documentation
+markup tags for integration with an IDE like Visual Studio or Visual Studio
+Code.
 
-## Quickstart
+Beyond that, this readme is the best source of documentation for the library.
+There is no API reference documentation published on the web at this time.
 
-Please consult the [documentation](https://pkg.go.dev/github.com/ngrok/ngrok-api-go/v3) for additional examples.
+### Versioning
+
+This class library is published to Nuget using semantic versioning. Breaking
+changes to the API will only be release with a bump of the major version number.
+Each released commit is tagged in this repository.
+
+No compatibility promises are made for versions < 1.0.0.
+
+### Quickstart
 
 ### Create an IP Policy that allows traffic from some subnets
 
-```go
-package main
+```csharp
+using NgrokApi;
 
-import (
-        "context"
-        "fmt"
-        "os"
-
-        "github.com/ngrok/ngrok-api-go/v3"
-        "github.com/ngrok/ngrok-api-go/v3/ip_policies"
-        "github.com/ngrok/ngrok-api-go/v3/ip_policy_rules"
-)
-
-func main() {
-        fmt.Println(example(context.Background()))
-}
-
-func example(ctx context.Context) error {
-        // create clients to api resources
-        apiClientConfig := ngrok.NewClient(os.Getenv("NGROK_API_KEY"))
-        policies := ip_policies.NewClient(apiClient)
-        policyRules := ip_policy_rules.NewClient(apiClient)
-
-        // create the ip policy
-        policy, err := policies.Create(ctx, &ngrok.IPPolicyCreate{
-                Action: "allow",
-        })
-        if err != nil {
-                return err
-        }
-        fmt.Println(policy)
-
-        // create rules for each cidr
-        for _, cidr := range []string{"24.0.0.0/8", "12.0.0.0/8"} {
-                rule, err := policyRules.Create(ctx, &ngrok.IPPolicyRuleCreate{
-                        CIDR:       cidr,
-                        IPPolicyID: policy.ID,
-                })
-                if err != nil {
-                        return err
+public class Example
+{
+        public static void Main()
+        {
+                var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
+                var policy = ngrok.IpPolicies.Create(new IpPolicyCreate() {
+                        Action = "allow",
+                });
+                foreach (var cidr in new string[] {"24.0.0.0/8", "12.0.0.0/8"}) {
+                        ngrok.IpPolicyRules.Create(ngrok.IpPolicyRuleCreate{
+                                Cidr: cdir,
+                                IpPolicyId: policy.Id,
+                        })
                 }
-                fmt.Println(rule)
         }
-        return nil
 }
 ```
 
 ### List all online tunnels
 
-```go
-package main
+```csharp
+using NgrokApi;
+using System;
 
-import (
-        "context"
-        "fmt"
-        "os"
-
-        "github.com/ngrok/ngrok-api-go/v3"
-        "github.com/ngrok/ngrok-api-go/v3/tunnels"
-)
-
-func main() {
-        fmt.Println(example(context.Background()))
-}
-
-func example(ctx context.Context) error {
-        // construct the api client
-        apiClient, err := ngrok.NewClient(os.Getenv("NGROK_API_KEY"))
-        if err != nil {
-                return err
+public class Example
+{
+        public static void Main()
+        {
+                var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
+                foreach (var c = ngrok.Tunnels.List())
+                {
+                        Console.Out.WriteLine(t.ToString());
+                }
         }
-
-        // list all online tunnels
-        tunnels := tunnels.NewClient(apiClient)
-        iter := tunnels.List(nil)
-        for iter.Next(ctx) {
-                fmt.Println(iter.Item())
-        }
-        if err := iter.Err(); err != nil {
-                return err
-        }
-        return nil
 }
 ```
+
+### Conventions
+
+Conventional usage of this package is to construct the root `Ngrok` API client
+object with an API key and then to access API resources as properties of that
+object. Do not construct the individual API resource Client classes in your
+application code.
+
+```csharp
+// create the root api client
+var ngrok = new Ngrok(apiKey);
+
+// clients for all api resources (like ip policies) are acccessible as properties of the root client
+var policy = ngrok.IpPolicies.Get(policyId);
+
+// some api resources are 'namespaced' through another property
+var circuitBreaker = ngrok.PointcfgModules.CircuitBreaker.Get(endpointConfigId);
+```
+
+### Automatic Paging
+
+All list responses from the ngrok API are paged. This library provides an
+abstraction to make it easier to consume theses paged list resources. Instead
+of returning the page of results, all `List()` methods instead return an
+`IEnumerable` that can be iterated over with a `foreach` loop. The iterator
+will automatically fetch new pages of results from the API as needed.
+
+```csharp
+using NgrokApi;
+using System;
+
+public class Example
+{
+        public static void Main()
+        {
+                var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
+                foreach (var c = ngrok.Credentials.List())
+                {
+                        Console.Out.WriteLine(c);
+                }
+        }
+}
+```
+
+### Error Handling
+
+All errors returned by the ngrok API are serialized as structured payloads for
+easy error handling.  If a structured error is returned by the ngrok API, this
+library will throw an `NgrokException`.
+
+To handle a structured error from the API, catch the `NgrokException` type in
+your code. This object will allow you to check the unique ngrok error code and
+the http status code of a failed response. Use the `ErrorCode` property to
+check for unique ngrok error codes returned by the API. All error codes are
+documented at https://ngrok.com/docs/errors. There is also an `IsErrorCode()`
+method on the exception object to check against multiple error codes. The
+`HttpStatusCode` property can be used to check not found errors.
+
+Other non-structured errors encountered while making an API call from e.g. networking
+or serialization failures are not wrapped in any way and will bubble up as normal.
+
+```csharp
+using NgrokApi;
+using System;
+
+public class Example
+{
+        public static void Main()
+        {
+                try {
+                        var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
+                        var domain = ngrok.ReservedDomains.Create(new ReservedDomainUpdate() {
+                                Name: Environment.GetEnvironmentVariable("NGROK_DOMAIN"),
+                                Description = "example domain",
+                        })
+                } catch (NgrokException e) {
+                        if (e.IsErrorCode("NGROK_ERR_402", "NGROK_ERR_403")) {
+                                 Console.Out.WriteLine("Ignoring invalid wildcard domain.");
+                        } else {
+                                throw;
+                        }
+                }
+        }
+}
+```
+
+
+### Sync / Async Interfaces
+
+All library interfaces are async. Another version of the library will follow up
+with separate side-by-side synchronous interfaces before reaching 1.0.0.
