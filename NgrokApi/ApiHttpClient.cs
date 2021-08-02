@@ -113,7 +113,7 @@ namespace NgrokApi
 
         private void WriteDebug(string text)
         {
-            debugStream.WriteLine(text);
+            debugStream?.WriteLine(text);
         }
     }
 }
