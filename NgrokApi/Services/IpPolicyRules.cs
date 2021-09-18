@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // IP Policy Rules are the IPv4 or IPv6 CIDRs entries that
+    //  make up an IP Policy.
+    // </summary>
+
     public class IpPolicyRules
     {
         private IApiHttpClient apiClient;
@@ -103,7 +108,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ip-policy-rules-list
-        public IEnumerable<IpPolicyRule> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<IpPolicyRule> List(string limit = null, string beforeId = null)
         {
             return new Iterator<IpPolicyRule>(beforeId, async lastId =>
             {

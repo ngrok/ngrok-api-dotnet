@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // Reserved Addresses are TCP addresses that can be used to listen for traffic.
+    //  TCP address hostnames and ports are assigned by ngrok, they cannot be
+    //  chosen.
+    // </summary>
+
     public class ReservedAddrs
     {
         private IApiHttpClient apiClient;
@@ -103,7 +109,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-reserved-addrs-list
-        public IEnumerable<ReservedAddr> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<ReservedAddr> List(string limit = null, string beforeId = null)
         {
             return new Iterator<ReservedAddr>(beforeId, async lastId =>
             {

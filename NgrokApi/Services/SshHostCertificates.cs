@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // SSH Host Certificates along with the corresponding private key allows an SSH
+    //  server to assert its authenticity to connecting SSH clients who trust the
+    //  SSH Certificate Authority that was used to sign the certificate.
+    // </summary>
+
     public class SshHostCertificates
     {
         private IApiHttpClient apiClient;
@@ -103,7 +109,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ssh-host-certificates-list
-        public IEnumerable<SshHostCertificate> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<SshHostCertificate> List(string limit = null, string beforeId = null)
         {
             return new Iterator<SshHostCertificate>(beforeId, async lastId =>
             {

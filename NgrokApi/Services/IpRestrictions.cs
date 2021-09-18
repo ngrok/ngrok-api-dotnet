@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // An IP restriction is a restriction placed on the CIDRs that are allowed to
+    //  initate traffic to a specific aspect of your ngrok account. An IP
+    //  restriction has a type which defines the ingress it applies to. IP
+    //  restrictions can be used to enforce the source IPs that can make API
+    //  requests, log in to the dashboard, start ngrok agents, and connect to your
+    //  public-facing endpoints.
+    // </summary>
+
     public class IpRestrictions
     {
         private IApiHttpClient apiClient;
@@ -103,7 +112,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ip-restrictions-list
-        public IEnumerable<IpRestriction> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<IpRestriction> List(string limit = null, string beforeId = null)
         {
             return new Iterator<IpRestriction>(beforeId, async lastId =>
             {

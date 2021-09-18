@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // TLS Certificates are pairs of x509 certificates and their matching private
+    //  key that can be used to terminate TLS traffic. TLS certificates are unused
+    //  until they are attached to a Domain. TLS Certificates may also be
+    //  provisioned by ngrok automatically for domains on which you have enabled
+    //  automated certificate provisioning.
+    // </summary>
+
     public class TlsCertificates
     {
         private IApiHttpClient apiClient;
@@ -103,7 +111,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-tls-certificates-list
-        public IEnumerable<TlsCertificate> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<TlsCertificate> List(string limit = null, string beforeId = null)
         {
             return new Iterator<TlsCertificate>(beforeId, async lastId =>
             {

@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // SSH User Certificates are presented by SSH clients when connecting to an SSH
+    //  server to authenticate their connection. The SSH server must trust the SSH
+    //  Certificate Authority used to sign the certificate.
+    // </summary>
+
     public class SshUserCertificates
     {
         private IApiHttpClient apiClient;
@@ -103,7 +109,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ssh-user-certificates-list
-        public IEnumerable<SshUserCertificate> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<SshUserCertificate> List(string limit = null, string beforeId = null)
         {
             return new Iterator<SshUserCertificate>(beforeId, async lastId =>
             {

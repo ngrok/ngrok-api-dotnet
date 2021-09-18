@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // Tunnels provide endpoints to access services exposed by a running ngrok
+    //  agent tunnel session or an SSH reverse tunnel session.
+    // </summary>
+
     public class Tunnels
     {
         private IApiHttpClient apiClient;
@@ -38,7 +43,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-tunnels-list
-        public IEnumerable<Tunnel> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<Tunnel> List(string limit = null, string beforeId = null)
         {
             return new Iterator<Tunnel>(beforeId, async lastId =>
             {

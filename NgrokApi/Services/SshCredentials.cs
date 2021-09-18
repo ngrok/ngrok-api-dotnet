@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // SSH Credentials are SSH public keys that can be used to start SSH tunnels
+    //  via the ngrok SSH tunnel gateway.
+    // </summary>
+
     public class SshCredentials
     {
         private IApiHttpClient apiClient;
@@ -104,7 +109,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ssh-credentials-list
-        public IEnumerable<SshCredential> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<SshCredential> List(string limit = null, string beforeId = null)
         {
             return new Iterator<SshCredential>(beforeId, async lastId =>
             {

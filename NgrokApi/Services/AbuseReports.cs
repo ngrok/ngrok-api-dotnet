@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // Abuse Reports allow you to submit take-down requests for URLs hosted by
+    //  ngrok that violate ngrok's terms of service.
+    // </summary>
+
     public class AbuseReports
     {
         private IApiHttpClient apiClient;

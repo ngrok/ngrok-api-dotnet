@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // Tunnel Sessions represent instances of ngrok agents or SSH reverse tunnel
+    //  sessions that are running and connected to the ngrok service. Each tunnel
+    //  session can include one or more Tunnels.
+    // </summary>
+
     public class TunnelSessions
     {
         private IApiHttpClient apiClient;
@@ -38,7 +44,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-tunnel-sessions-list
-        public IEnumerable<TunnelSession> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<TunnelSession> List(string limit = null, string beforeId = null)
         {
             return new Iterator<TunnelSession>(beforeId, async lastId =>
             {

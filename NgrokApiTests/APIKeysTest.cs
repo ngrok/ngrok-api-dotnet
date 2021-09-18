@@ -25,7 +25,7 @@ namespace NgrokApiTests
             // initial list
             apiHttpClient.PushMockResponse(200, @"{""keys"":[],""uri"":""https://api.ngrok.com/api_keys"",""next_page_uri"":null}");
             var apiKeysList = ngrok.ApiKeys.List();
-            apiKeysList.ToList();
+            apiKeysList.ToListAsync();
 
             // create api key
             var apiKeyDesc = "hello .NET";
@@ -58,7 +58,7 @@ namespace NgrokApiTests
             apiHttpClient.PushMockResponse(200, @"{""keys"":[{""id"":""ak_1tJthkYN0FYv68ejhHsE32NLGhX"",""uri"":""https://api.ngrok.com/api_keys/ak_1tJthkYN0FYv68ejhHsE32NLGhX"",""description"":""hello .NET"",""metadata"":""{\""hello\"": \""metadata\""}"",""created_at"":""2021-05-31T22:12:20Z"",""token"":null}],""uri"":""https://api.ngrok.com/api_keys"",""next_page_uri"":null}");
             apiHttpClient.PushMockResponse(200, @"{""keys"":[],""uri"":""https://api.ngrok.com/api_keys"",""next_page_uri"":null}");
             var postUpdateList = ngrok.ApiKeys.List();
-            Assert.IsTrue(postUpdateList.ToList().Contains(apiKeyAfterUpdate));
+            Assert.IsTrue((await postUpdateList.ToListAsync()).Contains(apiKeyAfterUpdate));
 
             // delete
             apiHttpClient.PushMockResponse(204, "");
