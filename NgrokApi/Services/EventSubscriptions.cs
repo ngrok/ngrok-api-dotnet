@@ -6,29 +6,28 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
-    public class EventStreams
+    public class EventSubscriptions
     {
         private IApiHttpClient apiClient;
 
-        internal EventStreams(IApiHttpClient apiClient)
+        internal EventSubscriptions(IApiHttpClient apiClient)
         {
             this.apiClient = apiClient;
         }
 
         // <summary>
-        // Create a new Event Stream. It will not apply to anything until you associate it
-        // with one or more Endpoint Configs.
+        // Create an Event Subscription.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-event-streams-create
-        public async Task<EventStream> Create(EventStreamCreate arg)
+        // https://ngrok.com/docs/api#api-event-subscriptions-create
+        public async Task<EventSubscription> Create(EventSubscriptionCreate arg)
         {
             Dictionary<string, string> query = null;
-            EventStreamCreate body = null;
+            EventSubscriptionCreate body = null;
             body = arg;
 
-            return await apiClient.Do<EventStream>(
-                  path: $"/event_streams",
+            return await apiClient.Do<EventSubscription>(
+                  path: $"/event_subscriptions",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -37,10 +36,10 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Delete an Event Stream. Associated Event Destinations will be preserved.
+        // Delete an Event Subscription.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-event-streams-delete
+        // https://ngrok.com/docs/api#api-event-subscriptions-delete
         public async Task Delete(string id)
         {
             var arg = new Item() { Id = id };
@@ -51,7 +50,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/event_streams/{arg.Id}",
+                  path: $"/event_subscriptions/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -59,11 +58,11 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Get detailed information about an Event Stream by ID.
+        // Get an Event Subscription by ID.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-event-streams-get
-        public async Task<EventStream> Get(string id)
+        // https://ngrok.com/docs/api#api-event-subscriptions-get
+        public async Task<EventSubscription> Get(string id)
         {
             var arg = new Item() { Id = id };
 
@@ -72,8 +71,8 @@ namespace NgrokApi
             query = new Dictionary<string, string>()
             {
             };
-            return await apiClient.Do<EventStream>(
-                  path: $"/event_streams/{arg.Id}",
+            return await apiClient.Do<EventSubscription>(
+                  path: $"/event_subscriptions/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -81,7 +80,7 @@ namespace NgrokApi
 
         }
 
-        private async Task<EventStreamList> ListPage(Paging arg)
+        private async Task<EventSubscriptionList> ListPage(Paging arg)
 
         {
             Dictionary<string, string> query = null;
@@ -91,8 +90,8 @@ namespace NgrokApi
                 ["before_id"] = arg.BeforeId,
                 ["limit"] = arg.Limit,
             };
-            return await apiClient.Do<EventStreamList>(
-                  path: $"/event_streams",
+            return await apiClient.Do<EventSubscriptionList>(
+                  path: $"/event_subscriptions",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -100,36 +99,36 @@ namespace NgrokApi
 
         }
         // <summary>
-        // List all Event Streams available on this account.
+        // List this Account's Event Subscriptions.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-event-streams-list
-        public IAsyncEnumerable<EventStream> List(string limit = null, string beforeId = null)
+        // https://ngrok.com/docs/api#api-event-subscriptions-list
+        public IAsyncEnumerable<EventSubscription> List(string limit = null, string beforeId = null)
         {
-            return new Iterator<EventStream>(beforeId, async lastId =>
+            return new Iterator<EventSubscription>(beforeId, async lastId =>
             {
                 var result = await this.ListPage(new Paging()
                 {
                     BeforeId = lastId,
                     Limit = limit,
                 });
-                return result.EventStreams;
+                return result.EventSubscriptions;
             });
         }
 
         // <summary>
-        // Update attributes of an Event Stream by ID.
+        // Update an Event Subscription.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-event-streams-update
-        public async Task<EventStream> Update(EventStreamUpdate arg)
+        // https://ngrok.com/docs/api#api-event-subscriptions-update
+        public async Task<EventSubscription> Update(EventSubscriptionUpdate arg)
         {
             Dictionary<string, string> query = null;
-            EventStreamUpdate body = null;
+            EventSubscriptionUpdate body = null;
             body = arg;
 
-            return await apiClient.Do<EventStream>(
-                  path: $"/event_streams/{arg.Id}",
+            return await apiClient.Do<EventSubscription>(
+                  path: $"/event_subscriptions/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

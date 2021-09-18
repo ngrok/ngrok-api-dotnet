@@ -7,11 +7,9 @@ namespace NgrokApi
 {
 
     // <summary>
-    // Endpoint Configuration managementAn <see
-    // href="https://ngrok.com/docs/ngrok-link#api-endpoint-configurations">Endpoint
-    // Configuration</see> describes
-    // a ngrok network endpoint instance.<em>Endpoints are your gateway to ngrok
-    // features!</em>
+    // Endpoint Configurations are a reusable group of modules that encapsulate how
+    //  traffic to a domain or address is handled. Endpoint configurations are only
+    //  applied to Domains and TCP Addresses they have been attached to.
     // </summary>
 
     public class EndpointConfigurations
@@ -112,7 +110,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-endpoint-configurations-list
-        public IEnumerable<EndpointConfiguration> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<EndpointConfiguration> List(string limit = null, string beforeId = null)
         {
             return new Iterator<EndpointConfiguration>(beforeId, async lastId =>
             {

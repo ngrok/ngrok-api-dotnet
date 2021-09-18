@@ -35,7 +35,7 @@ namespace NgrokApi
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
         // <summary>
-        // true if the IP restriction will be enforce. if false, only warnings will be
+        // true if the IP restriction will be enforced. if false, only warnings will be
         // issued
         // </summary>
         [JsonProperty("enforced")]

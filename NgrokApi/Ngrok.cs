@@ -35,6 +35,11 @@ namespace NgrokApi
             get { return new Credentials(apiHttpClient); }
         }
 
+        public EndpointConfigurations EndpointConfigurations
+        {
+            get { return new EndpointConfigurations(apiHttpClient); }
+        }
+
         public EventStreams EventStreams
         {
             get { return new EventStreams(apiHttpClient); }
@@ -43,6 +48,16 @@ namespace NgrokApi
         public EventDestinations EventDestinations
         {
             get { return new EventDestinations(apiHttpClient); }
+        }
+
+        public EventSubscriptions EventSubscriptions
+        {
+            get { return new EventSubscriptions(apiHttpClient); }
+        }
+
+        public EventSources EventSources
+        {
+            get { return new EventSources(apiHttpClient); }
         }
 
         public IpPolicies IpPolicies
@@ -63,11 +78,6 @@ namespace NgrokApi
         public IpWhitelist IpWhitelist
         {
             get { return new IpWhitelist(apiHttpClient); }
-        }
-
-        public EndpointConfigurations EndpointConfigurations
-        {
-            get { return new EndpointConfigurations(apiHttpClient); }
         }
 
         public ReservedAddrs ReservedAddrs

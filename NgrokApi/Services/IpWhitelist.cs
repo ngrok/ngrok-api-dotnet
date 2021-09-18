@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // The IP Whitelist is deprecated and will be removed. Use an IP Restriction
+    //  with an <c>endpoints</c> type instead.
+    // </summary>
+
     public class IpWhitelist
     {
         private IApiHttpClient apiClient;
@@ -104,7 +109,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ip-whitelist-list
-        public IEnumerable<IpWhitelistEntry> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<IpWhitelistEntry> List(string limit = null, string beforeId = null)
         {
             return new Iterator<IpWhitelistEntry>(beforeId, async lastId =>
             {

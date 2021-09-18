@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok
+    //  agent to connect the ngrok service as your account. They are installed with
+    //  the <c>ngrok authtoken</c> command or by specifying it in the <c>ngrok.yml</c>
+    //  configuration file with the <c>authtoken</c> property.
+    // </summary>
+
     public class Credentials
     {
         private IApiHttpClient apiClient;
@@ -106,7 +113,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-credentials-list
-        public IEnumerable<Credential> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<Credential> List(string limit = null, string beforeId = null)
         {
             return new Iterator<Credential>(beforeId, async lastId =>
             {

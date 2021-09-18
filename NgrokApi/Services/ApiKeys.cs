@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // API Keys are used to authenticate to the <see
+    // href="https://ngrok.com/docs/api#authentication">ngrok
+    //  API</see>. You may use the API itself
+    //  to provision and manage API Keys but you'll need to provision your first API
+    //  key from the <see href="https://dashboard.ngrok.com/api/keys">API Keys
+    // page</see> on your
+    //  ngrok.com dashboard.
+    // </summary>
+
     public class ApiKeys
     {
         private IApiHttpClient apiClient;
@@ -104,7 +114,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-api-keys-list
-        public IEnumerable<ApiKey> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<ApiKey> List(string limit = null, string beforeId = null)
         {
             return new Iterator<ApiKey>(beforeId, async lastId =>
             {

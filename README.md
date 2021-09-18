@@ -156,6 +156,12 @@ public class Example
 ```
 
 
+### Datatype Overrides
+
+All datatype objects in the NgrokApi library property override `Equal()` and `GetHashCode()`
+so that the objects can be compared. Similarly, they override `ToString()` for more helpful
+pretty printing of ngrok domain objects.
+
 ### Sync / Async Interfaces
 
 All library interfaces are async. Another version of the library will follow up

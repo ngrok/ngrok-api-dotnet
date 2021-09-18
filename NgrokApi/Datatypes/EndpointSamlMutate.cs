@@ -66,10 +66,18 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("authorized_groups")]
         public List<string> AuthorizedGroups { get; set; }
+        // <summary>
+        // Defines the name identifier format the SP expects the IdP to use in its
+        // assertions to identify subjects. If unspecified, a default value of
+        // <c>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</c> will be used. A
+        // subset of the allowed values enumerated by the SAML specification are supported.
+        // </summary>
+        [JsonProperty("nameid_format")]
+        public string NameidFormat { get; set; }
 
         public override string ToString()
         {
-            return $"EndpointSamlMutate Enabled={ Enabled }  OptionsPassthrough={ OptionsPassthrough }  CookiePrefix={ CookiePrefix }  InactivityTimeout={ InactivityTimeout }  MaximumDuration={ MaximumDuration }  IdpMetadata={ IdpMetadata }  ForceAuthn={ ForceAuthn }  AllowIdpInitiated={ AllowIdpInitiated }  AuthorizedGroups={ AuthorizedGroups } ";
+            return $"EndpointSamlMutate Enabled={ Enabled }  OptionsPassthrough={ OptionsPassthrough }  CookiePrefix={ CookiePrefix }  InactivityTimeout={ InactivityTimeout }  MaximumDuration={ MaximumDuration }  IdpMetadata={ IdpMetadata }  ForceAuthn={ ForceAuthn }  AllowIdpInitiated={ AllowIdpInitiated }  AuthorizedGroups={ AuthorizedGroups }  NameidFormat={ NameidFormat } ";
         }
 
         public override int GetHashCode()
@@ -89,6 +97,8 @@ namespace NgrokApi
                 hash = hash * 23 + Convert.ToInt32(AllowIdpInitiated);
                 hash = hash * 23 + (AuthorizedGroups?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (NameidFormat?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -107,6 +117,7 @@ namespace NgrokApi
                 && this.ForceAuthn == other.ForceAuthn
                 && this.AllowIdpInitiated == other.AllowIdpInitiated
                 && this.AuthorizedGroups == other.AuthorizedGroups
+                && this.NameidFormat == other.NameidFormat
             );
         }
 

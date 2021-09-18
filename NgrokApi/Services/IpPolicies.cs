@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // IP Policies are reusable groups of CIDR ranges with an <c>allow</c> or
+    // <c>deny</c>
+    //  action. They can be attached to endpoints via the Endpoint Configuration IP
+    //  Policy module. They can also be used with IP Restrictions to control source
+    //  IP ranges that can start tunnel sessions and connect to the API and dashboard.
+    // </summary>
+
     public class IpPolicies
     {
         private IApiHttpClient apiClient;
@@ -106,7 +114,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ip-policies-list
-        public IEnumerable<IpPolicy> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<IpPolicy> List(string limit = null, string beforeId = null)
         {
             return new Iterator<IpPolicy>(beforeId, async lastId =>
             {

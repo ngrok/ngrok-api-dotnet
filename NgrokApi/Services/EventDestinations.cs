@@ -107,7 +107,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-event-destinations-list
-        public IEnumerable<EventDestination> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<EventDestination> List(string limit = null, string beforeId = null)
         {
             return new Iterator<EventDestination>(beforeId, async lastId =>
             {

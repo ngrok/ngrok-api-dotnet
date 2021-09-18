@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
+    // <summary>
+    // An SSH Certificate Authority is a pair of an SSH Certificate and its private
+    //  key that can be used to sign other SSH host and user certificates.
+    // </summary>
+
     public class SshCertificateAuthorities
     {
         private IApiHttpClient apiClient;
@@ -103,7 +108,7 @@ namespace NgrokApi
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ssh-certificate-authorities-list
-        public IEnumerable<SshCertificateAuthority> List(string limit = null, string beforeId = null)
+        public IAsyncEnumerable<SshCertificateAuthority> List(string limit = null, string beforeId = null)
         {
             return new Iterator<SshCertificateAuthority>(beforeId, async lastId =>
             {
