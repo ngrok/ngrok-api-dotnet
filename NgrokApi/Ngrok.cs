@@ -20,6 +20,11 @@ namespace NgrokApi
             get { return new AbuseReports(apiHttpClient); }
         }
 
+        public AgentIngresses AgentIngresses
+        {
+            get { return new AgentIngresses(apiHttpClient); }
+        }
+
         public ApiKeys ApiKeys
         {
             get { return new ApiKeys(apiHttpClient); }
@@ -73,11 +78,6 @@ namespace NgrokApi
         public IpRestrictions IpRestrictions
         {
             get { return new IpRestrictions(apiHttpClient); }
-        }
-
-        public IpWhitelist IpWhitelist
-        {
-            get { return new IpWhitelist(apiHttpClient); }
         }
 
         public ReservedAddrs ReservedAddrs

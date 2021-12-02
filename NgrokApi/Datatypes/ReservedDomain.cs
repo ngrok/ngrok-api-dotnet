@@ -82,10 +82,18 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("certificate_management_status")]
         public ReservedDomainCertStatus CertificateManagementStatus { get; set; }
+        // <summary>
+        // DNS CNAME target for the host _acme-challenge.example.com, where example.com is
+        // your reserved domain name. This is required to issue certificates for wildcard,
+        // non-ngrok reserved domains. Must be null for non-wildcard domains and ngrok
+        // subdomains.
+        // </summary>
+        [JsonProperty("acme_challenge_cname_target")]
+        public string AcmeChallengeCnameTarget { get; set; }
 
         public override string ToString()
         {
-            return $"ReservedDomain Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  Domain={ Domain }  Region={ Region }  CnameTarget={ CnameTarget }  HttpEndpointConfiguration={ HttpEndpointConfiguration }  HttpsEndpointConfiguration={ HttpsEndpointConfiguration }  Certificate={ Certificate }  CertificateManagementPolicy={ CertificateManagementPolicy }  CertificateManagementStatus={ CertificateManagementStatus } ";
+            return $"ReservedDomain Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  Domain={ Domain }  Region={ Region }  CnameTarget={ CnameTarget }  HttpEndpointConfiguration={ HttpEndpointConfiguration }  HttpsEndpointConfiguration={ HttpsEndpointConfiguration }  Certificate={ Certificate }  CertificateManagementPolicy={ CertificateManagementPolicy }  CertificateManagementStatus={ CertificateManagementStatus }  AcmeChallengeCnameTarget={ AcmeChallengeCnameTarget } ";
         }
 
         public override int GetHashCode()
@@ -119,6 +127,8 @@ namespace NgrokApi
 
                 hash = hash * 23 + (CertificateManagementStatus?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (AcmeChallengeCnameTarget?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -141,6 +151,7 @@ namespace NgrokApi
                 && this.Certificate == other.Certificate
                 && this.CertificateManagementPolicy == other.CertificateManagementPolicy
                 && this.CertificateManagementStatus == other.CertificateManagementStatus
+                && this.AcmeChallengeCnameTarget == other.AcmeChallengeCnameTarget
             );
         }
 
