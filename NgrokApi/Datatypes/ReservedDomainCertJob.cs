@@ -30,16 +30,10 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("retries_at")]
         public string RetriesAt { get; set; }
-        // <summary>
-        // if present, indicates the dns nameservers that the user must configure to
-        // complete the provisioning process of a wildcard certificate
-        // </summary>
-        [JsonProperty("ns_targets")]
-        public List<ReservedDomainCertNsTarget> NsTargets { get; set; }
 
         public override string ToString()
         {
-            return $"ReservedDomainCertJob ErrorCode={ ErrorCode }  Msg={ Msg }  StartedAt={ StartedAt }  RetriesAt={ RetriesAt }  NsTargets={ NsTargets } ";
+            return $"ReservedDomainCertJob ErrorCode={ ErrorCode }  Msg={ Msg }  StartedAt={ StartedAt }  RetriesAt={ RetriesAt } ";
         }
 
         public override int GetHashCode()
@@ -55,8 +49,6 @@ namespace NgrokApi
 
                 hash = hash * 23 + (RetriesAt?.GetHashCode() ?? 0);
 
-                hash = hash * 23 + (NsTargets?.GetHashCode() ?? 0);
-
                 return hash;
             }
         }
@@ -70,7 +62,6 @@ namespace NgrokApi
                 && this.Msg == other.Msg
                 && this.StartedAt == other.StartedAt
                 && this.RetriesAt == other.RetriesAt
-                && this.NsTargets == other.NsTargets
             );
         }
 

@@ -6,34 +6,29 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
-    // <summary>
-    // The IP Whitelist is deprecated and will be removed. Use an IP Restriction
-    //  with an <c>endpoints</c> type instead.
-    // </summary>
-
-    public class IpWhitelist
+    public class AgentIngresses
     {
         private IApiHttpClient apiClient;
 
-        internal IpWhitelist(IApiHttpClient apiClient)
+        internal AgentIngresses(IApiHttpClient apiClient)
         {
             this.apiClient = apiClient;
         }
 
         // <summary>
-        // Create a new IP whitelist entry that will restrict traffic to all tunnel
-        // endpoints on the account.
+        // Create a new Agent Ingress. The ngrok agent can be configured to connect to
+        // ngrok via the new set of addresses on the returned Agent Ingress.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ip-whitelist-create
-        public async Task<IpWhitelistEntry> Create(IpWhitelistEntryCreate arg)
+        // https://ngrok.com/docs/api#api-agent-ingresses-create
+        public async Task<AgentIngress> Create(AgentIngressCreate arg)
         {
             Dictionary<string, string> query = null;
-            IpWhitelistEntryCreate body = null;
+            AgentIngressCreate body = null;
             body = arg;
 
-            return await apiClient.Do<IpWhitelistEntry>(
-                  path: $"/ip_whitelist",
+            return await apiClient.Do<AgentIngress>(
+                  path: $"/agent_ingresses",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -42,10 +37,10 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Delete an IP whitelist entry.
+        // Delete an Agent Ingress by ID
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ip-whitelist-delete
+        // https://ngrok.com/docs/api#api-agent-ingresses-delete
         public async Task Delete(string id)
         {
             var arg = new Item() { Id = id };
@@ -56,7 +51,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/ip_whitelist/{arg.Id}",
+                  path: $"/agent_ingresses/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -64,11 +59,11 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Get detailed information about an IP whitelist entry by ID.
+        // Get the details of an Agent Ingress by ID.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ip-whitelist-get
-        public async Task<IpWhitelistEntry> Get(string id)
+        // https://ngrok.com/docs/api#api-agent-ingresses-get
+        public async Task<AgentIngress> Get(string id)
         {
             var arg = new Item() { Id = id };
 
@@ -77,8 +72,8 @@ namespace NgrokApi
             query = new Dictionary<string, string>()
             {
             };
-            return await apiClient.Do<IpWhitelistEntry>(
-                  path: $"/ip_whitelist/{arg.Id}",
+            return await apiClient.Do<AgentIngress>(
+                  path: $"/agent_ingresses/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -86,7 +81,7 @@ namespace NgrokApi
 
         }
 
-        private async Task<IpWhitelistEntryList> ListPage(Paging arg)
+        private async Task<AgentIngressList> ListPage(Paging arg)
 
         {
             Dictionary<string, string> query = null;
@@ -96,8 +91,8 @@ namespace NgrokApi
                 ["before_id"] = arg.BeforeId,
                 ["limit"] = arg.Limit,
             };
-            return await apiClient.Do<IpWhitelistEntryList>(
-                  path: $"/ip_whitelist",
+            return await apiClient.Do<AgentIngressList>(
+                  path: $"/agent_ingresses",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -105,36 +100,36 @@ namespace NgrokApi
 
         }
         // <summary>
-        // List all IP whitelist entries on this account
+        // List all Agent Ingresses owned by this account
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ip-whitelist-list
-        public IAsyncEnumerable<IpWhitelistEntry> List(string limit = null, string beforeId = null)
+        // https://ngrok.com/docs/api#api-agent-ingresses-list
+        public IAsyncEnumerable<AgentIngress> List(string limit = null, string beforeId = null)
         {
-            return new Iterator<IpWhitelistEntry>(beforeId, async lastId =>
+            return new Iterator<AgentIngress>(beforeId, async lastId =>
             {
                 var result = await this.ListPage(new Paging()
                 {
                     BeforeId = lastId,
                     Limit = limit,
                 });
-                return result.Whitelist;
+                return result.Ingresses;
             });
         }
 
         // <summary>
-        // Update attributes of an IP whitelist entry by ID
+        // Update attributes of an Agent Ingress by ID.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ip-whitelist-update
-        public async Task<IpWhitelistEntry> Update(IpWhitelistEntryUpdate arg)
+        // https://ngrok.com/docs/api#api-agent-ingresses-update
+        public async Task<AgentIngress> Update(AgentIngressUpdate arg)
         {
             Dictionary<string, string> query = null;
-            IpWhitelistEntryUpdate body = null;
+            AgentIngressUpdate body = null;
             body = arg;
 
-            return await apiClient.Do<IpWhitelistEntry>(
-                  path: $"/ip_whitelist/{arg.Id}",
+            return await apiClient.Do<AgentIngress>(
+                  path: $"/agent_ingresses/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

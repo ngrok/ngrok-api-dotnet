@@ -6,15 +6,15 @@ using Newtonsoft.Json;
 
 namespace NgrokApi
 {
-    public class IpWhitelistEntryList
+    public class AgentIngressList
     {
         // <summary>
-        // the list of all IP whitelist entries on this account
+        // the list of Agent Ingresses owned by this account
         // </summary>
-        [JsonProperty("whitelist")]
-        public List<IpWhitelistEntry> Whitelist { get; set; }
+        [JsonProperty("ingresses")]
+        public List<AgentIngress> Ingresses { get; set; }
         // <summary>
-        // URI of the IP whitelist API resource
+        // URI of the Agent Ingress list API resource
         // </summary>
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -26,7 +26,7 @@ namespace NgrokApi
 
         public override string ToString()
         {
-            return $"IpWhitelistEntryList Whitelist={ Whitelist }  Uri={ Uri }  NextPageUri={ NextPageUri } ";
+            return $"AgentIngressList Ingresses={ Ingresses }  Uri={ Uri }  NextPageUri={ NextPageUri } ";
         }
 
         public override int GetHashCode()
@@ -34,7 +34,7 @@ namespace NgrokApi
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + (Whitelist?.GetHashCode() ?? 0);
+                hash = hash * 23 + (Ingresses?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Uri?.GetHashCode() ?? 0);
 
@@ -47,9 +47,9 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
-            var other = (IpWhitelistEntryList)obj;
+            var other = (AgentIngressList)obj;
             return (
-                 this.Whitelist == other.Whitelist
+                 this.Ingresses == other.Ingresses
                 && this.Uri == other.Uri
                 && this.NextPageUri == other.NextPageUri
             );
