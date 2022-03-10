@@ -14,7 +14,7 @@ namespace NgrokApi
         [JsonProperty("id")]
         public string Id { get; set; }
         // <summary>
-        // URL of the tunnel's public endpoint
+        // URL of the ephemeral tunnel's public endpoint
         // </summary>
         [JsonProperty("public_url")]
         public string PublicUrl { get; set; }
@@ -34,7 +34,8 @@ namespace NgrokApi
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
         // <summary>
-        // tunnel protocol. one of <c>http</c>, <c>https</c>, <c>tcp</c> or <c>tls</c>
+        // tunnel protocol for ephemeral tunnels. one of <c>http</c>, <c>https</c>,
+        // <c>tcp</c> or <c>tls</c>
         // </summary>
         [JsonProperty("proto")]
         public string Proto { get; set; }
@@ -48,10 +49,33 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("tunnel_session")]
         public Ref TunnelSession { get; set; }
+        // <summary>
+        // the ephemeral endpoint this tunnel is associated with, if this is an
+        // agent-initiated tunnel
+        // </summary>
+        [JsonProperty("endpoint")]
+        public Ref Endpoint { get; set; }
+        // <summary>
+        // the labels the tunnel group backends will match against, if this is a backend
+        // tunnel
+        // </summary>
+        [JsonProperty("labels")]
+        public Dictionary<string, string> Labels { get; set; }
+        // <summary>
+        // tunnel group backends served by this backend tunnel
+        // </summary>
+        [JsonProperty("backends")]
+        public List<Ref> Backends { get; set; }
+        // <summary>
+        // upstream address the ngrok agent forwards traffic over this tunnel to. this may
+        // be expressed as a URL or a network address.
+        // </summary>
+        [JsonProperty("forwards_to")]
+        public string ForwardsTo { get; set; }
 
         public override string ToString()
         {
-            return $"Tunnel Id={ Id }  PublicUrl={ PublicUrl }  StartedAt={ StartedAt }  Metadata={ Metadata }  Proto={ Proto }  Region={ Region }  TunnelSession={ TunnelSession } ";
+            return $"Tunnel Id={ Id }  PublicUrl={ PublicUrl }  StartedAt={ StartedAt }  Metadata={ Metadata }  Proto={ Proto }  Region={ Region }  TunnelSession={ TunnelSession }  Endpoint={ Endpoint }  Labels={ Labels }  Backends={ Backends }  ForwardsTo={ ForwardsTo } ";
         }
 
         public override int GetHashCode()
@@ -73,6 +97,14 @@ namespace NgrokApi
 
                 hash = hash * 23 + (TunnelSession?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (Endpoint?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (Labels?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (Backends?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (ForwardsTo?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -89,6 +121,10 @@ namespace NgrokApi
                 && this.Proto == other.Proto
                 && this.Region == other.Region
                 && this.TunnelSession == other.TunnelSession
+                && this.Endpoint == other.Endpoint
+                && this.Labels == other.Labels
+                && this.Backends == other.Backends
+                && this.ForwardsTo == other.ForwardsTo
             );
         }
 

@@ -52,18 +52,6 @@ namespace NgrokApi
         [JsonProperty("cname_target")]
         public string CnameTarget { get; set; }
         // <summary>
-        // object referencing the endpoint configuration applied to http traffic on this
-        // domain
-        // </summary>
-        [JsonProperty("http_endpoint_configuration")]
-        public Ref HttpEndpointConfiguration { get; set; }
-        // <summary>
-        // object referencing the endpoint configuration applied to https traffic on this
-        // domain
-        // </summary>
-        [JsonProperty("https_endpoint_configuration")]
-        public Ref HttpsEndpointConfiguration { get; set; }
-        // <summary>
         // object referencing the TLS certificate used for connections to this domain. This
         // can be either a user-uploaded certificate, the most recently issued automatic
         // one, or null otherwise.
@@ -93,7 +81,7 @@ namespace NgrokApi
 
         public override string ToString()
         {
-            return $"ReservedDomain Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  Domain={ Domain }  Region={ Region }  CnameTarget={ CnameTarget }  HttpEndpointConfiguration={ HttpEndpointConfiguration }  HttpsEndpointConfiguration={ HttpsEndpointConfiguration }  Certificate={ Certificate }  CertificateManagementPolicy={ CertificateManagementPolicy }  CertificateManagementStatus={ CertificateManagementStatus }  AcmeChallengeCnameTarget={ AcmeChallengeCnameTarget } ";
+            return $"ReservedDomain Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  Domain={ Domain }  Region={ Region }  CnameTarget={ CnameTarget }  Certificate={ Certificate }  CertificateManagementPolicy={ CertificateManagementPolicy }  CertificateManagementStatus={ CertificateManagementStatus }  AcmeChallengeCnameTarget={ AcmeChallengeCnameTarget } ";
         }
 
         public override int GetHashCode()
@@ -116,10 +104,6 @@ namespace NgrokApi
                 hash = hash * 23 + (Region?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (CnameTarget?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (HttpEndpointConfiguration?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (HttpsEndpointConfiguration?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Certificate?.GetHashCode() ?? 0);
 
@@ -146,8 +130,6 @@ namespace NgrokApi
                 && this.Domain == other.Domain
                 && this.Region == other.Region
                 && this.CnameTarget == other.CnameTarget
-                && this.HttpEndpointConfiguration == other.HttpEndpointConfiguration
-                && this.HttpsEndpointConfiguration == other.HttpsEndpointConfiguration
                 && this.Certificate == other.Certificate
                 && this.CertificateManagementPolicy == other.CertificateManagementPolicy
                 && this.CertificateManagementStatus == other.CertificateManagementStatus

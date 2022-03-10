@@ -22,18 +22,6 @@ namespace NgrokApi
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
         // <summary>
-        // ID of an endpoint configuration of type http that will be used to handle inbound
-        // http traffic to this domain
-        // </summary>
-        [JsonProperty("http_endpoint_configuration_id")]
-        public string HttpEndpointConfigurationId { get; set; }
-        // <summary>
-        // ID of an endpoint configuration of type https that will be used to handle
-        // inbound https traffic to this domain
-        // </summary>
-        [JsonProperty("https_endpoint_configuration_id")]
-        public string HttpsEndpointConfigurationId { get; set; }
-        // <summary>
         // ID of a user-uploaded TLS certificate to use for connections to targeting this
         // domain. Optional, mutually exclusive with <c>certificate_management_policy</c>.
         // </summary>
@@ -49,7 +37,7 @@ namespace NgrokApi
 
         public override string ToString()
         {
-            return $"ReservedDomainUpdate Id={ Id }  Description={ Description }  Metadata={ Metadata }  HttpEndpointConfigurationId={ HttpEndpointConfigurationId }  HttpsEndpointConfigurationId={ HttpsEndpointConfigurationId }  CertificateId={ CertificateId }  CertificateManagementPolicy={ CertificateManagementPolicy } ";
+            return $"ReservedDomainUpdate Id={ Id }  Description={ Description }  Metadata={ Metadata }  CertificateId={ CertificateId }  CertificateManagementPolicy={ CertificateManagementPolicy } ";
         }
 
         public override int GetHashCode()
@@ -62,10 +50,6 @@ namespace NgrokApi
                 hash = hash * 23 + (Description?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Metadata?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (HttpEndpointConfigurationId?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (HttpsEndpointConfigurationId?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (CertificateId?.GetHashCode() ?? 0);
 
@@ -83,8 +67,6 @@ namespace NgrokApi
                  this.Id == other.Id
                 && this.Description == other.Description
                 && this.Metadata == other.Metadata
-                && this.HttpEndpointConfigurationId == other.HttpEndpointConfigurationId
-                && this.HttpsEndpointConfigurationId == other.HttpsEndpointConfigurationId
                 && this.CertificateId == other.CertificateId
                 && this.CertificateManagementPolicy == other.CertificateManagementPolicy
             );

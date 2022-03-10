@@ -20,15 +20,10 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
-        // <summary>
-        // the IP policy action. Supported values are <c>allow</c> or <c>deny</c>
-        // </summary>
-        [JsonProperty("action")]
-        public string Action { get; set; }
 
         public override string ToString()
         {
-            return $"IpPolicyCreate Description={ Description }  Metadata={ Metadata }  Action={ Action } ";
+            return $"IpPolicyCreate Description={ Description }  Metadata={ Metadata } ";
         }
 
         public override int GetHashCode()
@@ -39,8 +34,6 @@ namespace NgrokApi
                 hash = hash * 23 + (Description?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Metadata?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (Action?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -53,7 +46,6 @@ namespace NgrokApi
             return (
                  this.Description == other.Description
                 && this.Metadata == other.Metadata
-                && this.Action == other.Action
             );
         }
 

@@ -18,7 +18,7 @@ namespace NgrokApi
         // a string indicating which webhook provider will be sending webhooks to this
         // endpoint. Value must be one of the supported providers: <c>SLACK</c>,
         // <c>SNS</c>, <c>STRIPE</c>, <c>GITHUB</c>, <c>TWILIO</c>, <c>SHOPIFY</c>,
-        // <c>GITLAB</c>, <c>INTERCOM</c>, <c>SENDGRID</c>, <c>XERO</c>.
+        // <c>GITLAB</c>, <c>INTERCOM</c>, <c>SENDGRID</c>, <c>XERO</c>, <c>PAGERDUTY</c>.
         // </summary>
         [JsonProperty("provider")]
         public string Provider { get; set; }
