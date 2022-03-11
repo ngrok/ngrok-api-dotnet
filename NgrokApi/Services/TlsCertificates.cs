@@ -35,7 +35,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<TlsCertificate>(
-                  path: $"/tls_certificates",
+                  path: $"tls_certificates",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -58,7 +58,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/tls_certificates/{arg.Id}",
+                  path: $"tls_certificates/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -80,7 +80,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<TlsCertificate>(
-                  path: $"/tls_certificates/{arg.Id}",
+                  path: $"tls_certificates/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -99,7 +99,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<TlsCertificateList>(
-                  path: $"/tls_certificates",
+                  path: $"tls_certificates",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -136,7 +136,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<TlsCertificate>(
-                  path: $"/tls_certificates/{arg.Id}",
+                  path: $"tls_certificates/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

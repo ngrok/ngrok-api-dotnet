@@ -22,7 +22,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EndpointCompression>(
-                  path: $"/endpoint_configurations/{arg.Id}/compression",
+                  path: $"endpoint_configurations/{arg.Id}/compression",
                   method: new HttpMethod("put"),
                   body: body,
                   query: query
@@ -40,7 +40,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EndpointCompression>(
-                  path: $"/endpoint_configurations/{arg.Id}/compression",
+                  path: $"endpoint_configurations/{arg.Id}/compression",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -58,7 +58,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/endpoint_configurations/{arg.Id}/compression",
+                  path: $"endpoint_configurations/{arg.Id}/compression",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query

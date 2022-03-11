@@ -34,7 +34,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<AbuseReport>(
-                  path: $"/abuse_reports",
+                  path: $"abuse_reports",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -57,7 +57,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<AbuseReport>(
-                  path: $"/abuse_reports/{arg.Id}",
+                  path: $"abuse_reports/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
