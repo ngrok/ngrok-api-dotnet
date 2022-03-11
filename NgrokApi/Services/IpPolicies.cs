@@ -36,7 +36,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<IpPolicy>(
-                  path: $"/ip_policies",
+                  path: $"ip_policies",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -61,7 +61,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/ip_policies/{arg.Id}",
+                  path: $"ip_policies/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -83,7 +83,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<IpPolicy>(
-                  path: $"/ip_policies/{arg.Id}",
+                  path: $"ip_policies/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -102,7 +102,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<IpPolicyList>(
-                  path: $"/ip_policies",
+                  path: $"ip_policies",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -139,7 +139,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<IpPolicy>(
-                  path: $"/ip_policies/{arg.Id}",
+                  path: $"ip_policies/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

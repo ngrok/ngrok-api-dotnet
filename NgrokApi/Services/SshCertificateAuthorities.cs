@@ -32,7 +32,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<SshCertificateAuthority>(
-                  path: $"/ssh_certificate_authorities",
+                  path: $"ssh_certificate_authorities",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -55,7 +55,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/ssh_certificate_authorities/{arg.Id}",
+                  path: $"ssh_certificate_authorities/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -77,7 +77,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<SshCertificateAuthority>(
-                  path: $"/ssh_certificate_authorities/{arg.Id}",
+                  path: $"ssh_certificate_authorities/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -96,7 +96,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<SshCertificateAuthorityList>(
-                  path: $"/ssh_certificate_authorities",
+                  path: $"ssh_certificate_authorities",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -133,7 +133,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<SshCertificateAuthority>(
-                  path: $"/ssh_certificate_authorities/{arg.Id}",
+                  path: $"ssh_certificate_authorities/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

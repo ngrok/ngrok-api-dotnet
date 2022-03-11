@@ -28,7 +28,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<AgentIngress>(
-                  path: $"/agent_ingresses",
+                  path: $"agent_ingresses",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -51,7 +51,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/agent_ingresses/{arg.Id}",
+                  path: $"agent_ingresses/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -73,7 +73,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<AgentIngress>(
-                  path: $"/agent_ingresses/{arg.Id}",
+                  path: $"agent_ingresses/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -92,7 +92,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<AgentIngressList>(
-                  path: $"/agent_ingresses",
+                  path: $"agent_ingresses",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -129,7 +129,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<AgentIngress>(
-                  path: $"/agent_ingresses/{arg.Id}",
+                  path: $"agent_ingresses/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

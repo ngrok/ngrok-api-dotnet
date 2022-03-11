@@ -33,7 +33,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EndpointConfiguration>(
-                  path: $"/endpoint_configurations",
+                  path: $"endpoint_configurations",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -57,7 +57,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/endpoint_configurations/{arg.Id}",
+                  path: $"endpoint_configurations/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -79,7 +79,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EndpointConfiguration>(
-                  path: $"/endpoint_configurations/{arg.Id}",
+                  path: $"endpoint_configurations/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -98,7 +98,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<EndpointConfigurationList>(
-                  path: $"/endpoint_configurations",
+                  path: $"endpoint_configurations",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -138,7 +138,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EndpointConfiguration>(
-                  path: $"/endpoint_configurations/{arg.Id}",
+                  path: $"endpoint_configurations/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

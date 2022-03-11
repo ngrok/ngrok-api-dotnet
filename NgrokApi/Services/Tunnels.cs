@@ -31,7 +31,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<TunnelList>(
-                  path: $"/tunnels",
+                  path: $"tunnels",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query

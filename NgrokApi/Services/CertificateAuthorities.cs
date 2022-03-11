@@ -35,7 +35,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<CertificateAuthority>(
-                  path: $"/certificate_authorities",
+                  path: $"certificate_authorities",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -58,7 +58,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/certificate_authorities/{arg.Id}",
+                  path: $"certificate_authorities/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -80,7 +80,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<CertificateAuthority>(
-                  path: $"/certificate_authorities/{arg.Id}",
+                  path: $"certificate_authorities/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -99,7 +99,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<CertificateAuthorityList>(
-                  path: $"/certificate_authorities",
+                  path: $"certificate_authorities",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -136,7 +136,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<CertificateAuthority>(
-                  path: $"/certificate_authorities/{arg.Id}",
+                  path: $"certificate_authorities/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

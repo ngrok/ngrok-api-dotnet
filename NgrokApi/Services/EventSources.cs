@@ -27,7 +27,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EventSource>(
-                  path: $"/event_subscriptions/{arg.SubscriptionId}/sources",
+                  path: $"event_subscriptions/{arg.SubscriptionId}/sources",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -48,7 +48,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",
+                  path: $"event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -68,7 +68,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EventSource>(
-                  path: $"/event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",
+                  path: $"event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -91,7 +91,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EventSourceList>(
-                  path: $"/event_subscriptions/{arg.SubscriptionId}/sources",
+                  path: $"event_subscriptions/{arg.SubscriptionId}/sources",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -111,7 +111,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EventSource>(
-                  path: $"/event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",
+                  path: $"event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

@@ -29,7 +29,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EventDestination>(
-                  path: $"/event_destinations",
+                  path: $"event_destinations",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -54,7 +54,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/event_destinations/{arg.Id}",
+                  path: $"event_destinations/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -76,7 +76,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EventDestination>(
-                  path: $"/event_destinations/{arg.Id}",
+                  path: $"event_destinations/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -95,7 +95,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<EventDestinationList>(
-                  path: $"/event_destinations",
+                  path: $"event_destinations",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -132,7 +132,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EventDestination>(
-                  path: $"/event_destinations/{arg.Id}",
+                  path: $"event_destinations/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

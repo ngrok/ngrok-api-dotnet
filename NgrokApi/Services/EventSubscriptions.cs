@@ -27,7 +27,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EventSubscription>(
-                  path: $"/event_subscriptions",
+                  path: $"event_subscriptions",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -50,7 +50,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/event_subscriptions/{arg.Id}",
+                  path: $"event_subscriptions/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -72,7 +72,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EventSubscription>(
-                  path: $"/event_subscriptions/{arg.Id}",
+                  path: $"event_subscriptions/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -91,7 +91,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<EventSubscriptionList>(
-                  path: $"/event_subscriptions",
+                  path: $"event_subscriptions",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -128,7 +128,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EventSubscription>(
-                  path: $"/event_subscriptions/{arg.Id}",
+                  path: $"event_subscriptions/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query

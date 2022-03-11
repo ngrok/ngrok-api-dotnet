@@ -34,7 +34,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<ReservedDomain>(
-                  path: $"/reserved_domains",
+                  path: $"reserved_domains",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -57,7 +57,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}",
+                  path: $"reserved_domains/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -79,7 +79,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<ReservedDomain>(
-                  path: $"/reserved_domains/{arg.Id}",
+                  path: $"reserved_domains/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -98,7 +98,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<ReservedDomainList>(
-                  path: $"/reserved_domains",
+                  path: $"reserved_domains",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -135,7 +135,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<ReservedDomain>(
-                  path: $"/reserved_domains/{arg.Id}",
+                  path: $"reserved_domains/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query
@@ -158,7 +158,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}/certificate_management_policy",
+                  path: $"reserved_domains/{arg.Id}/certificate_management_policy",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -180,7 +180,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}/certificate",
+                  path: $"reserved_domains/{arg.Id}/certificate",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -202,7 +202,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}/http_endpoint_configuration",
+                  path: $"reserved_domains/{arg.Id}/http_endpoint_configuration",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -224,7 +224,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}/https_endpoint_configuration",
+                  path: $"reserved_domains/{arg.Id}/https_endpoint_configuration",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query

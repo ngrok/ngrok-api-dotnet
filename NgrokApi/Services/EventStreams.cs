@@ -28,7 +28,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EventStream>(
-                  path: $"/event_streams",
+                  path: $"event_streams",
                   method: new HttpMethod("post"),
                   body: body,
                   query: query
@@ -51,7 +51,7 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/event_streams/{arg.Id}",
+                  path: $"event_streams/{arg.Id}",
                   method: new HttpMethod("delete"),
                   body: body,
                   query: query
@@ -73,7 +73,7 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EventStream>(
-                  path: $"/event_streams/{arg.Id}",
+                  path: $"event_streams/{arg.Id}",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -92,7 +92,7 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<EventStreamList>(
-                  path: $"/event_streams",
+                  path: $"event_streams",
                   method: new HttpMethod("get"),
                   body: body,
                   query: query
@@ -129,7 +129,7 @@ namespace NgrokApi
             body = arg;
 
             return await apiClient.Do<EventStream>(
-                  path: $"/event_streams/{arg.Id}",
+                  path: $"event_streams/{arg.Id}",
                   method: new HttpMethod("patch"),
                   body: body,
                   query: query
