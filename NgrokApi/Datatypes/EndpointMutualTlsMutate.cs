@@ -1,8 +1,7 @@
 
 using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,13 +11,13 @@ namespace NgrokApi
         // <c>true</c> if the module will be applied to traffic, <c>false</c> to disable.
         // default <c>true</c> if unspecified
         // </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
         // <summary>
         // list of certificate authorities that will be used to validate the TLS client
         // certificate presnted by the initiatiator of the TLS connection
         // </summary>
-        [JsonProperty("certificate_authority_ids")]
+        [JsonPropertyName("certificate_authority_ids")]
         public List<string> CertificateAuthorityIds { get; set; }
 
         public override string ToString()

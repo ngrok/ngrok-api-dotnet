@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,12 +7,12 @@ namespace NgrokApi
         // <summary>
         // The ID portion of an AWS access key.
         // </summary>
-        [JsonProperty("aws_access_key_id")]
+        [JsonPropertyName("aws_access_key_id")]
         public string AwsAccessKeyId { get; set; }
         // <summary>
         // The secret portion of an AWS access key.
         // </summary>
-        [JsonProperty("aws_secret_access_key")]
+        [JsonPropertyName("aws_secret_access_key")]
         public string AwsSecretAccessKey { get; set; }
 
         public override string ToString()

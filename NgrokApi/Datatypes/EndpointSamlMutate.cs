@@ -1,8 +1,7 @@
 
 using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,45 +11,45 @@ namespace NgrokApi
         // <c>true</c> if the module will be applied to traffic, <c>false</c> to disable.
         // default <c>true</c> if unspecified
         // </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
         // <summary>
         // Do not enforce authentication on HTTP OPTIONS requests. necessary if you are
         // supporting CORS.
         // </summary>
-        [JsonProperty("options_passthrough")]
+        [JsonPropertyName("options_passthrough")]
         public bool OptionsPassthrough { get; set; }
         // <summary>
         // the prefix of the session cookie that ngrok sets on the http client to cache
         // authentication. default is 'ngrok.'
         // </summary>
-        [JsonProperty("cookie_prefix")]
+        [JsonPropertyName("cookie_prefix")]
         public string CookiePrefix { get; set; }
         // <summary>
         // Integer number of seconds of inactivity after which if the user has not accessed
         // the endpoint, their session will time out and they will be forced to
         // reauthenticate.
         // </summary>
-        [JsonProperty("inactivity_timeout")]
+        [JsonPropertyName("inactivity_timeout")]
         public int InactivityTimeout { get; set; }
         // <summary>
         // Integer number of seconds of the maximum duration of an authenticated session.
         // After this period is exceeded, a user must reauthenticate.
         // </summary>
-        [JsonProperty("maximum_duration")]
+        [JsonPropertyName("maximum_duration")]
         public int MaximumDuration { get; set; }
         // <summary>
         // The full XML IdP EntityDescriptor. Your IdP may provide this to you as a a file
         // to download or as a URL.
         // </summary>
-        [JsonProperty("idp_metadata")]
+        [JsonPropertyName("idp_metadata")]
         public string IdpMetadata { get; set; }
         // <summary>
         // If true, indicates that whenever we redirect a user to the IdP for
         // authentication that the IdP must prompt the user for authentication credentials
         // even if the user already has a valid session with the IdP.
         // </summary>
-        [JsonProperty("force_authn")]
+        [JsonPropertyName("force_authn")]
         public bool ForceAuthn { get; set; }
         // <summary>
         // If true, the IdP may initiate a login directly (e.g. the user does not need to
@@ -58,13 +57,13 @@ namespace NgrokApi
         // <c>RelayState</c> parameter to the target URL of the resource they want the user
         // to be redirected to after the SAML login assertion has been processed.
         // </summary>
-        [JsonProperty("allow_idp_initiated")]
+        [JsonPropertyName("allow_idp_initiated")]
         public bool? AllowIdpInitiated { get; set; }
         // <summary>
         // If present, only users who are a member of one of the listed groups may access
         // the target endpoint.
         // </summary>
-        [JsonProperty("authorized_groups")]
+        [JsonPropertyName("authorized_groups")]
         public List<string> AuthorizedGroups { get; set; }
         // <summary>
         // Defines the name identifier format the SP expects the IdP to use in its
@@ -72,7 +71,7 @@ namespace NgrokApi
         // <c>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</c> will be used. A
         // subset of the allowed values enumerated by the SAML specification are supported.
         // </summary>
-        [JsonProperty("nameid_format")]
+        [JsonPropertyName("nameid_format")]
         public string NameidFormat { get; set; }
 
         public override string ToString()

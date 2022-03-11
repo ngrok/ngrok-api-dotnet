@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,76 +7,76 @@ namespace NgrokApi
         // <summary>
         // unique reserved domain resource identifier
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URI of the reserved domain API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // timestamp when the reserved domain was created, RFC 3339 format
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // human-readable description of what this reserved domain will be used for
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this reserved domain. Optional,
         // max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // hostname of the reserved domain
         // </summary>
-        [JsonProperty("domain")]
+        [JsonPropertyName("domain")]
         public string Domain { get; set; }
         // <summary>
         // reserve the domain in this geographic ngrok datacenter. Optional, default is us.
         // (au, eu, ap, us, jp, in, sa)
         // </summary>
-        [JsonProperty("region")]
+        [JsonPropertyName("region")]
         public string Region { get; set; }
         // <summary>
         // DNS CNAME target for a custom hostname, or null if the reserved domain is a
         // subdomain of *.ngrok.io
         // </summary>
-        [JsonProperty("cname_target")]
+        [JsonPropertyName("cname_target")]
         public string CnameTarget { get; set; }
         // <summary>
         // object referencing the endpoint configuration applied to http traffic on this
         // domain
         // </summary>
-        [JsonProperty("http_endpoint_configuration")]
+        [JsonPropertyName("http_endpoint_configuration")]
         public Ref HttpEndpointConfiguration { get; set; }
         // <summary>
         // object referencing the endpoint configuration applied to https traffic on this
         // domain
         // </summary>
-        [JsonProperty("https_endpoint_configuration")]
+        [JsonPropertyName("https_endpoint_configuration")]
         public Ref HttpsEndpointConfiguration { get; set; }
         // <summary>
         // object referencing the TLS certificate used for connections to this domain. This
         // can be either a user-uploaded certificate, the most recently issued automatic
         // one, or null otherwise.
         // </summary>
-        [JsonProperty("certificate")]
+        [JsonPropertyName("certificate")]
         public Ref Certificate { get; set; }
         // <summary>
         // configuration for automatic management of TLS certificates for this domain, or
         // null if automatic management is disabled
         // </summary>
-        [JsonProperty("certificate_management_policy")]
+        [JsonPropertyName("certificate_management_policy")]
         public ReservedDomainCertPolicy CertificateManagementPolicy { get; set; }
         // <summary>
         // status of the automatic certificate management for this domain, or null if
         // automatic management is disabled
         // </summary>
-        [JsonProperty("certificate_management_status")]
+        [JsonPropertyName("certificate_management_status")]
         public ReservedDomainCertStatus CertificateManagementStatus { get; set; }
         // <summary>
         // DNS CNAME target for the host _acme-challenge.example.com, where example.com is
@@ -88,7 +84,7 @@ namespace NgrokApi
         // non-ngrok reserved domains. Must be null for non-wildcard domains and ngrok
         // subdomains.
         // </summary>
-        [JsonProperty("acme_challenge_cname_target")]
+        [JsonPropertyName("acme_challenge_cname_target")]
         public string AcmeChallengeCnameTarget { get; set; }
 
         public override string ToString()

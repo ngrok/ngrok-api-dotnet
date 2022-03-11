@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,13 +8,13 @@ namespace NgrokApi
         // the hostname ngrok has parsed out of one of the reported URLs in this abuse
         // report
         // </summary>
-        [JsonProperty("hostname")]
+        [JsonPropertyName("hostname")]
         public string Hostname { get; set; }
         // <summary>
         // indicates what action ngrok has taken against the hostname. one of
         // <c>PENDING</c>, <c>BANNED</c>, <c>UNBANNED</c>, or <c>IGNORE</c>
         // </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
         public override string ToString()

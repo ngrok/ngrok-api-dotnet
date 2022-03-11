@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,24 +9,24 @@ namespace NgrokApi
         // Arbitrary customer supplied information intended to be machine readable.
         // Optional, max 4096 chars.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // Arbitrary customer supplied information intended to be human readable. Optional,
         // max 255 chars.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // Sources containing the types for which this event subscription will trigger
         // </summary>
-        [JsonProperty("sources")]
+        [JsonPropertyName("sources")]
         public List<EventSourceReplace> Sources { get; set; }
         // <summary>
         // A list of Event Destination IDs which should be used for this Event Stream.
         // Event Streams are required to have at least one Event Destination.
         // </summary>
-        [JsonProperty("destination_ids")]
+        [JsonPropertyName("destination_ids")]
         public List<string> DestinationIds { get; set; }
 
         public override string ToString()

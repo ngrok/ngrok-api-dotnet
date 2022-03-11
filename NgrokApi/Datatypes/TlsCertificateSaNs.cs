@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,12 +9,12 @@ namespace NgrokApi
         // set of additional domains (including wildcards) this TLS certificate is valid
         // for
         // </summary>
-        [JsonProperty("dns_names")]
+        [JsonPropertyName("dns_names")]
         public List<string> DnsNames { get; set; }
         // <summary>
         // set of IP addresses this TLS certificate is also valid for
         // </summary>
-        [JsonProperty("ips")]
+        [JsonPropertyName("ips")]
         public List<string> Ips { get; set; }
 
         public override string ToString()

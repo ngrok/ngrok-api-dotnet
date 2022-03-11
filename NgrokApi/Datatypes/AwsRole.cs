@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,7 +8,7 @@ namespace NgrokApi
         // An ARN that specifies the role that ngrok should use to deliver to the
         // configured target.
         // </summary>
-        [JsonProperty("role_arn")]
+        [JsonPropertyName("role_arn")]
         public string RoleArn { get; set; }
 
         public override string ToString()

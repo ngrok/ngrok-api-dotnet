@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -13,7 +9,7 @@ namespace NgrokApi
         // The unique identifier for the Event Subscription that this Event Source is
         // attached to.
         // </summary>
-        [JsonProperty("subscription_id")]
+        [JsonPropertyName("subscription_id")]
         public string SubscriptionId { get; set; }
 
         public override string ToString()

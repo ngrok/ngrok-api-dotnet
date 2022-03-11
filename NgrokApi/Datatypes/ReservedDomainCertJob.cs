@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -13,22 +9,22 @@ namespace NgrokApi
         // either a temporary condition (INTERNAL_ERROR), or a permanent one the user must
         // correct (DNS_ERROR).
         // </summary>
-        [JsonProperty("error_code")]
+        [JsonPropertyName("error_code")]
         public string ErrorCode { get; set; }
         // <summary>
         // a message describing the current status or error
         // </summary>
-        [JsonProperty("msg")]
+        [JsonPropertyName("msg")]
         public string Msg { get; set; }
         // <summary>
         // timestamp when the provisioning job started, RFC 3339 format
         // </summary>
-        [JsonProperty("started_at")]
+        [JsonPropertyName("started_at")]
         public string StartedAt { get; set; }
         // <summary>
         // timestamp when the provisioning job will be retried
         // </summary>
-        [JsonProperty("retries_at")]
+        [JsonPropertyName("retries_at")]
         public string RetriesAt { get; set; }
 
         public override string ToString()

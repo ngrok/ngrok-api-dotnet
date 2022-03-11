@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,12 +8,12 @@ namespace NgrokApi
         // Configuration for how to authenticate into your AWS account. Exactly one of
         // <c>role</c> or <c>creds</c> should be configured.
         // </summary>
-        [JsonProperty("auth")]
+        [JsonPropertyName("auth")]
         public AwsAuth Auth { get; set; }
         // <summary>
         // An Amazon Resource Name specifying the Kinesis stream to deposit events into.
         // </summary>
-        [JsonProperty("stream_arn")]
+        [JsonPropertyName("stream_arn")]
         public string StreamArn { get; set; }
 
         public override string ToString()

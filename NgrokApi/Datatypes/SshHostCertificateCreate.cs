@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,12 +8,12 @@ namespace NgrokApi
         // <summary>
         // the ssh certificate authority that is used to sign this ssh host certificate
         // </summary>
-        [JsonProperty("ssh_certificate_authority_id")]
+        [JsonPropertyName("ssh_certificate_authority_id")]
         public string SshCertificateAuthorityId { get; set; }
         // <summary>
         // a public key in OpenSSH Authorized Keys format that this certificate signs
         // </summary>
-        [JsonProperty("public_key")]
+        [JsonPropertyName("public_key")]
         public string PublicKey { get; set; }
         // <summary>
         // the list of principals included in the ssh host certificate. This is the list of
@@ -24,32 +21,32 @@ namespace NgrokApi
         // certificate. Dangerously, if no principals are specified, this certificate is
         // considered valid for all hosts.
         // </summary>
-        [JsonProperty("principals")]
+        [JsonPropertyName("principals")]
         public List<string> Principals { get; set; }
         // <summary>
         // The time when the host certificate becomes valid, in RFC 3339 format. Defaults
         // to the current time if unspecified.
         // </summary>
-        [JsonProperty("valid_after")]
+        [JsonPropertyName("valid_after")]
         public string ValidAfter { get; set; }
         // <summary>
         // The time when this host certificate becomes invalid, in RFC 3339 format. If
         // unspecified, a default value of one year in the future will be used. The OpenSSH
         // certificates RFC calls this <c>valid_before</c>.
         // </summary>
-        [JsonProperty("valid_until")]
+        [JsonPropertyName("valid_until")]
         public string ValidUntil { get; set; }
         // <summary>
         // human-readable description of this SSH Host Certificate. optional, max 255
         // bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this SSH Host Certificate.
         // optional, max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
 
         public override string ToString()

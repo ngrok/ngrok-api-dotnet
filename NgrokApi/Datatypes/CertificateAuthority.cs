@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,60 +8,60 @@ namespace NgrokApi
         // <summary>
         // unique identifier for this Certificate Authority
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URI of the Certificate Authority API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // timestamp when the Certificate Authority was created, RFC 3339 format
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // human-readable description of this Certificate Authority. optional, max 255
         // bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this Certificate Authority.
         // optional, max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // raw PEM of the Certificate Authority
         // </summary>
-        [JsonProperty("ca_pem")]
+        [JsonPropertyName("ca_pem")]
         public string CaPem { get; set; }
         // <summary>
         // subject common name of the Certificate Authority
         // </summary>
-        [JsonProperty("subject_common_name")]
+        [JsonPropertyName("subject_common_name")]
         public string SubjectCommonName { get; set; }
         // <summary>
         // timestamp when this Certificate Authority becomes valid, RFC 3339 format
         // </summary>
-        [JsonProperty("not_before")]
+        [JsonPropertyName("not_before")]
         public string NotBefore { get; set; }
         // <summary>
         // timestamp when this Certificate Authority becomes invalid, RFC 3339 format
         // </summary>
-        [JsonProperty("not_after")]
+        [JsonPropertyName("not_after")]
         public string NotAfter { get; set; }
         // <summary>
         // set of actions the private key of this Certificate Authority can be used for
         // </summary>
-        [JsonProperty("key_usages")]
+        [JsonPropertyName("key_usages")]
         public List<string> KeyUsages { get; set; }
         // <summary>
         // extended set of actions the private key of this Certificate Authority can be
         // used for
         // </summary>
-        [JsonProperty("extended_key_usages")]
+        [JsonPropertyName("extended_key_usages")]
         public List<string> ExtendedKeyUsages { get; set; }
 
         public override string ToString()

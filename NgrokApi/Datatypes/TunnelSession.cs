@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,55 +7,55 @@ namespace NgrokApi
         // <summary>
         // version of the ngrok agent that started this ngrok tunnel session
         // </summary>
-        [JsonProperty("agent_version")]
+        [JsonPropertyName("agent_version")]
         public string AgentVersion { get; set; }
         // <summary>
         // reference to the tunnel credential or ssh credential used by the ngrok agent to
         // start this tunnel session
         // </summary>
-        [JsonProperty("credential")]
+        [JsonPropertyName("credential")]
         public Ref Credential { get; set; }
         // <summary>
         // unique tunnel session resource identifier
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // source ip address of the tunnel session
         // </summary>
-        [JsonProperty("ip")]
+        [JsonPropertyName("ip")]
         public string Ip { get; set; }
         // <summary>
         // arbitrary user-defined data specified in the metadata property in the ngrok
         // configuration file. See the metadata configuration option
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // operating system of the host the ngrok agent is running on
         // </summary>
-        [JsonProperty("os")]
+        [JsonPropertyName("os")]
         public string Os { get; set; }
         // <summary>
         // the ngrok region identifier in which this tunnel session was started
         // </summary>
-        [JsonProperty("region")]
+        [JsonPropertyName("region")]
         public string Region { get; set; }
         // <summary>
         // time when the tunnel session first connected to the ngrok servers
         // </summary>
-        [JsonProperty("started_at")]
+        [JsonPropertyName("started_at")]
         public string StartedAt { get; set; }
         // <summary>
         // the transport protocol used to start the tunnel session. Either <c>ngrok/v2</c>
         // or <c>ssh</c>
         // </summary>
-        [JsonProperty("transport")]
+        [JsonPropertyName("transport")]
         public string Transport { get; set; }
         // <summary>
         // URI to the API resource of the tunnel session
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
 
         public override string ToString()

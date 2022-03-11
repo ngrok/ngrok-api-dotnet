@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,45 +7,45 @@ namespace NgrokApi
         // <summary>
         // unique reserved address resource identifier
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URI of the reserved address API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // timestamp when the reserved address was created, RFC 3339 format
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // human-readable description of what this reserved address will be used for
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this reserved address. Optional,
         // max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // hostname:port of the reserved address that was assigned at creation time
         // </summary>
-        [JsonProperty("addr")]
+        [JsonPropertyName("addr")]
         public string Addr { get; set; }
         // <summary>
         // reserve the address in this geographic ngrok datacenter. Optional, default is
         // us. (au, eu, ap, us, jp, in, sa)
         // </summary>
-        [JsonProperty("region")]
+        [JsonPropertyName("region")]
         public string Region { get; set; }
         // <summary>
         // object reference to the endpoint configuration that will be applied to traffic
         // to this address
         // </summary>
-        [JsonProperty("endpoint_configuration")]
+        [JsonPropertyName("endpoint_configuration")]
         public Ref EndpointConfiguration { get; set; }
 
         public override string ToString()

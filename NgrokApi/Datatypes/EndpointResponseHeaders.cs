@@ -1,8 +1,7 @@
 
 using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,19 +11,19 @@ namespace NgrokApi
         // <c>true</c> if the module will be applied to traffic, <c>false</c> to disable.
         // default <c>true</c> if unspecified
         // </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
         // <summary>
         // a map of header key to header value that will be injected into the HTTP Response
         // returned to the HTTP client
         // </summary>
-        [JsonProperty("add")]
+        [JsonPropertyName("add")]
         public Dictionary<string, string> Add { get; set; }
         // <summary>
         // a list of header names that will be removed from the HTTP Response returned to
         // the HTTP client
         // </summary>
-        [JsonProperty("remove")]
+        [JsonPropertyName("remove")]
         public List<string> Remove { get; set; }
 
         public override string ToString()

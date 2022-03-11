@@ -1,8 +1,7 @@
 
 using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,35 +11,35 @@ namespace NgrokApi
         // Arbitrary user-defined machine-readable data of this Event Stream. Optional, max
         // 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // Human-readable description of the Event Stream. Optional, max 255 bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // A list of protocol-specific fields you want to collect on each event.
         // </summary>
-        [JsonProperty("fields")]
+        [JsonPropertyName("fields")]
         public List<string> Fields { get; set; }
         // <summary>
         // The protocol that determines which events will be collected. Supported values
         // are <c>tcp_connection_closed</c> and <c>http_request_complete</c>.
         // </summary>
-        [JsonProperty("event_type")]
+        [JsonPropertyName("event_type")]
         public string EventType { get; set; }
         // <summary>
         // A list of Event Destination IDs which should be used for this Event Stream.
         // Event Streams are required to have at least one Event Destination.
         // </summary>
-        [JsonProperty("destination_ids")]
+        [JsonPropertyName("destination_ids")]
         public List<string> DestinationIds { get; set; }
         // <summary>
         // The percentage of all events you would like to capture. Valid values range from
         // 0.01, representing 1% of all events to 1.00, representing 100% of all events.
         // </summary>
-        [JsonProperty("sampling_rate")]
+        [JsonPropertyName("sampling_rate")]
         public double SamplingRate { get; set; }
 
         public override string ToString()

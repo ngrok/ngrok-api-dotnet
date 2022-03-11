@@ -1,31 +1,27 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
     public class ReservedAddrUpdate : HasId
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // human-readable description of what this reserved address will be used for
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this reserved address. Optional,
         // max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // ID of an endpoint configuration of type tcp that will be used to handle inbound
         // traffic to this address
         // </summary>
-        [JsonProperty("endpoint_configuration_id")]
+        [JsonPropertyName("endpoint_configuration_id")]
         public string EndpointConfigurationId { get; set; }
 
         public override string ToString()

@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -15,14 +12,14 @@ namespace NgrokApi
         // OAuth module docs for more details. if present, client_secret must be present as
         // well.
         // </summary>
-        [JsonProperty("client_id")]
+        [JsonPropertyName("client_id")]
         public string ClientId { get; set; }
         // <summary>
         // the OAuth app client secret. retrieve if from the identity provider's dashboard
         // where you created your own OAuth app. optional, see all of the caveats in the
         // docs for <c>client_id</c>.
         // </summary>
-        [JsonProperty("client_secret")]
+        [JsonPropertyName("client_secret")]
         public string ClientSecret { get; set; }
         // <summary>
         // a list of provider-specific OAuth scopes with the permissions your OAuth app
@@ -30,33 +27,33 @@ namespace NgrokApi
         // oauth app (i.e. you must pass both <c>client_id</c> and <c>client_secret</c> to
         // set scopes)
         // </summary>
-        [JsonProperty("scopes")]
+        [JsonPropertyName("scopes")]
         public List<string> Scopes { get; set; }
         // <summary>
         // a list of email addresses of users authenticated by identity provider who are
         // allowed access to the endpoint
         // </summary>
-        [JsonProperty("email_addresses")]
+        [JsonPropertyName("email_addresses")]
         public List<string> EmailAddresses { get; set; }
         // <summary>
         // a list of email domains of users authenticated by identity provider who are
         // allowed access to the endpoint
         // </summary>
-        [JsonProperty("email_domains")]
+        [JsonPropertyName("email_domains")]
         public List<string> EmailDomains { get; set; }
         // <summary>
         // a list of github teams identifiers. users will be allowed access to the endpoint
         // if they are a member of any of these teams. identifiers should be in the 'slug'
         // format qualified with the org name, e.g. <c>org-name/team-name</c>
         // </summary>
-        [JsonProperty("teams")]
+        [JsonPropertyName("teams")]
         public List<string> Teams { get; set; }
         // <summary>
         // a list of github org identifiers. users who are members of any of the listed
         // organizations will be allowed access. identifiers should be the organization's
         // 'slug'
         // </summary>
-        [JsonProperty("organizations")]
+        [JsonPropertyName("organizations")]
         public List<string> Organizations { get; set; }
 
         public override string ToString()

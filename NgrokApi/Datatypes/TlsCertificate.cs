@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,111 +8,111 @@ namespace NgrokApi
         // <summary>
         // unique identifier for this TLS certificate
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URI of the TLS certificate API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // timestamp when the TLS certificate was created, RFC 3339 format
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // human-readable description of this TLS certificate. optional, max 255 bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this TLS certificate. optional,
         // max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // chain of PEM-encoded certificates, leaf first. See <see
         // href="https://ngrok.com/docs/api#tls-certificates-pem">Certificate
         // Bundles</see>.
         // </summary>
-        [JsonProperty("certificate_pem")]
+        [JsonPropertyName("certificate_pem")]
         public string CertificatePem { get; set; }
         // <summary>
         // subject common name from the leaf of this TLS certificate
         // </summary>
-        [JsonProperty("subject_common_name")]
+        [JsonPropertyName("subject_common_name")]
         public string SubjectCommonName { get; set; }
         // <summary>
         // subject alternative names (SANs) from the leaf of this TLS certificate
         // </summary>
-        [JsonProperty("subject_alternative_names")]
+        [JsonPropertyName("subject_alternative_names")]
         public TlsCertificateSaNs SubjectAlternativeNames { get; set; }
         // <summary>
         // timestamp (in RFC 3339 format) when this TLS certificate was issued
         // automatically, or null if this certificate was user-uploaded
         // </summary>
-        [JsonProperty("issued_at")]
+        [JsonPropertyName("issued_at")]
         public string IssuedAt { get; set; }
         // <summary>
         // timestamp when this TLS certificate becomes valid, RFC 3339 format
         // </summary>
-        [JsonProperty("not_before")]
+        [JsonPropertyName("not_before")]
         public string NotBefore { get; set; }
         // <summary>
         // timestamp when this TLS certificate becomes invalid, RFC 3339 format
         // </summary>
-        [JsonProperty("not_after")]
+        [JsonPropertyName("not_after")]
         public string NotAfter { get; set; }
         // <summary>
         // set of actions the private key of this TLS certificate can be used for
         // </summary>
-        [JsonProperty("key_usages")]
+        [JsonPropertyName("key_usages")]
         public List<string> KeyUsages { get; set; }
         // <summary>
         // extended set of actions the private key of this TLS certificate can be used for
         // </summary>
-        [JsonProperty("extended_key_usages")]
+        [JsonPropertyName("extended_key_usages")]
         public List<string> ExtendedKeyUsages { get; set; }
         // <summary>
         // type of the private key of this TLS certificate. One of rsa, ecdsa, or ed25519.
         // </summary>
-        [JsonProperty("private_key_type")]
+        [JsonPropertyName("private_key_type")]
         public string PrivateKeyType { get; set; }
         // <summary>
         // issuer common name from the leaf of this TLS certificate
         // </summary>
-        [JsonProperty("issuer_common_name")]
+        [JsonPropertyName("issuer_common_name")]
         public string IssuerCommonName { get; set; }
         // <summary>
         // serial number of the leaf of this TLS certificate
         // </summary>
-        [JsonProperty("serial_number")]
+        [JsonPropertyName("serial_number")]
         public string SerialNumber { get; set; }
         // <summary>
         // subject organization from the leaf of this TLS certificate
         // </summary>
-        [JsonProperty("subject_organization")]
+        [JsonPropertyName("subject_organization")]
         public string SubjectOrganization { get; set; }
         // <summary>
         // subject organizational unit from the leaf of this TLS certificate
         // </summary>
-        [JsonProperty("subject_organizational_unit")]
+        [JsonPropertyName("subject_organizational_unit")]
         public string SubjectOrganizationalUnit { get; set; }
         // <summary>
         // subject locality from the leaf of this TLS certificate
         // </summary>
-        [JsonProperty("subject_locality")]
+        [JsonPropertyName("subject_locality")]
         public string SubjectLocality { get; set; }
         // <summary>
         // subject province from the leaf of this TLS certificate
         // </summary>
-        [JsonProperty("subject_province")]
+        [JsonPropertyName("subject_province")]
         public string SubjectProvince { get; set; }
         // <summary>
         // subject country from the leaf of this TLS certificate
         // </summary>
-        [JsonProperty("subject_country")]
+        [JsonPropertyName("subject_country")]
         public string SubjectCountry { get; set; }
 
         public override string ToString()

@@ -1,16 +1,12 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
     public class Paging
     {
-        [JsonProperty("before_id")]
+        [JsonPropertyName("before_id")]
         public string BeforeId { get; set; }
-        [JsonProperty("limit")]
+        [JsonPropertyName("limit")]
         public string Limit { get; set; }
 
         public override string ToString()

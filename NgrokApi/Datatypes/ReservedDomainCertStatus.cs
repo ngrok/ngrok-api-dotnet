@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,13 +7,13 @@ namespace NgrokApi
         // <summary>
         // timestamp when the next renewal will be requested, RFC 3339 format
         // </summary>
-        [JsonProperty("renews_at")]
+        [JsonPropertyName("renews_at")]
         public string RenewsAt { get; set; }
         // <summary>
         // status of the certificate provisioning job, or null if the certificiate isn't
         // being provisioned or renewed
         // </summary>
-        [JsonProperty("provisioning_job")]
+        [JsonPropertyName("provisioning_job")]
         public ReservedDomainCertJob ProvisioningJob { get; set; }
 
         public override string ToString()

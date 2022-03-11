@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,38 +8,38 @@ namespace NgrokApi
         // <summary>
         // ID of the abuse report
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URI of the abuse report API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // timestamp that the abuse report record was created in RFC 3339 format
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // a list of URLs containing suspected abusive content
         // </summary>
-        [JsonProperty("urls")]
+        [JsonPropertyName("urls")]
         public List<string> Urls { get; set; }
         // <summary>
         // arbitrary user-defined data about this abuse report. Optional, max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // Indicates whether ngrok has processed the abuse report. one of <c>PENDING</c>,
         // <c>PROCESSED</c>, or <c>PARTIALLY_PROCESSED</c>
         // </summary>
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
         // <summary>
         // an array of hostname statuses related to the report
         // </summary>
-        [JsonProperty("hostnames")]
+        [JsonPropertyName("hostnames")]
         public List<AbuseReportHostname> Hostnames { get; set; }
 
         public override string ToString()

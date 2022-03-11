@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,13 +9,13 @@ namespace NgrokApi
         // human-readable description of who or what will use the ssh credential to
         // authenticate. Optional, max 255 bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this ssh credential. Optional,
         // max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // optional list of ACL rules. If unspecified, the credential will have no
@@ -32,12 +29,12 @@ namespace NgrokApi
         // <c>y.example.com</c>, <c>*.example.com</c>, etc. A rule of <c>'*'</c> is
         // equivalent to no acl at all and will explicitly permit all actions.
         // </summary>
-        [JsonProperty("acl")]
+        [JsonPropertyName("acl")]
         public List<string> Acl { get; set; }
         // <summary>
         // the PEM-encoded public key of the SSH keypair that will be used to authenticate
         // </summary>
-        [JsonProperty("public_key")]
+        [JsonPropertyName("public_key")]
         public string PublicKey { get; set; }
 
         public override string ToString()

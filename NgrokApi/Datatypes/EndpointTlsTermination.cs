@@ -1,8 +1,6 @@
 
 using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,7 +10,7 @@ namespace NgrokApi
         // <c>true</c> if the module will be applied to traffic, <c>false</c> to disable.
         // default <c>true</c> if unspecified
         // </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
         // <summary>
         // <c>edge</c> if the ngrok edge should terminate TLS traffic, <c>upstream</c> if
@@ -21,14 +19,14 @@ namespace NgrokApi
         // disallowed because they rely on the ngrok edge being able to access the
         // underlying traffic.
         // </summary>
-        [JsonProperty("terminate_at")]
+        [JsonPropertyName("terminate_at")]
         public string TerminateAt { get; set; }
         // <summary>
         // The minimum TLS version used for termination and advertised to the client during
         // the TLS handshake. if unspecified, ngrok will choose an industry-safe default.
         // This value must be null if <c>terminate_at</c> is set to <c>upstream</c>.
         // </summary>
-        [JsonProperty("min_version")]
+        [JsonPropertyName("min_version")]
         public string MinVersion { get; set; }
 
         public override string ToString()
