@@ -1,50 +1,46 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
     public class ReservedDomainUpdate : HasId
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // human-readable description of what this reserved domain will be used for
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this reserved domain. Optional,
         // max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // ID of an endpoint configuration of type http that will be used to handle inbound
         // http traffic to this domain
         // </summary>
-        [JsonProperty("http_endpoint_configuration_id")]
+        [JsonPropertyName("http_endpoint_configuration_id")]
         public string HttpEndpointConfigurationId { get; set; }
         // <summary>
         // ID of an endpoint configuration of type https that will be used to handle
         // inbound https traffic to this domain
         // </summary>
-        [JsonProperty("https_endpoint_configuration_id")]
+        [JsonPropertyName("https_endpoint_configuration_id")]
         public string HttpsEndpointConfigurationId { get; set; }
         // <summary>
         // ID of a user-uploaded TLS certificate to use for connections to targeting this
         // domain. Optional, mutually exclusive with <c>certificate_management_policy</c>.
         // </summary>
-        [JsonProperty("certificate_id")]
+        [JsonPropertyName("certificate_id")]
         public string CertificateId { get; set; }
         // <summary>
         // configuration for automatic management of TLS certificates for this domain, or
         // null if automatic management is disabled. Optional, mutually exclusive with
         // <c>certificate_id</c>.
         // </summary>
-        [JsonProperty("certificate_management_policy")]
+        [JsonPropertyName("certificate_management_policy")]
         public ReservedDomainCertPolicy CertificateManagementPolicy { get; set; }
 
         public override string ToString()

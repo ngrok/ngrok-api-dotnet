@@ -1,26 +1,22 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
     public class AgentIngressUpdate : HasId
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // human-readable description of the use of this Agent Ingress. optional, max 255
         // bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this Agent Ingress. optional,
         // max 4096 bytes
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
 
         public override string ToString()

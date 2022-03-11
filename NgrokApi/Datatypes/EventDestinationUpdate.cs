@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,31 +7,31 @@ namespace NgrokApi
         // <summary>
         // Unique identifier for this Event Destination.
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // Arbitrary user-defined machine-readable data of this Event Destination.
         // Optional, max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // Human-readable description of the Event Destination. Optional, max 255 bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // The output format you would like to serialize events into when sending to their
         // target. Currently the only accepted value is <c>JSON</c>.
         // </summary>
-        [JsonProperty("format")]
+        [JsonPropertyName("format")]
         public string Format { get; set; }
         // <summary>
         // An object that encapsulates where and how to send your events. An event
         // destination must contain exactly one of the following objects, leaving the rest
         // null: <c>kinesis</c>, <c>firehose</c>, <c>cloudwatch_logs</c>, or <c>s3</c>.
         // </summary>
-        [JsonProperty("target")]
+        [JsonPropertyName("target")]
         public EventTarget Target { get; set; }
 
         public override string ToString()

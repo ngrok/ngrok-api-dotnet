@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,34 +7,34 @@ namespace NgrokApi
         // <summary>
         // unique identifier for this IP policy
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URI of the IP Policy API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // timestamp when the IP policy was created, RFC 3339 format
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // human-readable description of the source IPs of this IP policy. optional, max
         // 255 bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this IP policy. optional, max
         // 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // the IP policy action. Supported values are <c>allow</c> or <c>deny</c>
         // </summary>
-        [JsonProperty("action")]
+        [JsonPropertyName("action")]
         public string Action { get; set; }
 
         public override string ToString()

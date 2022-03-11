@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,46 +8,46 @@ namespace NgrokApi
         // <summary>
         // unique identifier for this SSH Host Certificate
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URI of the SSH Host Certificate API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // timestamp when the SSH Host Certificate API resource was created, RFC 3339
         // format
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // human-readable description of this SSH Host Certificate. optional, max 255
         // bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this SSH Host Certificate.
         // optional, max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // a public key in OpenSSH Authorized Keys format that this certificate signs
         // </summary>
-        [JsonProperty("public_key")]
+        [JsonPropertyName("public_key")]
         public string PublicKey { get; set; }
         // <summary>
         // the key type of the <c>public_key</c>, one of <c>rsa</c>, <c>ecdsa</c> or
         // <c>ed25519</c>
         // </summary>
-        [JsonProperty("key_type")]
+        [JsonPropertyName("key_type")]
         public string KeyType { get; set; }
         // <summary>
         // the ssh certificate authority that is used to sign this ssh host certificate
         // </summary>
-        [JsonProperty("ssh_certificate_authority_id")]
+        [JsonPropertyName("ssh_certificate_authority_id")]
         public string SshCertificateAuthorityId { get; set; }
         // <summary>
         // the list of principals included in the ssh host certificate. This is the list of
@@ -58,18 +55,18 @@ namespace NgrokApi
         // certificate. Dangerously, if no principals are specified, this certificate is
         // considered valid for all hosts.
         // </summary>
-        [JsonProperty("principals")]
+        [JsonPropertyName("principals")]
         public List<string> Principals { get; set; }
         // <summary>
         // the time when the ssh host certificate becomes valid, in RFC 3339 format.
         // </summary>
-        [JsonProperty("valid_after")]
+        [JsonPropertyName("valid_after")]
         public string ValidAfter { get; set; }
         // <summary>
         // the time after which the ssh host certificate becomes invalid, in RFC 3339
         // format. the OpenSSH certificates RFC calls this <c>valid_before</c>.
         // </summary>
-        [JsonProperty("valid_until")]
+        [JsonPropertyName("valid_until")]
         public string ValidUntil { get; set; }
         // <summary>
         // the signed SSH certificate in OpenSSH Authorized Keys format. this value should
@@ -77,7 +74,7 @@ namespace NgrokApi
         // referenced in your <c>sshd_config</c> configuration file with a
         // <c>HostCertificate</c> directive
         // </summary>
-        [JsonProperty("certificate")]
+        [JsonPropertyName("certificate")]
         public string Certificate { get; set; }
 
         public override string ToString()

@@ -1,36 +1,35 @@
 
 using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
     public class IpRestrictionUpdate : HasId
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // human-readable description of this IP restriction. optional, max 255 bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this IP restriction. optional,
         // max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // true if the IP restriction will be enforced. if false, only warnings will be
         // issued
         // </summary>
-        [JsonProperty("enforced")]
+        [JsonPropertyName("enforced")]
         public bool? Enforced { get; set; }
         // <summary>
         // the set of IP policy identifiers that are used to enforce the restriction
         // </summary>
-        [JsonProperty("ip_policy_ids")]
+        [JsonPropertyName("ip_policy_ids")]
         public List<string> IpPolicyIds { get; set; }
 
         public override string ToString()

@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,17 +7,17 @@ namespace NgrokApi
         // <summary>
         // unique tunnel resource identifier
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URL of the tunnel's public endpoint
         // </summary>
-        [JsonProperty("public_url")]
+        [JsonPropertyName("public_url")]
         public string PublicUrl { get; set; }
         // <summary>
         // timestamp when the tunnel was initiated in RFC 3339 format
         // </summary>
-        [JsonProperty("started_at")]
+        [JsonPropertyName("started_at")]
         public string StartedAt { get; set; }
         // <summary>
         // user-supplied metadata for the tunnel defined in the ngrok configuration file.
@@ -31,22 +27,22 @@ namespace NgrokApi
         // <see href="https://ngrok.com/docs#config_metadata">metadata configuration
         // option</see>.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // tunnel protocol. one of <c>http</c>, <c>https</c>, <c>tcp</c> or <c>tls</c>
         // </summary>
-        [JsonProperty("proto")]
+        [JsonPropertyName("proto")]
         public string Proto { get; set; }
         // <summary>
         // identifier of tune region where the tunnel is running
         // </summary>
-        [JsonProperty("region")]
+        [JsonPropertyName("region")]
         public string Region { get; set; }
         // <summary>
         // reference object pointing to the tunnel session on which this tunnel was started
         // </summary>
-        [JsonProperty("tunnel_session")]
+        [JsonPropertyName("tunnel_session")]
         public Ref TunnelSession { get; set; }
 
         public override string ToString()

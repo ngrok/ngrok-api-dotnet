@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,12 +8,12 @@ namespace NgrokApi
         // <summary>
         // a list of URLs containing suspected abusive content
         // </summary>
-        [JsonProperty("urls")]
+        [JsonPropertyName("urls")]
         public List<string> Urls { get; set; }
         // <summary>
         // arbitrary user-defined data about this abuse report. Optional, max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
 
         public override string ToString()

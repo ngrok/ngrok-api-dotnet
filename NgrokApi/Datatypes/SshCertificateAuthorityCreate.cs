@@ -1,8 +1,6 @@
 
 using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,29 +10,29 @@ namespace NgrokApi
         // human-readable description of this SSH Certificate Authority. optional, max 255
         // bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this SSH Certificate Authority.
         // optional, max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // the type of private key to generate. one of <c>rsa</c>, <c>ecdsa</c>,
         // <c>ed25519</c>
         // </summary>
-        [JsonProperty("private_key_type")]
+        [JsonPropertyName("private_key_type")]
         public string PrivateKeyType { get; set; }
         // <summary>
         // the type of elliptic curve to use when creating an ECDSA key
         // </summary>
-        [JsonProperty("elliptic_curve")]
+        [JsonPropertyName("elliptic_curve")]
         public string EllipticCurve { get; set; }
         // <summary>
         // the key size to use when creating an RSA key. one of <c>2048</c> or <c>4096</c>
         // </summary>
-        [JsonProperty("key_size")]
+        [JsonPropertyName("key_size")]
         public int KeySize { get; set; }
 
         public override string ToString()

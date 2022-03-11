@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,17 +7,17 @@ namespace NgrokApi
         // <summary>
         // Configuration used to send events to Amazon Kinesis Data Firehose.
         // </summary>
-        [JsonProperty("firehose")]
+        [JsonPropertyName("firehose")]
         public EventTargetFirehose Firehose { get; set; }
         // <summary>
         // Configuration used to send events to Amazon Kinesis.
         // </summary>
-        [JsonProperty("kinesis")]
+        [JsonPropertyName("kinesis")]
         public EventTargetKinesis Kinesis { get; set; }
         // <summary>
         // Configuration used to send events to Amazon CloudWatch Logs.
         // </summary>
-        [JsonProperty("cloudwatch_logs")]
+        [JsonPropertyName("cloudwatch_logs")]
         public EventTargetCloudwatchLogs CloudwatchLogs { get; set; }
 
         public override string ToString()

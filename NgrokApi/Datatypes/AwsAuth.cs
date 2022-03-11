@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,13 +8,13 @@ namespace NgrokApi
         // A role for ngrok to assume on your behalf to deposit events into your AWS
         // account.
         // </summary>
-        [JsonProperty("role")]
+        [JsonPropertyName("role")]
         public AwsRole Role { get; set; }
         // <summary>
         // Credentials to your AWS account if you prefer ngrok to sign in with long-term
         // access keys.
         // </summary>
-        [JsonProperty("creds")]
+        [JsonPropertyName("creds")]
         public AwsCredentials Creds { get; set; }
 
         public override string ToString()

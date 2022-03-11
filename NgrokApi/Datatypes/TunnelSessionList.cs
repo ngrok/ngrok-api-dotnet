@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,17 +8,17 @@ namespace NgrokApi
         // <summary>
         // list of all tunnel sessions on this account
         // </summary>
-        [JsonProperty("tunnel_sessions")]
+        [JsonPropertyName("tunnel_sessions")]
         public List<TunnelSession> TunnelSessions { get; set; }
         // <summary>
         // URI to the API resource of the tunnel session list
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // URI of the next page, or null if there is no next page
         // </summary>
-        [JsonProperty("next_page_uri")]
+        [JsonPropertyName("next_page_uri")]
         public string NextPageUri { get; set; }
 
         public override string ToString()

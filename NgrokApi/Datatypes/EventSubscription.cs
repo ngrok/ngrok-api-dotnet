@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,39 +8,39 @@ namespace NgrokApi
         // <summary>
         // Unique identifier for this Event Subscription.
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URI of the Event Subscription API resource.
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // When the Event Subscription was created (RFC 3339 format).
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // Arbitrary customer supplied information intended to be machine readable.
         // Optional, max 4096 chars.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // Arbitrary customer supplied information intended to be human readable. Optional,
         // max 255 chars.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // Sources containing the types for which this event subscription will trigger
         // </summary>
-        [JsonProperty("sources")]
+        [JsonPropertyName("sources")]
         public List<EventSource> Sources { get; set; }
         // <summary>
         // Destinations to which these events will be sent
         // </summary>
-        [JsonProperty("destinations")]
+        [JsonPropertyName("destinations")]
         public List<Ref> Destinations { get; set; }
 
         public override string ToString()

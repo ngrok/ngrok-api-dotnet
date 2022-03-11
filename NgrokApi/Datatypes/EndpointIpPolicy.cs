@@ -1,8 +1,7 @@
 
 using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,9 +11,9 @@ namespace NgrokApi
         // <c>true</c> if the module will be applied to traffic, <c>false</c> to disable.
         // default <c>true</c> if unspecified
         // </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
-        [JsonProperty("ip_policies")]
+        [JsonPropertyName("ip_policies")]
         public List<Ref> IpPolicies { get; set; }
 
         public override string ToString()

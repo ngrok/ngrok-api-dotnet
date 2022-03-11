@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,12 +8,12 @@ namespace NgrokApi
         // <summary>
         // The list of all Event Sources for an Event Subscription
         // </summary>
-        [JsonProperty("sources")]
+        [JsonPropertyName("sources")]
         public List<EventSource> Sources { get; set; }
         // <summary>
         // URI of the next page, or null if there is no next page.
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
 
         public override string ToString()

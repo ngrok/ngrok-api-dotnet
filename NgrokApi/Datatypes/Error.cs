@@ -1,20 +1,19 @@
 
 using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
     internal class Error
     {
-        [JsonProperty("error_code")]
+        [JsonPropertyName("error_code")]
         public string ErrorCode { get; set; }
-        [JsonProperty("status_code")]
+        [JsonPropertyName("status_code")]
         public int StatusCode { get; set; }
-        [JsonProperty("msg")]
+        [JsonPropertyName("msg")]
         public string Msg { get; set; }
-        [JsonProperty("details")]
+        [JsonPropertyName("details")]
         public Dictionary<string, string> Details { get; set; }
 
         public override string ToString()

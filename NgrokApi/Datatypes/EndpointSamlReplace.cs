@@ -1,16 +1,12 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
     public class EndpointSamlReplace : HasId
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
-        [JsonProperty("module")]
+        [JsonPropertyName("module")]
         public EndpointSamlMutate Module { get; set; }
 
         public override string ToString()

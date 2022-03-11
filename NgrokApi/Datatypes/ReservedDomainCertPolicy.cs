@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,13 +8,13 @@ namespace NgrokApi
         // certificate authority to request certificates from. The only supported value is
         // letsencrypt.
         // </summary>
-        [JsonProperty("authority")]
+        [JsonPropertyName("authority")]
         public string Authority { get; set; }
         // <summary>
         // type of private key to use when requesting certificates. Defaults to rsa, can be
         // either rsa or ecdsa.
         // </summary>
-        [JsonProperty("private_key_type")]
+        [JsonPropertyName("private_key_type")]
         public string PrivateKeyType { get; set; }
 
         public override string ToString()

@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,95 +7,95 @@ namespace NgrokApi
         // <summary>
         // unique identifier of this endpoint configuration
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // they type of traffic this endpoint configuration can be applied to. one of:
         // <c>http</c>, <c>https</c>, <c>tcp</c>
         // </summary>
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
         // <summary>
         // human-readable description of what this endpoint configuration will be do when
         // applied or what traffic it will be applied to. Optional, max 255 bytes
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this endpoint configuration.
         // Optional, max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // timestamp when the endpoint configuration was created, RFC 3339 format
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // URI of the endpoint configuration API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // circuit breaker module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("circuit_breaker")]
+        [JsonPropertyName("circuit_breaker")]
         public EndpointCircuitBreaker CircuitBreaker { get; set; }
         // <summary>
         // compression module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("compression")]
+        [JsonPropertyName("compression")]
         public EndpointCompression Compression { get; set; }
         // <summary>
         // request headers module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("request_headers")]
+        [JsonPropertyName("request_headers")]
         public EndpointRequestHeaders RequestHeaders { get; set; }
         // <summary>
         // response headers module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("response_headers")]
+        [JsonPropertyName("response_headers")]
         public EndpointResponseHeaders ResponseHeaders { get; set; }
         // <summary>
         // ip policy module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("ip_policy")]
+        [JsonPropertyName("ip_policy")]
         public EndpointIpPolicy IpPolicy { get; set; }
         // <summary>
         // mutual TLS module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("mutual_tls")]
+        [JsonPropertyName("mutual_tls")]
         public EndpointMutualTls MutualTls { get; set; }
         // <summary>
         // TLS termination module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("tls_termination")]
+        [JsonPropertyName("tls_termination")]
         public EndpointTlsTermination TlsTermination { get; set; }
         // <summary>
         // webhook validation module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("webhook_validation")]
+        [JsonPropertyName("webhook_validation")]
         public EndpointWebhookValidation WebhookValidation { get; set; }
         // <summary>
         // oauth module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("oauth")]
+        [JsonPropertyName("oauth")]
         public EndpointOAuth Oauth { get; set; }
         // <summary>
         // logging module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("logging")]
+        [JsonPropertyName("logging")]
         public EndpointLogging Logging { get; set; }
         // <summary>
         // saml module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("saml")]
+        [JsonPropertyName("saml")]
         public EndpointSaml Saml { get; set; }
         // <summary>
         // oidc module configuration or <c>null</c>
         // </summary>
-        [JsonProperty("oidc")]
+        [JsonPropertyName("oidc")]
         public EndpointOidc Oidc { get; set; }
 
         public override string ToString()

@@ -5,10 +5,8 @@ using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Runtime;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace NgrokApi
 {
@@ -51,7 +49,7 @@ namespace NgrokApi
             await MaybeThrowException(response);
             string responseBody = await response.Content.ReadAsStringAsync();
             WriteDebug($"{response.StatusCode}\n{responseBody}");
-            T responseObject = JsonConvert.DeserializeObject<T>(responseBody);
+            T responseObject = JsonSerializer.Deserialize<T>(responseBody);
             return responseObject;
         }
 
@@ -82,7 +80,7 @@ namespace NgrokApi
             }
             string responseBody = await response.Content.ReadAsStringAsync();
             WriteDebug($"{response.StatusCode}\n{responseBody}");
-            Error err = JsonConvert.DeserializeObject<Error>(responseBody);
+            Error err = JsonSerializer.Deserialize<Error>(responseBody);
             throw new NgrokException(err);
         }
 
@@ -99,8 +97,7 @@ namespace NgrokApi
             msg.Headers.Add("authorization", "Bearer " + this.apiKey);
             if (body != null)
             {
-                var bodyString = JsonConvert.SerializeObject(body);
-                var bodyBytes = Encoding.Unicode.GetBytes(bodyString);
+                var bodyString = JsonSerializer.Serialize(body);
                 msg.Content = new StringContent(bodyString, Encoding.UTF8, "application/json");
                 WriteDebug($"{method} {path}\n{bodyString}");
             }

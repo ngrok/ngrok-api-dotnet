@@ -1,8 +1,5 @@
-
-using System;
-using System.Runtime;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,17 +8,17 @@ namespace NgrokApi
         // <summary>
         // the list of API keys for this account
         // </summary>
-        [JsonProperty("keys")]
+        [JsonPropertyName("keys")]
         public List<ApiKey> Keys { get; set; }
         // <summary>
         // URI of the API keys list API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // URI of the next page, or null if there is no next page
         // </summary>
-        [JsonProperty("next_page_uri")]
+        [JsonPropertyName("next_page_uri")]
         public string NextPageUri { get; set; }
 
         public override string ToString()

@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,40 +7,40 @@ namespace NgrokApi
         // <summary>
         // unique identifier for this SSH Certificate Authority
         // </summary>
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         // <summary>
         // URI of the SSH Certificate Authority API resource
         // </summary>
-        [JsonProperty("uri")]
+        [JsonPropertyName("uri")]
         public string Uri { get; set; }
         // <summary>
         // timestamp when the SSH Certificate Authority API resource was created, RFC 3339
         // format
         // </summary>
-        [JsonProperty("created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
         // <summary>
         // human-readable description of this SSH Certificate Authority. optional, max 255
         // bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this SSH Certificate Authority.
         // optional, max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // raw public key for this SSH Certificate Authority
         // </summary>
-        [JsonProperty("public_key")]
+        [JsonPropertyName("public_key")]
         public string PublicKey { get; set; }
         // <summary>
         // the type of private key for this SSH Certificate Authority
         // </summary>
-        [JsonProperty("key_type")]
+        [JsonPropertyName("key_type")]
         public string KeyType { get; set; }
 
         public override string ToString()

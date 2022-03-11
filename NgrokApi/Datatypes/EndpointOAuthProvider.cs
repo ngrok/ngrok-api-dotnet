@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,22 +7,22 @@ namespace NgrokApi
         // <summary>
         // configuration for using github as the identity provider
         // </summary>
-        [JsonProperty("github")]
+        [JsonPropertyName("github")]
         public EndpointOAuthGitHub Github { get; set; }
         // <summary>
         // configuration for using facebook as the identity provider
         // </summary>
-        [JsonProperty("facebook")]
+        [JsonPropertyName("facebook")]
         public EndpointOAuthFacebook Facebook { get; set; }
         // <summary>
         // configuration for using microsoft as the identity provider
         // </summary>
-        [JsonProperty("microsoft")]
+        [JsonPropertyName("microsoft")]
         public EndpointOAuthMicrosoft Microsoft { get; set; }
         // <summary>
         // configuration for using google as the identity provider
         // </summary>
-        [JsonProperty("google")]
+        [JsonPropertyName("google")]
         public EndpointOAuthGoogle Google { get; set; }
 
         public override string ToString()

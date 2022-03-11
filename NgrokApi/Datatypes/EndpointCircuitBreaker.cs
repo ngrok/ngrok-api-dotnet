@@ -1,8 +1,6 @@
 
 using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,35 +10,35 @@ namespace NgrokApi
         // <c>true</c> if the module will be applied to traffic, <c>false</c> to disable.
         // default <c>true</c> if unspecified
         // </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
         // <summary>
         // Integer number of seconds after which the circuit is tripped to wait before
         // re-evaluating upstream health
         // </summary>
-        [JsonProperty("tripped_duration")]
+        [JsonPropertyName("tripped_duration")]
         public int TrippedDuration { get; set; }
         // <summary>
         // Integer number of seconds in the statistical rolling window that metrics are
         // retained for.
         // </summary>
-        [JsonProperty("rolling_window")]
+        [JsonPropertyName("rolling_window")]
         public int RollingWindow { get; set; }
         // <summary>
         // Integer number of buckets into which metrics are retained. Max 128.
         // </summary>
-        [JsonProperty("num_buckets")]
+        [JsonPropertyName("num_buckets")]
         public int NumBuckets { get; set; }
         // <summary>
         // Integer number of requests in a rolling window that will trip the circuit.
         // Helpful if traffic volume is low.
         // </summary>
-        [JsonProperty("volume_threshold")]
+        [JsonPropertyName("volume_threshold")]
         public int VolumeThreshold { get; set; }
         // <summary>
         // Error threshold percentage should be between 0 - 1.0, not 0-100.0
         // </summary>
-        [JsonProperty("error_threshold_percentage")]
+        [JsonPropertyName("error_threshold_percentage")]
         public double ErrorThresholdPercentage { get; set; }
 
         public override string ToString()

@@ -1,8 +1,6 @@
 
 using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,7 +10,7 @@ namespace NgrokApi
         // <c>true</c> if the module will be applied to traffic, <c>false</c> to disable.
         // default <c>true</c> if unspecified
         // </summary>
-        [JsonProperty("enabled")]
+        [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
         // <summary>
         // a string indicating which webhook provider will be sending webhooks to this
@@ -20,13 +18,13 @@ namespace NgrokApi
         // <c>SNS</c>, <c>STRIPE</c>, <c>GITHUB</c>, <c>TWILIO</c>, <c>SHOPIFY</c>,
         // <c>GITLAB</c>, <c>INTERCOM</c>, <c>SENDGRID</c>, <c>XERO</c>.
         // </summary>
-        [JsonProperty("provider")]
+        [JsonPropertyName("provider")]
         public string Provider { get; set; }
         // <summary>
         // a string secret used to validate requests from the given provider. All providers
         // except AWS SNS require a secret
         // </summary>
-        [JsonProperty("secret")]
+        [JsonPropertyName("secret")]
         public string Secret { get; set; }
 
         public override string ToString()

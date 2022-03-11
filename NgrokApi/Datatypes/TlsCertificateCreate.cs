@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -11,27 +7,27 @@ namespace NgrokApi
         // <summary>
         // human-readable description of this TLS certificate. optional, max 255 bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this TLS certificate. optional,
         // max 4096 bytes.
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // chain of PEM-encoded certificates, leaf first. See <see
         // href="https://ngrok.com/docs/api#tls-certificates-pem">Certificate
         // Bundles</see>.
         // </summary>
-        [JsonProperty("certificate_pem")]
+        [JsonPropertyName("certificate_pem")]
         public string CertificatePem { get; set; }
         // <summary>
         // private key for the TLS certificate, PEM-encoded. See <see
         // href="https://ngrok.com/docs/ngrok-link#tls-certificates-key">Private
         // Keys</see>.
         // </summary>
-        [JsonProperty("private_key_pem")]
+        [JsonPropertyName("private_key_pem")]
         public string PrivateKeyPem { get; set; }
 
         public override string ToString()

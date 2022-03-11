@@ -1,8 +1,4 @@
-
-using System;
-using System.Runtime;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NgrokApi
 {
@@ -12,19 +8,19 @@ namespace NgrokApi
         // human-readable description of the use of this Agent Ingress. optional, max 255
         // bytes.
         // </summary>
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
         // <summary>
         // arbitrary user-defined machine-readable data of this Agent Ingress. optional,
         // max 4096 bytes
         // </summary>
-        [JsonProperty("metadata")]
+        [JsonPropertyName("metadata")]
         public string Metadata { get; set; }
         // <summary>
         // the domain that you own to be used as the base domain name to generate regional
         // agent ingress domains.
         // </summary>
-        [JsonProperty("domain")]
+        [JsonPropertyName("domain")]
         public string Domain { get; set; }
 
         public override string ToString()
