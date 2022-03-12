@@ -40,14 +40,9 @@ namespace NgrokApi
             get { return new Credentials(apiHttpClient); }
         }
 
-        public EndpointConfigurations EndpointConfigurations
+        public Endpoints Endpoints
         {
-            get { return new EndpointConfigurations(apiHttpClient); }
-        }
-
-        public EventStreams EventStreams
-        {
-            get { return new EventStreams(apiHttpClient); }
+            get { return new Endpoints(apiHttpClient); }
         }
 
         public EventDestinations EventDestinations
@@ -126,78 +121,181 @@ namespace NgrokApi
         }
 
 
-        public PointcfgModuleNamespace PointcfgModule
+        public BackendsNamespace Backends
         {
-            get { return new PointcfgModuleNamespace(apiHttpClient); }
+            get { return new BackendsNamespace(apiHttpClient); }
+        }
+
+        public EdgesNamespace Edges
+        {
+            get { return new EdgesNamespace(apiHttpClient); }
+        }
+
+        public EdgeModulesNamespace EdgeModules
+        {
+            get { return new EdgeModulesNamespace(apiHttpClient); }
         }
 
     }
-    public class PointcfgModuleNamespace
+    public class BackendsNamespace
     {
         private IApiHttpClient apiHttpClient;
-        public PointcfgModuleNamespace(IApiHttpClient apiHttpClient)
+        public BackendsNamespace(IApiHttpClient apiHttpClient)
         {
             this.apiHttpClient = apiHttpClient;
         }
 
-        public EndpointLoggingModule Logging
+        public FailoverBackends Failover
         {
-            get { return new EndpointLoggingModule(apiHttpClient); }
+            get { return new FailoverBackends(apiHttpClient); }
         }
 
-        public EndpointCircuitBreakerModule CircuitBreaker
+        public HttpResponseBackends HttpResponse
         {
-            get { return new EndpointCircuitBreakerModule(apiHttpClient); }
+            get { return new HttpResponseBackends(apiHttpClient); }
         }
 
-        public EndpointCompressionModule Compression
+        public TunnelGroupBackends TunnelGroup
         {
-            get { return new EndpointCompressionModule(apiHttpClient); }
+            get { return new TunnelGroupBackends(apiHttpClient); }
         }
 
-        public EndpointTlsTerminationModule TlsTermination
+        public WeightedBackends Weighted
         {
-            get { return new EndpointTlsTerminationModule(apiHttpClient); }
+            get { return new WeightedBackends(apiHttpClient); }
         }
 
-        public EndpointIpPolicyModule IpPolicy
+    }
+    public class EdgesNamespace
+    {
+        private IApiHttpClient apiHttpClient;
+        public EdgesNamespace(IApiHttpClient apiHttpClient)
         {
-            get { return new EndpointIpPolicyModule(apiHttpClient); }
+            this.apiHttpClient = apiHttpClient;
         }
 
-        public EndpointMutualTlsModule MutualTls
+        public EdgesHttpsRoutes HttpsRoutes
         {
-            get { return new EndpointMutualTlsModule(apiHttpClient); }
+            get { return new EdgesHttpsRoutes(apiHttpClient); }
         }
 
-        public EndpointRequestHeadersModule RequestHeaders
+        public EdgesHttps Https
         {
-            get { return new EndpointRequestHeadersModule(apiHttpClient); }
+            get { return new EdgesHttps(apiHttpClient); }
         }
 
-        public EndpointResponseHeadersModule ResponseHeaders
+        public EdgesTcp Tcp
         {
-            get { return new EndpointResponseHeadersModule(apiHttpClient); }
+            get { return new EdgesTcp(apiHttpClient); }
         }
 
-        public EndpointOAuthModule Oauth
+        public EdgesTls Tls
         {
-            get { return new EndpointOAuthModule(apiHttpClient); }
+            get { return new EdgesTls(apiHttpClient); }
         }
 
-        public EndpointWebhookValidationModule WebhookValidation
+    }
+    public class EdgeModulesNamespace
+    {
+        private IApiHttpClient apiHttpClient;
+        public EdgeModulesNamespace(IApiHttpClient apiHttpClient)
         {
-            get { return new EndpointWebhookValidationModule(apiHttpClient); }
+            this.apiHttpClient = apiHttpClient;
         }
 
-        public EndpointSamlModule Saml
+        public HttpsEdgeMutualTlsModule HttpsEdgeMutualTls
         {
-            get { return new EndpointSamlModule(apiHttpClient); }
+            get { return new HttpsEdgeMutualTlsModule(apiHttpClient); }
         }
 
-        public EndpointOidcModule Oidc
+        public HttpsEdgeTlsTerminationModule HttpsEdgeTlsTermination
         {
-            get { return new EndpointOidcModule(apiHttpClient); }
+            get { return new HttpsEdgeTlsTerminationModule(apiHttpClient); }
+        }
+
+        public EdgeRouteBackendModule HttpsEdgeRouteBackend
+        {
+            get { return new EdgeRouteBackendModule(apiHttpClient); }
+        }
+
+        public EdgeRouteIpRestrictionModule HttpsEdgeRouteIpRestriction
+        {
+            get { return new EdgeRouteIpRestrictionModule(apiHttpClient); }
+        }
+
+        public EdgeRouteRequestHeadersModule HttpsEdgeRouteRequestHeaders
+        {
+            get { return new EdgeRouteRequestHeadersModule(apiHttpClient); }
+        }
+
+        public EdgeRouteResponseHeadersModule HttpsEdgeRouteResponseHeaders
+        {
+            get { return new EdgeRouteResponseHeadersModule(apiHttpClient); }
+        }
+
+        public EdgeRouteCompressionModule HttpsEdgeRouteCompression
+        {
+            get { return new EdgeRouteCompressionModule(apiHttpClient); }
+        }
+
+        public EdgeRouteCircuitBreakerModule HttpsEdgeRouteCircuitBreaker
+        {
+            get { return new EdgeRouteCircuitBreakerModule(apiHttpClient); }
+        }
+
+        public EdgeRouteWebhookVerificationModule HttpsEdgeRouteWebhookVerification
+        {
+            get { return new EdgeRouteWebhookVerificationModule(apiHttpClient); }
+        }
+
+        public EdgeRouteOAuthModule HttpsEdgeRouteOauth
+        {
+            get { return new EdgeRouteOAuthModule(apiHttpClient); }
+        }
+
+        public EdgeRouteSamlModule HttpsEdgeRouteSaml
+        {
+            get { return new EdgeRouteSamlModule(apiHttpClient); }
+        }
+
+        public EdgeRouteOidcModule HttpsEdgeRouteOidc
+        {
+            get { return new EdgeRouteOidcModule(apiHttpClient); }
+        }
+
+        public EdgeRouteWebsocketTcpConverterModule HttpsEdgeRouteWebsocketTcpConverter
+        {
+            get { return new EdgeRouteWebsocketTcpConverterModule(apiHttpClient); }
+        }
+
+        public TcpEdgeBackendModule TcpEdgeBackend
+        {
+            get { return new TcpEdgeBackendModule(apiHttpClient); }
+        }
+
+        public TcpEdgeIpRestrictionModule TcpEdgeIpRestriction
+        {
+            get { return new TcpEdgeIpRestrictionModule(apiHttpClient); }
+        }
+
+        public TlsEdgeBackendModule TlsEdgeBackend
+        {
+            get { return new TlsEdgeBackendModule(apiHttpClient); }
+        }
+
+        public TlsEdgeIpRestrictionModule TlsEdgeIpRestriction
+        {
+            get { return new TlsEdgeIpRestrictionModule(apiHttpClient); }
+        }
+
+        public TlsEdgeMutualTlsModule TlsEdgeMutualTls
+        {
+            get { return new TlsEdgeMutualTlsModule(apiHttpClient); }
+        }
+
+        public TlsEdgeTlsTerminationModule TlsEdgeTlsTermination
+        {
+            get { return new TlsEdgeTlsTerminationModule(apiHttpClient); }
         }
 
     }

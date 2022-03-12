@@ -21,16 +21,10 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
-        // <summary>
-        // ID of an endpoint configuration of type tcp that will be used to handle inbound
-        // traffic to this address
-        // </summary>
-        [JsonProperty("endpoint_configuration_id")]
-        public string EndpointConfigurationId { get; set; }
 
         public override string ToString()
         {
-            return $"ReservedAddrUpdate Id={ Id }  Description={ Description }  Metadata={ Metadata }  EndpointConfigurationId={ EndpointConfigurationId } ";
+            return $"ReservedAddrUpdate Id={ Id }  Description={ Description }  Metadata={ Metadata } ";
         }
 
         public override int GetHashCode()
@@ -44,8 +38,6 @@ namespace NgrokApi
 
                 hash = hash * 23 + (Metadata?.GetHashCode() ?? 0);
 
-                hash = hash * 23 + (EndpointConfigurationId?.GetHashCode() ?? 0);
-
                 return hash;
             }
         }
@@ -58,7 +50,6 @@ namespace NgrokApi
                  this.Id == other.Id
                 && this.Description == other.Description
                 && this.Metadata == other.Metadata
-                && this.EndpointConfigurationId == other.EndpointConfigurationId
             );
         }
 

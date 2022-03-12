@@ -30,10 +30,15 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("ip_policy_id")]
         public string IpPolicyId { get; set; }
+        // <summary>
+        // the action to apply to the policy rule, either <c>allow</c> or <c>deny</c>
+        // </summary>
+        [JsonProperty("action")]
+        public string Action { get; set; }
 
         public override string ToString()
         {
-            return $"IpPolicyRuleCreate Description={ Description }  Metadata={ Metadata }  Cidr={ Cidr }  IpPolicyId={ IpPolicyId } ";
+            return $"IpPolicyRuleCreate Description={ Description }  Metadata={ Metadata }  Cidr={ Cidr }  IpPolicyId={ IpPolicyId }  Action={ Action } ";
         }
 
         public override int GetHashCode()
@@ -49,6 +54,8 @@ namespace NgrokApi
 
                 hash = hash * 23 + (IpPolicyId?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (Action?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -62,6 +69,7 @@ namespace NgrokApi
                 && this.Metadata == other.Metadata
                 && this.Cidr == other.Cidr
                 && this.IpPolicyId == other.IpPolicyId
+                && this.Action == other.Action
             );
         }
 

@@ -186,49 +186,5 @@ namespace NgrokApi
                   query: query
             );
         }
-
-        // <summary>
-        // Detach the http endpoint configuration attached to a reserved domain.
-        // </summary>
-        //
-        // https://ngrok.com/docs/api#api-reserved-domains-delete-http-endpoint-config
-        public async Task DeleteHttpEndpointConfig(string id)
-        {
-            var arg = new Item() { Id = id };
-
-            Dictionary<string, string> query = null;
-            Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
-            await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}/http_endpoint_configuration",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
-            );
-        }
-
-        // <summary>
-        // Detach the https endpoint configuration attached to a reserved domain.
-        // </summary>
-        //
-        // https://ngrok.com/docs/api#api-reserved-domains-delete-https-endpoint-config
-        public async Task DeleteHttpsEndpointConfig(string id)
-        {
-            var arg = new Item() { Id = id };
-
-            Dictionary<string, string> query = null;
-            Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
-            await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}/https_endpoint_configuration",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
-            );
-        }
     }
 }

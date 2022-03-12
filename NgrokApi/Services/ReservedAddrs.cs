@@ -141,27 +141,5 @@ namespace NgrokApi
             );
 
         }
-
-        // <summary>
-        // Detach the endpoint configuration attached to a reserved address.
-        // </summary>
-        //
-        // https://ngrok.com/docs/api#api-reserved-addrs-delete-endpoint-config
-        public async Task DeleteEndpointConfig(string id)
-        {
-            var arg = new Item() { Id = id };
-
-            Dictionary<string, string> query = null;
-            Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
-            await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_addrs/{arg.Id}/endpoint_configuration",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
-            );
-        }
     }
 }

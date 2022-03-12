@@ -55,5 +55,28 @@ namespace NgrokApi
                 return result.Tunnels;
             });
         }
+
+        // <summary>
+        // Get the status of a tunnel by ID
+        // </summary>
+        //
+        // https://ngrok.com/docs/api#api-tunnels-get
+        public async Task<Tunnel> Get(string id)
+        {
+            var arg = new Item() { Id = id };
+
+            Dictionary<string, string> query = null;
+            Item body = null;
+            query = new Dictionary<string, string>()
+            {
+            };
+            return await apiClient.Do<Tunnel>(
+                  path: $"/tunnels/{arg.Id}",
+                  method: new HttpMethod("get"),
+                  body: body,
+                  query: query
+            );
+
+        }
     }
 }

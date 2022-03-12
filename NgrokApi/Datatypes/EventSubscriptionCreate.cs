@@ -26,8 +26,8 @@ namespace NgrokApi
         [JsonProperty("sources")]
         public List<EventSourceReplace> Sources { get; set; }
         // <summary>
-        // A list of Event Destination IDs which should be used for this Event Stream.
-        // Event Streams are required to have at least one Event Destination.
+        // A list of Event Destination IDs which should be used for this Event
+        // Subscription.
         // </summary>
         [JsonProperty("destination_ids")]
         public List<string> DestinationIds { get; set; }

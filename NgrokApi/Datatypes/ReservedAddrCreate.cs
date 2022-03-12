@@ -25,16 +25,10 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("region")]
         public string Region { get; set; }
-        // <summary>
-        // ID of an endpoint configuration of type tcp that will be used to handle inbound
-        // traffic to this address
-        // </summary>
-        [JsonProperty("endpoint_configuration_id")]
-        public string EndpointConfigurationId { get; set; }
 
         public override string ToString()
         {
-            return $"ReservedAddrCreate Description={ Description }  Metadata={ Metadata }  Region={ Region }  EndpointConfigurationId={ EndpointConfigurationId } ";
+            return $"ReservedAddrCreate Description={ Description }  Metadata={ Metadata }  Region={ Region } ";
         }
 
         public override int GetHashCode()
@@ -48,8 +42,6 @@ namespace NgrokApi
 
                 hash = hash * 23 + (Region?.GetHashCode() ?? 0);
 
-                hash = hash * 23 + (EndpointConfigurationId?.GetHashCode() ?? 0);
-
                 return hash;
             }
         }
@@ -62,7 +54,6 @@ namespace NgrokApi
                  this.Description == other.Description
                 && this.Metadata == other.Metadata
                 && this.Region == other.Region
-                && this.EndpointConfigurationId == other.EndpointConfigurationId
             );
         }
 

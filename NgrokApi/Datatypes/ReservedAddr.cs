@@ -45,16 +45,10 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("region")]
         public string Region { get; set; }
-        // <summary>
-        // object reference to the endpoint configuration that will be applied to traffic
-        // to this address
-        // </summary>
-        [JsonProperty("endpoint_configuration")]
-        public Ref EndpointConfiguration { get; set; }
 
         public override string ToString()
         {
-            return $"ReservedAddr Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  Addr={ Addr }  Region={ Region }  EndpointConfiguration={ EndpointConfiguration } ";
+            return $"ReservedAddr Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  Addr={ Addr }  Region={ Region } ";
         }
 
         public override int GetHashCode()
@@ -76,8 +70,6 @@ namespace NgrokApi
 
                 hash = hash * 23 + (Region?.GetHashCode() ?? 0);
 
-                hash = hash * 23 + (EndpointConfiguration?.GetHashCode() ?? 0);
-
                 return hash;
             }
         }
@@ -94,7 +86,6 @@ namespace NgrokApi
                 && this.Metadata == other.Metadata
                 && this.Addr == other.Addr
                 && this.Region == other.Region
-                && this.EndpointConfiguration == other.EndpointConfiguration
             );
         }
 
