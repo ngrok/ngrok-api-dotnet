@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointWebsocketTcpConverter> Replace(EdgeRouteWebsocketTcpConverterReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeRouteWebsocketTcpConverterReplace body = null;
-            body = arg;
-
+            EndpointWebsocketTcpConverter body = arg.Module;
             return await apiClient.Do<EndpointWebsocketTcpConverter>(
                   path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/websocket_tcp_converter",
                   method: new HttpMethod("put"),

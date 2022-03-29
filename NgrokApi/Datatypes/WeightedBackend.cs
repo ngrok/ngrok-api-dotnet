@@ -34,7 +34,7 @@ namespace NgrokApi
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
         // <summary>
-        // the ids of the child backends to their weights (0-10000)
+        // the ids of the child backends to their weights [0-10000]
         // </summary>
         [JsonProperty("backends")]
         public Dictionary<string, int> Backends { get; set; }
@@ -68,6 +68,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (WeightedBackend)obj;
             return (
                  this.Id == other.Id

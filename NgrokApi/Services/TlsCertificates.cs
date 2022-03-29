@@ -31,9 +31,7 @@ namespace NgrokApi
         public async Task<TlsCertificate> Create(TlsCertificateCreate arg)
         {
             Dictionary<string, string> query = null;
-            TlsCertificateCreate body = null;
-            body = arg;
-
+            TlsCertificateCreate body = arg;
             return await apiClient.Do<TlsCertificate>(
                   path: $"/tls_certificates",
                   method: new HttpMethod("post"),
@@ -132,9 +130,7 @@ namespace NgrokApi
         public async Task<TlsCertificate> Update(TlsCertificateUpdate arg)
         {
             Dictionary<string, string> query = null;
-            TlsCertificateUpdate body = null;
-            body = arg;
-
+            TlsCertificateUpdate body = arg;
             return await apiClient.Do<TlsCertificate>(
                   path: $"/tls_certificates/{arg.Id}",
                   method: new HttpMethod("patch"),

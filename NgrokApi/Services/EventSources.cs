@@ -23,9 +23,7 @@ namespace NgrokApi
         public async Task<EventSource> Create(EventSourceCreate arg)
         {
             Dictionary<string, string> query = null;
-            EventSourceCreate body = null;
-            body = arg;
-
+            EventSourceCreate body = arg;
             return await apiClient.Do<EventSource>(
                   path: $"/event_subscriptions/{arg.SubscriptionId}/sources",
                   method: new HttpMethod("post"),
@@ -107,9 +105,7 @@ namespace NgrokApi
         public async Task<EventSource> Update(EventSourceUpdate arg)
         {
             Dictionary<string, string> query = null;
-            EventSourceUpdate body = null;
-            body = arg;
-
+            EventSourceUpdate body = arg;
             return await apiClient.Do<EventSource>(
                   path: $"/event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",
                   method: new HttpMethod("patch"),

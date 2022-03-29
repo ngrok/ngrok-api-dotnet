@@ -29,9 +29,7 @@ namespace NgrokApi
         public async Task<SshHostCertificate> Create(SshHostCertificateCreate arg)
         {
             Dictionary<string, string> query = null;
-            SshHostCertificateCreate body = null;
-            body = arg;
-
+            SshHostCertificateCreate body = arg;
             return await apiClient.Do<SshHostCertificate>(
                   path: $"/ssh_host_certificates",
                   method: new HttpMethod("post"),
@@ -130,9 +128,7 @@ namespace NgrokApi
         public async Task<SshHostCertificate> Update(SshHostCertificateUpdate arg)
         {
             Dictionary<string, string> query = null;
-            SshHostCertificateUpdate body = null;
-            body = arg;
-
+            SshHostCertificateUpdate body = arg;
             return await apiClient.Do<SshHostCertificate>(
                   path: $"/ssh_host_certificates/{arg.Id}",
                   method: new HttpMethod("patch"),

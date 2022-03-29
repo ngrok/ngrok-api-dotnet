@@ -30,9 +30,7 @@ namespace NgrokApi
         public async Task<ReservedDomain> Create(ReservedDomainCreate arg)
         {
             Dictionary<string, string> query = null;
-            ReservedDomainCreate body = null;
-            body = arg;
-
+            ReservedDomainCreate body = arg;
             return await apiClient.Do<ReservedDomain>(
                   path: $"/reserved_domains",
                   method: new HttpMethod("post"),
@@ -131,9 +129,7 @@ namespace NgrokApi
         public async Task<ReservedDomain> Update(ReservedDomainUpdate arg)
         {
             Dictionary<string, string> query = null;
-            ReservedDomainUpdate body = null;
-            body = arg;
-
+            ReservedDomainUpdate body = arg;
             return await apiClient.Do<ReservedDomain>(
                   path: $"/reserved_domains/{arg.Id}",
                   method: new HttpMethod("patch"),

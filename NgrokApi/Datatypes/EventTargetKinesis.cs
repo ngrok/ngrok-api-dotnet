@@ -41,6 +41,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (EventTargetKinesis)obj;
             return (
                  this.Auth == other.Auth

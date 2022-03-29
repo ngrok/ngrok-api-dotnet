@@ -29,9 +29,7 @@ namespace NgrokApi
         public async Task<ReservedAddr> Create(ReservedAddrCreate arg)
         {
             Dictionary<string, string> query = null;
-            ReservedAddrCreate body = null;
-            body = arg;
-
+            ReservedAddrCreate body = arg;
             return await apiClient.Do<ReservedAddr>(
                   path: $"/reserved_addrs",
                   method: new HttpMethod("post"),
@@ -130,9 +128,7 @@ namespace NgrokApi
         public async Task<ReservedAddr> Update(ReservedAddrUpdate arg)
         {
             Dictionary<string, string> query = null;
-            ReservedAddrUpdate body = null;
-            body = arg;
-
+            ReservedAddrUpdate body = arg;
             return await apiClient.Do<ReservedAddr>(
                   path: $"/reserved_addrs/{arg.Id}",
                   method: new HttpMethod("patch"),

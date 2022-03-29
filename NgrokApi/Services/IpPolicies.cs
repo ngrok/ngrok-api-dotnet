@@ -32,9 +32,7 @@ namespace NgrokApi
         public async Task<IpPolicy> Create(IpPolicyCreate arg)
         {
             Dictionary<string, string> query = null;
-            IpPolicyCreate body = null;
-            body = arg;
-
+            IpPolicyCreate body = arg;
             return await apiClient.Do<IpPolicy>(
                   path: $"/ip_policies",
                   method: new HttpMethod("post"),
@@ -135,9 +133,7 @@ namespace NgrokApi
         public async Task<IpPolicy> Update(IpPolicyUpdate arg)
         {
             Dictionary<string, string> query = null;
-            IpPolicyUpdate body = null;
-            body = arg;
-
+            IpPolicyUpdate body = arg;
             return await apiClient.Do<IpPolicy>(
                   path: $"/ip_policies/{arg.Id}",
                   method: new HttpMethod("patch"),

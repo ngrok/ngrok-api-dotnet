@@ -14,7 +14,7 @@ namespace NgrokApi
         [JsonProperty("ip_restrictions")]
         public List<IpRestriction> IpRestrictions { get; set; }
         // <summary>
-        // URI of the IP resrtrictions list API resource
+        // URI of the IP restrictions list API resource
         // </summary>
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -47,6 +47,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (IpRestrictionList)obj;
             return (
                  this.IpRestrictions == other.IpRestrictions

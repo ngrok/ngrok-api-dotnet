@@ -23,9 +23,7 @@ namespace NgrokApi
         public async Task<TlsEdge> Create(TlsEdgeCreate arg)
         {
             Dictionary<string, string> query = null;
-            TlsEdgeCreate body = null;
-            body = arg;
-
+            TlsEdgeCreate body = arg;
             return await apiClient.Do<TlsEdge>(
                   path: $"/edges/tls",
                   method: new HttpMethod("post"),
@@ -105,9 +103,7 @@ namespace NgrokApi
         public async Task<TlsEdge> Update(TlsEdgeUpdate arg)
         {
             Dictionary<string, string> query = null;
-            TlsEdgeUpdate body = null;
-            body = arg;
-
+            TlsEdgeUpdate body = arg;
             return await apiClient.Do<TlsEdge>(
                   path: $"/edges/tls/{arg.Id}",
                   method: new HttpMethod("patch"),

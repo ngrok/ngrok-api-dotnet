@@ -32,9 +32,7 @@ namespace NgrokApi
         public async Task<IpRestriction> Create(IpRestrictionCreate arg)
         {
             Dictionary<string, string> query = null;
-            IpRestrictionCreate body = null;
-            body = arg;
-
+            IpRestrictionCreate body = arg;
             return await apiClient.Do<IpRestriction>(
                   path: $"/ip_restrictions",
                   method: new HttpMethod("post"),
@@ -133,9 +131,7 @@ namespace NgrokApi
         public async Task<IpRestriction> Update(IpRestrictionUpdate arg)
         {
             Dictionary<string, string> query = null;
-            IpRestrictionUpdate body = null;
-            body = arg;
-
+            IpRestrictionUpdate body = arg;
             return await apiClient.Do<IpRestriction>(
                   path: $"/ip_restrictions/{arg.Id}",
                   method: new HttpMethod("patch"),

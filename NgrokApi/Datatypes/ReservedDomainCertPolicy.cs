@@ -42,6 +42,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (ReservedDomainCertPolicy)obj;
             return (
                  this.Authority == other.Authority

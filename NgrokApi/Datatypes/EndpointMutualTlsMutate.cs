@@ -16,7 +16,7 @@ namespace NgrokApi
         public bool? Enabled { get; set; }
         // <summary>
         // list of certificate authorities that will be used to validate the TLS client
-        // certificate presnted by the initiatiator of the TLS connection
+        // certificate presented by the initiator of the TLS connection
         // </summary>
         [JsonProperty("certificate_authority_ids")]
         public List<string> CertificateAuthorityIds { get; set; }
@@ -41,6 +41,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (EndpointMutualTlsMutate)obj;
             return (
                  this.Enabled == other.Enabled

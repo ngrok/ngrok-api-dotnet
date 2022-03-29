@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointWebhookValidation> Replace(EdgeRouteWebhookVerificationReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeRouteWebhookVerificationReplace body = null;
-            body = arg;
-
+            EndpointWebhookValidation body = arg.Module;
             return await apiClient.Do<EndpointWebhookValidation>(
                   path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/webhook_verification",
                   method: new HttpMethod("put"),

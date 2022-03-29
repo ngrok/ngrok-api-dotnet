@@ -30,9 +30,7 @@ namespace NgrokApi
         public async Task<FailoverBackend> Create(FailoverBackendCreate arg)
         {
             Dictionary<string, string> query = null;
-            FailoverBackendCreate body = null;
-            body = arg;
-
+            FailoverBackendCreate body = arg;
             return await apiClient.Do<FailoverBackend>(
                   path: $"/backends/failover",
                   method: new HttpMethod("post"),
@@ -43,7 +41,7 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Delete a Failover backend by ID. TODO what if used?
+        // Delete a Failover backend by ID.
         // </summary>
         //
         // https://ngrok.com/docs/api#api-failover-backends-delete
@@ -131,9 +129,7 @@ namespace NgrokApi
         public async Task<FailoverBackend> Update(FailoverBackendUpdate arg)
         {
             Dictionary<string, string> query = null;
-            FailoverBackendUpdate body = null;
-            body = arg;
-
+            FailoverBackendUpdate body = arg;
             return await apiClient.Do<FailoverBackend>(
                   path: $"/backends/failover/{arg.Id}",
                   method: new HttpMethod("patch"),

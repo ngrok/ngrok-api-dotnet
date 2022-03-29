@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointIpPolicy> Replace(EdgeIpRestrictionReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeIpRestrictionReplace body = null;
-            body = arg;
-
+            EndpointIpPolicyMutate body = arg.Module;
             return await apiClient.Do<EndpointIpPolicy>(
                   path: $"/edges/tcp/{arg.Id}/ip_restriction",
                   method: new HttpMethod("put"),

@@ -29,9 +29,7 @@ namespace NgrokApi
         public async Task<SshCredential> Create(SshCredentialCreate arg)
         {
             Dictionary<string, string> query = null;
-            SshCredentialCreate body = null;
-            body = arg;
-
+            SshCredentialCreate body = arg;
             return await apiClient.Do<SshCredential>(
                   path: $"/ssh_credentials",
                   method: new HttpMethod("post"),
@@ -130,9 +128,7 @@ namespace NgrokApi
         public async Task<SshCredential> Update(SshCredentialUpdate arg)
         {
             Dictionary<string, string> query = null;
-            SshCredentialUpdate body = null;
-            body = arg;
-
+            SshCredentialUpdate body = arg;
             return await apiClient.Do<SshCredential>(
                   path: $"/ssh_credentials/{arg.Id}",
                   method: new HttpMethod("patch"),

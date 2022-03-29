@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointTlsTermination> Replace(EdgeTlsTerminationReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeTlsTerminationReplace body = null;
-            body = arg;
-
+            EndpointTlsTermination body = arg.Module;
             return await apiClient.Do<EndpointTlsTermination>(
                   path: $"/edges/tls/{arg.Id}/tls_termination",
                   method: new HttpMethod("put"),

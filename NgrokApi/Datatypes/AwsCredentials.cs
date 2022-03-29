@@ -40,6 +40,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (AwsCredentials)obj;
             return (
                  this.AwsAccessKeyId == other.AwsAccessKeyId

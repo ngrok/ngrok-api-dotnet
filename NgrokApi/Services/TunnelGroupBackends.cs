@@ -28,9 +28,7 @@ namespace NgrokApi
         public async Task<TunnelGroupBackend> Create(TunnelGroupBackendCreate arg)
         {
             Dictionary<string, string> query = null;
-            TunnelGroupBackendCreate body = null;
-            body = arg;
-
+            TunnelGroupBackendCreate body = arg;
             return await apiClient.Do<TunnelGroupBackend>(
                   path: $"/backends/tunnel_group",
                   method: new HttpMethod("post"),
@@ -41,7 +39,7 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Delete a TunnelGroup backend by ID. TODO what if used?
+        // Delete a TunnelGroup backend by ID.
         // </summary>
         //
         // https://ngrok.com/docs/api#api-tunnel-group-backends-delete
@@ -129,9 +127,7 @@ namespace NgrokApi
         public async Task<TunnelGroupBackend> Update(TunnelGroupBackendUpdate arg)
         {
             Dictionary<string, string> query = null;
-            TunnelGroupBackendUpdate body = null;
-            body = arg;
-
+            TunnelGroupBackendUpdate body = arg;
             return await apiClient.Do<TunnelGroupBackend>(
                   path: $"/backends/tunnel_group/{arg.Id}",
                   method: new HttpMethod("patch"),

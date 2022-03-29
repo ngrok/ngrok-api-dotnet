@@ -33,9 +33,7 @@ namespace NgrokApi
         public async Task<Credential> Create(CredentialCreate arg)
         {
             Dictionary<string, string> query = null;
-            CredentialCreate body = null;
-            body = arg;
-
+            CredentialCreate body = arg;
             return await apiClient.Do<Credential>(
                   path: $"/credentials",
                   method: new HttpMethod("post"),
@@ -134,9 +132,7 @@ namespace NgrokApi
         public async Task<Credential> Update(CredentialUpdate arg)
         {
             Dictionary<string, string> query = null;
-            CredentialUpdate body = null;
-            body = arg;
-
+            CredentialUpdate body = arg;
             return await apiClient.Do<Credential>(
                   path: $"/credentials/{arg.Id}",
                   method: new HttpMethod("patch"),

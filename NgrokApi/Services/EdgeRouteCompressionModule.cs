@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointCompression> Replace(EdgeRouteCompressionReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeRouteCompressionReplace body = null;
-            body = arg;
-
+            EndpointCompression body = arg.Module;
             return await apiClient.Do<EndpointCompression>(
                   path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/compression",
                   method: new HttpMethod("put"),
