@@ -23,9 +23,7 @@ namespace NgrokApi
         public async Task<EventSubscription> Create(EventSubscriptionCreate arg)
         {
             Dictionary<string, string> query = null;
-            EventSubscriptionCreate body = null;
-            body = arg;
-
+            EventSubscriptionCreate body = arg;
             return await apiClient.Do<EventSubscription>(
                   path: $"/event_subscriptions",
                   method: new HttpMethod("post"),
@@ -124,9 +122,7 @@ namespace NgrokApi
         public async Task<EventSubscription> Update(EventSubscriptionUpdate arg)
         {
             Dictionary<string, string> query = null;
-            EventSubscriptionUpdate body = null;
-            body = arg;
-
+            EventSubscriptionUpdate body = arg;
             return await apiClient.Do<EventSubscription>(
                   path: $"/event_subscriptions/{arg.Id}",
                   method: new HttpMethod("patch"),

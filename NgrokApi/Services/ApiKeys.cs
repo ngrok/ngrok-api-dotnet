@@ -34,9 +34,7 @@ namespace NgrokApi
         public async Task<ApiKey> Create(ApiKeyCreate arg)
         {
             Dictionary<string, string> query = null;
-            ApiKeyCreate body = null;
-            body = arg;
-
+            ApiKeyCreate body = arg;
             return await apiClient.Do<ApiKey>(
                   path: $"/api_keys",
                   method: new HttpMethod("post"),
@@ -135,9 +133,7 @@ namespace NgrokApi
         public async Task<ApiKey> Update(ApiKeyUpdate arg)
         {
             Dictionary<string, string> query = null;
-            ApiKeyUpdate body = null;
-            body = arg;
-
+            ApiKeyUpdate body = arg;
             return await apiClient.Do<ApiKey>(
                   path: $"/api_keys/{arg.Id}",
                   method: new HttpMethod("patch"),

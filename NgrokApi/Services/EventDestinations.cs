@@ -25,9 +25,7 @@ namespace NgrokApi
         public async Task<EventDestination> Create(EventDestinationCreate arg)
         {
             Dictionary<string, string> query = null;
-            EventDestinationCreate body = null;
-            body = arg;
-
+            EventDestinationCreate body = arg;
             return await apiClient.Do<EventDestination>(
                   path: $"/event_destinations",
                   method: new HttpMethod("post"),
@@ -127,9 +125,7 @@ namespace NgrokApi
         public async Task<EventDestination> Update(EventDestinationUpdate arg)
         {
             Dictionary<string, string> query = null;
-            EventDestinationUpdate body = null;
-            body = arg;
-
+            EventDestinationUpdate body = arg;
             return await apiClient.Do<EventDestination>(
                   path: $"/event_destinations/{arg.Id}",
                   method: new HttpMethod("patch"),

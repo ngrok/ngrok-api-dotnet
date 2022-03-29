@@ -31,9 +31,7 @@ namespace NgrokApi
         public async Task<CertificateAuthority> Create(CertificateAuthorityCreate arg)
         {
             Dictionary<string, string> query = null;
-            CertificateAuthorityCreate body = null;
-            body = arg;
-
+            CertificateAuthorityCreate body = arg;
             return await apiClient.Do<CertificateAuthority>(
                   path: $"/certificate_authorities",
                   method: new HttpMethod("post"),
@@ -132,9 +130,7 @@ namespace NgrokApi
         public async Task<CertificateAuthority> Update(CertificateAuthorityUpdate arg)
         {
             Dictionary<string, string> query = null;
-            CertificateAuthorityUpdate body = null;
-            body = arg;
-
+            CertificateAuthorityUpdate body = arg;
             return await apiClient.Do<CertificateAuthority>(
                   path: $"/certificate_authorities/{arg.Id}",
                   method: new HttpMethod("patch"),

@@ -7,7 +7,7 @@ easier to consume in C# and .NET.
 
 This library is published on [nuget](https://www.nuget.org/packages/NgrokApi/)
 
-    dotnet add package NgrokApi --version 0.2.0
+    dotnet add package NgrokApi --version <version>
 
 ## Documentation
 
@@ -35,19 +35,21 @@ using NgrokApi;
 
 public class Example
 {
-        public static void Main()
+    public static async Task Main()
+    {
+        var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
+        var policy = await ngrok.IpPolicies.Create(new IpPolicyCreate());
+
+        foreach (var cidr in new string[] { "24.0.0.0/8", "12.0.0.0/8" })
         {
-                var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
-                var policy = ngrok.IpPolicies.Create(new IpPolicyCreate() {
-                        Action = "allow",
-                });
-                foreach (var cidr in new string[] {"24.0.0.0/8", "12.0.0.0/8"}) {
-                        ngrok.IpPolicyRules.Create(ngrok.IpPolicyRuleCreate{
-                                Cidr: cdir,
-                                IpPolicyId: policy.Id,
-                        })
-                }
+            await ngrok.IpPolicyRules.Create(new IpPolicyRuleCreate
+            {
+                Cidr = cidr,
+                IpPolicyId = policy.Id,
+                Action = "allow",
+            });
         }
+    }
 }
 ```
 
@@ -55,18 +57,17 @@ public class Example
 
 ```csharp
 using NgrokApi;
-using System;
 
 public class Example
 {
-        public static void Main()
+    public static async Task Main()
+    {
+        var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
+        await foreach (var t in ngrok.Tunnels.List())
         {
-                var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
-                foreach (var c = ngrok.Tunnels.List())
-                {
-                        Console.Out.WriteLine(t.ToString());
-                }
+            Console.Out.WriteLine(t.ToString());
         }
+    }
 }
 ```
 
@@ -82,10 +83,10 @@ application code.
 var ngrok = new Ngrok(apiKey);
 
 // clients for all api resources (like ip policies) are acccessible as properties of the root client
-var policy = ngrok.IpPolicies.Get(policyId);
+var policy = await ngrok.IpPolicies.Get(policyId);
 
 // some api resources are 'namespaced' through another property
-var circuitBreaker = ngrok.PointcfgModules.CircuitBreaker.Get(endpointConfigId);
+var compression = await ngrok.EdgeModules.HttpsEdgeRouteCompression.Get(edgeRouteItem);
 ```
 
 ### Automatic Paging
@@ -93,23 +94,22 @@ var circuitBreaker = ngrok.PointcfgModules.CircuitBreaker.Get(endpointConfigId);
 All list responses from the ngrok API are paged. This library provides an
 abstraction to make it easier to consume theses paged list resources. Instead
 of returning the page of results, all `List()` methods instead return an
-`IEnumerable` that can be iterated over with a `foreach` loop. The iterator
+`IAsyncEnumerable` that can be iterated over with a `foreach` loop. The iterator
 will automatically fetch new pages of results from the API as needed.
 
 ```csharp
 using NgrokApi;
-using System;
 
 public class Example
 {
-        public static void Main()
+    public static async Task Main()
+    {
+        var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
+        await foreach (var t in ngrok.Tunnels.List())
         {
-                var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
-                foreach (var c = ngrok.Credentials.List())
-                {
-                        Console.Out.WriteLine(c);
-                }
+            Console.Out.WriteLine(t.ToString());
         }
+    }
 }
 ```
 
@@ -132,26 +132,32 @@ or serialization failures are not wrapped in any way and will bubble up as norma
 
 ```csharp
 using NgrokApi;
-using System;
 
 public class Example
 {
-        public static void Main()
+    public static async Task Main()
+    {
+        try
         {
-                try {
-                        var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
-                        var domain = ngrok.ReservedDomains.Create(new ReservedDomainUpdate() {
-                                Name: Environment.GetEnvironmentVariable("NGROK_DOMAIN"),
-                                Description = "example domain",
-                        })
-                } catch (NgrokException e) {
-                        if (e.IsErrorCode("NGROK_ERR_402", "NGROK_ERR_403")) {
-                                 Console.Out.WriteLine("Ignoring invalid wildcard domain.");
-                        } else {
-                                throw;
-                        }
-                }
+            var ngrok = new Ngrok(Environment.GetEnvironmentVariable("NGROK_API_KEY"));
+            var domain = await ngrok.ReservedDomains.Create(new ReservedDomainCreate()
+            {
+                Name = "foo.*.bar.ngrok.io",
+                Description = "example domain",
+            });
         }
+        catch (NgrokException e)
+        {
+            if (e.IsErrorCode("ERR_NGROK_402", "ERR_NGROK_403"))
+            {
+                Console.Out.WriteLine("Ignoring invalid wildcard domain.");
+            }
+            else
+            {
+                throw;
+            }
+        }
+    }
 }
 ```
 

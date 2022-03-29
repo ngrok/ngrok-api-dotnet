@@ -63,6 +63,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (IpPolicyRuleCreate)obj;
             return (
                  this.Description == other.Description

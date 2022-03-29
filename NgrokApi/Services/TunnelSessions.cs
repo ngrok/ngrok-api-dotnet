@@ -93,9 +93,7 @@ namespace NgrokApi
             var arg = new Item() { Id = id };
 
             Dictionary<string, string> query = null;
-            Item body = null;
-            body = arg;
-
+            Item body = arg;
             await apiClient.DoNoReturnBody<Empty>(
                   path: $"/tunnel_sessions/{arg.Id}/restart",
                   method: new HttpMethod("post"),
@@ -115,9 +113,7 @@ namespace NgrokApi
             var arg = new Item() { Id = id };
 
             Dictionary<string, string> query = null;
-            Item body = null;
-            body = arg;
-
+            Item body = arg;
             await apiClient.DoNoReturnBody<Empty>(
                   path: $"/tunnel_sessions/{arg.Id}/stop",
                   method: new HttpMethod("post"),
@@ -147,9 +143,7 @@ namespace NgrokApi
             var arg = new TunnelSessionsUpdate() { Id = id };
 
             Dictionary<string, string> query = null;
-            TunnelSessionsUpdate body = null;
-            body = arg;
-
+            TunnelSessionsUpdate body = arg;
             await apiClient.DoNoReturnBody<Empty>(
                   path: $"/tunnel_sessions/{arg.Id}/update",
                   method: new HttpMethod("post"),

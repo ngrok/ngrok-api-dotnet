@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointBackend> Replace(EdgeRouteBackendReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeRouteBackendReplace body = null;
-            body = arg;
-
+            EndpointBackendMutate body = arg.Module;
             return await apiClient.Do<EndpointBackend>(
                   path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/backend",
                   method: new HttpMethod("put"),

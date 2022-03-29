@@ -23,9 +23,7 @@ namespace NgrokApi
         public async Task<HttpsEdge> Create(HttpsEdgeCreate arg)
         {
             Dictionary<string, string> query = null;
-            HttpsEdgeCreate body = null;
-            body = arg;
-
+            HttpsEdgeCreate body = arg;
             return await apiClient.Do<HttpsEdge>(
                   path: $"/edges/https",
                   method: new HttpMethod("post"),
@@ -105,9 +103,7 @@ namespace NgrokApi
         public async Task<HttpsEdge> Update(HttpsEdgeUpdate arg)
         {
             Dictionary<string, string> query = null;
-            HttpsEdgeUpdate body = null;
-            body = arg;
-
+            HttpsEdgeUpdate body = arg;
             return await apiClient.Do<HttpsEdge>(
                   path: $"/edges/https/{arg.Id}",
                   method: new HttpMethod("patch"),

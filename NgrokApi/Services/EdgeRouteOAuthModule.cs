@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointOAuth> Replace(EdgeRouteOAuthReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeRouteOAuthReplace body = null;
-            body = arg;
-
+            EndpointOAuth body = arg.Module;
             return await apiClient.Do<EndpointOAuth>(
                   path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oauth",
                   method: new HttpMethod("put"),

@@ -24,9 +24,7 @@ namespace NgrokApi
         public async Task<AgentIngress> Create(AgentIngressCreate arg)
         {
             Dictionary<string, string> query = null;
-            AgentIngressCreate body = null;
-            body = arg;
-
+            AgentIngressCreate body = arg;
             return await apiClient.Do<AgentIngress>(
                   path: $"/agent_ingresses",
                   method: new HttpMethod("post"),
@@ -125,9 +123,7 @@ namespace NgrokApi
         public async Task<AgentIngress> Update(AgentIngressUpdate arg)
         {
             Dictionary<string, string> query = null;
-            AgentIngressUpdate body = null;
-            body = arg;
-
+            AgentIngressUpdate body = arg;
             return await apiClient.Do<AgentIngress>(
                   path: $"/agent_ingresses/{arg.Id}",
                   method: new HttpMethod("patch"),

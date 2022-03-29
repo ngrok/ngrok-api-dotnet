@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointMutualTls> Replace(EdgeMutualTlsReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeMutualTlsReplace body = null;
-            body = arg;
-
+            EndpointMutualTlsMutate body = arg.Module;
             return await apiClient.Do<EndpointMutualTls>(
                   path: $"/edges/tls/{arg.Id}/mutual_tls",
                   method: new HttpMethod("put"),

@@ -23,9 +23,7 @@ namespace NgrokApi
         public async Task<TcpEdge> Create(TcpEdgeCreate arg)
         {
             Dictionary<string, string> query = null;
-            TcpEdgeCreate body = null;
-            body = arg;
-
+            TcpEdgeCreate body = arg;
             return await apiClient.Do<TcpEdge>(
                   path: $"/edges/tcp",
                   method: new HttpMethod("post"),
@@ -105,9 +103,7 @@ namespace NgrokApi
         public async Task<TcpEdge> Update(TcpEdgeUpdate arg)
         {
             Dictionary<string, string> query = null;
-            TcpEdgeUpdate body = null;
-            body = arg;
-
+            TcpEdgeUpdate body = arg;
             return await apiClient.Do<TcpEdge>(
                   path: $"/edges/tcp/{arg.Id}",
                   method: new HttpMethod("patch"),

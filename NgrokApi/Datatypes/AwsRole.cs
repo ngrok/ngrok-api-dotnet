@@ -34,6 +34,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (AwsRole)obj;
             return (
                  this.RoleArn == other.RoleArn

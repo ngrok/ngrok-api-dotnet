@@ -36,7 +36,7 @@ namespace NgrokApi
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
         // <summary>
-        // the credential's authtoken that can be used to authenticate an ngrok client.
+        // the credential's authtoken that can be used to authenticate an ngrok agent.
         // <strong>This value is only available one time, on the API response from
         // credential creation, otherwise it is null.</strong>
         // </summary>
@@ -88,6 +88,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (Credential)obj;
             return (
                  this.Id == other.Id

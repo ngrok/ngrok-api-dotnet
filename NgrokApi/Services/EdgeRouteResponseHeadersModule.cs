@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointResponseHeaders> Replace(EdgeRouteResponseHeadersReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeRouteResponseHeadersReplace body = null;
-            body = arg;
-
+            EndpointResponseHeaders body = arg.Module;
             return await apiClient.Do<EndpointResponseHeaders>(
                   path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/response_headers",
                   method: new HttpMethod("put"),

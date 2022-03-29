@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointCircuitBreaker> Replace(EdgeRouteCircuitBreakerReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeRouteCircuitBreakerReplace body = null;
-            body = arg;
-
+            EndpointCircuitBreaker body = arg.Module;
             return await apiClient.Do<EndpointCircuitBreaker>(
                   path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/circuit_breaker",
                   method: new HttpMethod("put"),

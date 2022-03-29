@@ -30,9 +30,7 @@ namespace NgrokApi
         public async Task<WeightedBackend> Create(WeightedBackendCreate arg)
         {
             Dictionary<string, string> query = null;
-            WeightedBackendCreate body = null;
-            body = arg;
-
+            WeightedBackendCreate body = arg;
             return await apiClient.Do<WeightedBackend>(
                   path: $"/backends/weighted",
                   method: new HttpMethod("post"),
@@ -43,7 +41,7 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Delete a Weighted backend by ID. TODO what if used?
+        // Delete a Weighted backend by ID.
         // </summary>
         //
         // https://ngrok.com/docs/api#api-weighted-backends-delete
@@ -131,9 +129,7 @@ namespace NgrokApi
         public async Task<WeightedBackend> Update(WeightedBackendUpdate arg)
         {
             Dictionary<string, string> query = null;
-            WeightedBackendUpdate body = null;
-            body = arg;
-
+            WeightedBackendUpdate body = arg;
             return await apiClient.Do<WeightedBackend>(
                   path: $"/backends/weighted/{arg.Id}",
                   method: new HttpMethod("patch"),

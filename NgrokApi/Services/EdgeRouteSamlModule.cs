@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<EndpointSaml> Replace(EdgeRouteSamlReplace arg)
         {
             Dictionary<string, string> query = null;
-            EdgeRouteSamlReplace body = null;
-            body = arg;
-
+            EndpointSamlMutate body = arg.Module;
             return await apiClient.Do<EndpointSaml>(
                   path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/saml",
                   method: new HttpMethod("put"),

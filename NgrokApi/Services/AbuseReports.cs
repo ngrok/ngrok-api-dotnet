@@ -30,9 +30,7 @@ namespace NgrokApi
         public async Task<AbuseReport> Create(AbuseReportCreate arg)
         {
             Dictionary<string, string> query = null;
-            AbuseReportCreate body = null;
-            body = arg;
-
+            AbuseReportCreate body = arg;
             return await apiClient.Do<AbuseReport>(
                   path: $"/abuse_reports",
                   method: new HttpMethod("post"),

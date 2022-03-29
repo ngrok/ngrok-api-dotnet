@@ -162,6 +162,10 @@ namespace NgrokApi
 
         public override bool Equals(object obj)
         {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
             var other = (HttpsEdgeRoute)obj;
             return (
                  this.EdgeId == other.EdgeId

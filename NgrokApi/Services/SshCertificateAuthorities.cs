@@ -28,9 +28,7 @@ namespace NgrokApi
         public async Task<SshCertificateAuthority> Create(SshCertificateAuthorityCreate arg)
         {
             Dictionary<string, string> query = null;
-            SshCertificateAuthorityCreate body = null;
-            body = arg;
-
+            SshCertificateAuthorityCreate body = arg;
             return await apiClient.Do<SshCertificateAuthority>(
                   path: $"/ssh_certificate_authorities",
                   method: new HttpMethod("post"),
@@ -129,9 +127,7 @@ namespace NgrokApi
         public async Task<SshCertificateAuthority> Update(SshCertificateAuthorityUpdate arg)
         {
             Dictionary<string, string> query = null;
-            SshCertificateAuthorityUpdate body = null;
-            body = arg;
-
+            SshCertificateAuthorityUpdate body = arg;
             return await apiClient.Do<SshCertificateAuthority>(
                   path: $"/ssh_certificate_authorities/{arg.Id}",
                   method: new HttpMethod("patch"),

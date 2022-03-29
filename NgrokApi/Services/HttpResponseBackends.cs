@@ -18,9 +18,7 @@ namespace NgrokApi
         public async Task<HttpResponseBackend> Create(HttpResponseBackendCreate arg)
         {
             Dictionary<string, string> query = null;
-            HttpResponseBackendCreate body = null;
-            body = arg;
-
+            HttpResponseBackendCreate body = arg;
             return await apiClient.Do<HttpResponseBackend>(
                   path: $"/backends/http_response",
                   method: new HttpMethod("post"),
@@ -99,9 +97,7 @@ namespace NgrokApi
         public async Task<HttpResponseBackend> Update(HttpResponseBackendUpdate arg)
         {
             Dictionary<string, string> query = null;
-            HttpResponseBackendUpdate body = null;
-            body = arg;
-
+            HttpResponseBackendUpdate body = arg;
             return await apiClient.Do<HttpResponseBackend>(
                   path: $"/backends/http_response/{arg.Id}",
                   method: new HttpMethod("patch"),
