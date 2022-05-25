@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace NgrokApi
 {
-    internal class Error
+    public class Error
     {
         [JsonProperty("error_code")]
         public string ErrorCode { get; set; }
