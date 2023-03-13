@@ -25,10 +25,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             TcpEdgeCreate body = arg;
             return await apiClient.Do<TcpEdge>(
-                  path: $"/edges/tcp",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -48,10 +48,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<TcpEdge>(
-                  path: $"/edges/tcp/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -67,10 +67,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<TcpEdgeList>(
-                  path: $"/edges/tcp",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -105,10 +105,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             TcpEdgeUpdate body = arg;
             return await apiClient.Do<TcpEdge>(
-                  path: $"/edges/tcp/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }
@@ -128,10 +128,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/edges/tcp/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
     }

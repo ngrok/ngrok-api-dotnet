@@ -31,10 +31,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             ReservedAddrCreate body = arg;
             return await apiClient.Do<ReservedAddr>(
-                  path: $"/reserved_addrs",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/reserved_addrs",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -54,10 +54,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_addrs/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/reserved_addrs/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
 
@@ -76,10 +76,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<ReservedAddr>(
-                  path: $"/reserved_addrs/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/reserved_addrs/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -95,10 +95,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<ReservedAddrList>(
-                  path: $"/reserved_addrs",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/reserved_addrs",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -130,10 +130,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             ReservedAddrUpdate body = arg;
             return await apiClient.Do<ReservedAddr>(
-                  path: $"/reserved_addrs/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/reserved_addrs/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }

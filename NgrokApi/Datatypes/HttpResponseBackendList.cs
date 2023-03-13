@@ -11,9 +11,9 @@ namespace NgrokApi
         [JsonProperty("backends")]
         public List<HttpResponseBackend> Backends { get; set; }
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         [JsonProperty("next_page_uri")]
-        public string NextPageUri { get; set; }
+        public Uri NextPageUri { get; set; }
 
         public override string ToString()
         {

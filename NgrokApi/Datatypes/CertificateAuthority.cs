@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the Certificate Authority API resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // timestamp when the Certificate Authority was created, RFC 3339 format
         // </summary>

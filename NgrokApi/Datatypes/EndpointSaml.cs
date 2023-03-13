@@ -79,14 +79,14 @@ namespace NgrokApi
         // to the IdP as configuration.
         // </summary>
         [JsonProperty("assertion_consumer_service_url")]
-        public string AssertionConsumerServiceUrl { get; set; }
+        public Uri AssertionConsumerServiceUrl { get; set; }
         // <summary>
         // The public URL of the SP's Single Logout Service. This is where the IdP will
         // redirect to during a single logout flow. This will optionally need to be
         // specified to the IdP as configuration.
         // </summary>
         [JsonProperty("single_logout_url")]
-        public string SingleLogoutUrl { get; set; }
+        public Uri SingleLogoutUrl { get; set; }
         // <summary>
         // PEM-encoded x.509 certificate of the key pair that is used to sign all SAML
         // requests that the ngrok SP makes to the IdP. Many IdPs do not support request
@@ -100,7 +100,7 @@ namespace NgrokApi
         // configuration, this is the URL it can use to retrieve the SP metadata.
         // </summary>
         [JsonProperty("metadata_url")]
-        public string MetadataUrl { get; set; }
+        public Uri MetadataUrl { get; set; }
         // <summary>
         // Defines the name identifier format the SP expects the IdP to use in its
         // assertions to identify subjects. If unspecified, a default value of

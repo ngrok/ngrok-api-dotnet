@@ -17,7 +17,7 @@ namespace NgrokApi
         // URL of the ephemeral tunnel's public endpoint
         // </summary>
         [JsonProperty("public_url")]
-        public string PublicUrl { get; set; }
+        public Uri PublicUrl { get; set; }
         // <summary>
         // timestamp when the tunnel was initiated in RFC 3339 format
         // </summary>

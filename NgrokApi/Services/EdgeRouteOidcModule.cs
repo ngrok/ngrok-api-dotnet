@@ -20,10 +20,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             EndpointOidc body = arg.Module;
             return await apiClient.Do<EndpointOidc>(
-                  path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oidc",
-                  method: new HttpMethod("put"),
-                  body: body,
-                  query: query
+                path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oidc",
+                method: new HttpMethod("put"),
+                body: body,
+                query: query
             );
 
         }
@@ -36,10 +36,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EndpointOidc>(
-                  path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oidc",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oidc",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -52,10 +52,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oidc",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oidc",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
     }

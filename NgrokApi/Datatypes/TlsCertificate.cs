@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the TLS certificate API resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // timestamp when the TLS certificate was created, RFC 3339 format
         // </summary>

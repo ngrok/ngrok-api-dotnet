@@ -32,7 +32,7 @@ namespace NgrokApi
         // URL of the hostport served by this endpoint
         // </summary>
         [JsonProperty("public_url")]
-        public string PublicUrl { get; set; }
+        public Uri PublicUrl { get; set; }
         // <summary>
         // protocol served by this endpoint. one of <c>http</c>, <c>https</c>, <c>tcp</c>,
         // or <c>tls</c>

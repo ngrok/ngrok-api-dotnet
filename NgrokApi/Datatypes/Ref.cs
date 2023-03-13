@@ -17,7 +17,7 @@ namespace NgrokApi
         // a uri for locating a resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
 
         public override string ToString()
         {

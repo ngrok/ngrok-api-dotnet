@@ -12,7 +12,7 @@ namespace NgrokApi
         // a list of URLs containing suspected abusive content
         // </summary>
         [JsonProperty("urls")]
-        public List<string> Urls { get; set; }
+        public List<Uri> Urls { get; set; }
         // <summary>
         // arbitrary user-defined data about this abuse report. Optional, max 4096 bytes.
         // </summary>

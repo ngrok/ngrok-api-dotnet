@@ -9,6 +9,10 @@ This library is published on [nuget](https://www.nuget.org/packages/NgrokApi/)
 
     dotnet add package NgrokApi --version <version>
 
+## Support
+
+The best place to get support using this library is through the [ngrok Slack Community](https://ngrok.com/slack). If you find any bugs, please contribute by opening a [new GitHub issue](https://github.com/ngrok/ngrok-api-dotnet/issues/new/choose).
+
 ## Documentation
 
 All objects, methods and properties are documented with the .NET documentation

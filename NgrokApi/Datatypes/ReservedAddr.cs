@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the reserved address API resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // timestamp when the reserved address was created, RFC 3339 format
         // </summary>

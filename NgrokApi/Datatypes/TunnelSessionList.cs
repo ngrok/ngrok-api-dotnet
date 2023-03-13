@@ -17,12 +17,12 @@ namespace NgrokApi
         // URI to the API resource of the tunnel session list
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // URI of the next page, or null if there is no next page
         // </summary>
         [JsonProperty("next_page_uri")]
-        public string NextPageUri { get; set; }
+        public Uri NextPageUri { get; set; }
 
         public override string ToString()
         {
