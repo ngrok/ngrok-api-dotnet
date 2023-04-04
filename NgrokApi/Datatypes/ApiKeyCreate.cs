@@ -19,10 +19,17 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
+        // <summary>
+        // If supplied at credential creation, ownership will be assigned to the specified
+        // User or Bot. Only admins may specify an owner other than themselves. Defaults to
+        // the authenticated User or Bot.
+        // </summary>
+        [JsonProperty("owner_id")]
+        public string OwnerId { get; set; }
 
         public override string ToString()
         {
-            return $"ApiKeyCreate Description={ Description }  Metadata={ Metadata } ";
+            return $"ApiKeyCreate Description={ Description }  Metadata={ Metadata }  OwnerId={ OwnerId } ";
         }
 
         public override int GetHashCode()
@@ -33,6 +40,8 @@ namespace NgrokApi
                 hash = hash * 23 + (Description?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Metadata?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (OwnerId?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -49,6 +58,7 @@ namespace NgrokApi
             return (
                  this.Description == other.Description
                 && this.Metadata == other.Metadata
+                && this.OwnerId == other.OwnerId
             );
         }
 

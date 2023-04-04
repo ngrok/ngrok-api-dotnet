@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the ssh credential API resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // timestamp when the ssh credential was created, RFC 3339 format
         // </summary>
@@ -43,21 +43,31 @@ namespace NgrokApi
         // <summary>
         // optional list of ACL rules. If unspecified, the credential will have no
         // restrictions. The only allowed ACL rule at this time is the <c>bind</c> rule.
-        // The <c>bind</c> rule allows the caller to restrict what domains and addresses
-        // the token is allowed to bind. For example, to allow the token to open a tunnel
-        // on example.ngrok.io your ACL would include the rule
-        // <c>bind:example.ngrok.io</c>. Bind rules may specify a leading wildcard to match
-        // multiple domains with a common suffix. For example, you may specify a rule of
-        // <c>bind:*.example.com</c> which will allow <c>x.example.com</c>,
-        // <c>y.example.com</c>, <c>*.example.com</c>, etc. A rule of <c>'*'</c> is
+        // The <c>bind</c> rule allows the caller to restrict what domains, addresses, and
+        // labels the token is allowed to bind. For example, to allow the token to open a
+        // tunnel on example.ngrok.io your ACL would include the rule
+        // <c>bind:example.ngrok.io</c>. Bind rules for domains may specify a leading
+        // wildcard to match multiple domains with a common suffix. For example, you may
+        // specify a rule of <c>bind:*.example.com</c> which will allow
+        // <c>x.example.com</c>, <c>y.example.com</c>, <c>*.example.com</c>, etc. Bind
+        // rules for labels may specify a wildcard key and/or value to match multiple
+        // labels. For example, you may specify a rule of <c>bind:*=example</c> which will
+        // allow <c>x=example</c>, <c>y=example</c>, etc. A rule of <c>'*'</c> is
         // equivalent to no acl at all and will explicitly permit all actions.
         // </summary>
         [JsonProperty("acl")]
         public List<string> Acl { get; set; }
+        // <summary>
+        // If supplied at credential creation, ownership will be assigned to the specified
+        // User or Bot. Only admins may specify an owner other than themselves. Defaults to
+        // the authenticated User or Bot.
+        // </summary>
+        [JsonProperty("owner_id")]
+        public string OwnerId { get; set; }
 
         public override string ToString()
         {
-            return $"SshCredential Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  PublicKey={ PublicKey }  Acl={ Acl } ";
+            return $"SshCredential Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  PublicKey={ PublicKey }  Acl={ Acl }  OwnerId={ OwnerId } ";
         }
 
         public override int GetHashCode()
@@ -79,6 +89,8 @@ namespace NgrokApi
 
                 hash = hash * 23 + (Acl?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (OwnerId?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -99,6 +111,7 @@ namespace NgrokApi
                 && this.Metadata == other.Metadata
                 && this.PublicKey == other.PublicKey
                 && this.Acl == other.Acl
+                && this.OwnerId == other.OwnerId
             );
         }
 

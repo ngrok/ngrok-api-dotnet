@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the Event Subscription API resource.
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // When the Event Subscription was created (RFC 3339 format).
         // </summary>

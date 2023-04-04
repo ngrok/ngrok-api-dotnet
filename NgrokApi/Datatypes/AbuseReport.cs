@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the abuse report API resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // timestamp that the abuse report record was created in RFC 3339 format
         // </summary>
@@ -27,7 +27,7 @@ namespace NgrokApi
         // a list of URLs containing suspected abusive content
         // </summary>
         [JsonProperty("urls")]
-        public List<string> Urls { get; set; }
+        public List<Uri> Urls { get; set; }
         // <summary>
         // arbitrary user-defined data about this abuse report. Optional, max 4096 bytes.
         // </summary>

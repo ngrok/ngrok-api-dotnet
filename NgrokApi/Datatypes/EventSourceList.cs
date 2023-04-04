@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the next page, or null if there is no next page.
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
 
         public override string ToString()
         {

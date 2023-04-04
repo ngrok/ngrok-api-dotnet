@@ -30,6 +30,16 @@ namespace NgrokApi
             get { return new ApiKeys(apiHttpClient); }
         }
 
+        public ApplicationSessions ApplicationSessions
+        {
+            get { return new ApplicationSessions(apiHttpClient); }
+        }
+
+        public ApplicationUsers ApplicationUsers
+        {
+            get { return new ApplicationUsers(apiHttpClient); }
+        }
+
         public CertificateAuthorities CertificateAuthorities
         {
             get { return new CertificateAuthorities(apiHttpClient); }

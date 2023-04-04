@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the SSH Host Certificate API resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // timestamp when the SSH Host Certificate API resource was created, RFC 3339
         // format

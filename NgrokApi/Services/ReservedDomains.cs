@@ -32,10 +32,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             ReservedDomainCreate body = arg;
             return await apiClient.Do<ReservedDomain>(
-                  path: $"/reserved_domains",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/reserved_domains",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -55,10 +55,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/reserved_domains/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
 
@@ -77,10 +77,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<ReservedDomain>(
-                  path: $"/reserved_domains/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/reserved_domains/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -96,10 +96,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<ReservedDomainList>(
-                  path: $"/reserved_domains",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/reserved_domains",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -131,10 +131,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             ReservedDomainUpdate body = arg;
             return await apiClient.Do<ReservedDomain>(
-                  path: $"/reserved_domains/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/reserved_domains/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }
@@ -154,10 +154,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}/certificate_management_policy",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/reserved_domains/{arg.Id}/certificate_management_policy",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
 
@@ -176,10 +176,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/reserved_domains/{arg.Id}/certificate",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/reserved_domains/{arg.Id}/certificate",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
     }

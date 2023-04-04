@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the Event Source API resource.
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
 
         public override string ToString()
         {

@@ -9,7 +9,8 @@ namespace NgrokApi
     // <summary>
     // Tunnel Credentials are ngrok agent authtokens. They authorize the ngrok
     //  agent to connect the ngrok service as your account. They are installed with
-    //  the <c>ngrok authtoken</c> command or by specifying it in the <c>ngrok.yml</c>
+    //  the <c>ngrok config add-authtoken</c> command or by specifying it in the
+    // <c>ngrok.yml</c>
     //  configuration file with the <c>authtoken</c> property.
     // </summary>
 
@@ -35,10 +36,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             CredentialCreate body = arg;
             return await apiClient.Do<Credential>(
-                  path: $"/credentials",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/credentials",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -58,10 +59,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/credentials/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/credentials/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
 
@@ -80,10 +81,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<Credential>(
-                  path: $"/credentials/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/credentials/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -99,10 +100,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<CredentialList>(
-                  path: $"/credentials",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/credentials",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -134,10 +135,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             CredentialUpdate body = arg;
             return await apiClient.Do<Credential>(
-                  path: $"/credentials/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/credentials/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }

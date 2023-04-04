@@ -26,10 +26,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             AgentIngressCreate body = arg;
             return await apiClient.Do<AgentIngress>(
-                  path: $"/agent_ingresses",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/agent_ingresses",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -49,10 +49,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/agent_ingresses/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/agent_ingresses/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
 
@@ -71,10 +71,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<AgentIngress>(
-                  path: $"/agent_ingresses/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/agent_ingresses/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -90,10 +90,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<AgentIngressList>(
-                  path: $"/agent_ingresses",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/agent_ingresses",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -125,10 +125,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             AgentIngressUpdate body = arg;
             return await apiClient.Do<AgentIngress>(
-                  path: $"/agent_ingresses/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/agent_ingresses/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }

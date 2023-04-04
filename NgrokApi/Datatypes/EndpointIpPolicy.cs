@@ -14,6 +14,10 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
+        // <summary>
+        // list of all IP policies that will be used to check if a source IP is allowed
+        // access to the endpoint
+        // </summary>
         [JsonProperty("ip_policies")]
         public List<Ref> IpPolicies { get; set; }
 

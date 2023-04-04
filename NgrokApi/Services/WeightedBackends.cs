@@ -32,10 +32,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             WeightedBackendCreate body = arg;
             return await apiClient.Do<WeightedBackend>(
-                  path: $"/backends/weighted",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/backends/weighted",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -55,10 +55,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/backends/weighted/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/backends/weighted/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
 
@@ -77,10 +77,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<WeightedBackend>(
-                  path: $"/backends/weighted/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/backends/weighted/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -96,10 +96,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<WeightedBackendList>(
-                  path: $"/backends/weighted",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/backends/weighted",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -131,10 +131,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             WeightedBackendUpdate body = arg;
             return await apiClient.Do<WeightedBackend>(
-                  path: $"/backends/weighted/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/backends/weighted/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }

@@ -20,10 +20,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             EndpointBackendMutate body = arg.Module;
             return await apiClient.Do<EndpointBackend>(
-                  path: $"/edges/tcp/{arg.Id}/backend",
-                  method: new HttpMethod("put"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp/{arg.Id}/backend",
+                method: new HttpMethod("put"),
+                body: body,
+                query: query
             );
 
         }
@@ -38,10 +38,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EndpointBackend>(
-                  path: $"/edges/tcp/{arg.Id}/backend",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp/{arg.Id}/backend",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -56,10 +56,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/edges/tcp/{arg.Id}/backend",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp/{arg.Id}/backend",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
     }

@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI of the FailoverBackend API resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // timestamp when the backend was created, RFC 3339 format
         // </summary>

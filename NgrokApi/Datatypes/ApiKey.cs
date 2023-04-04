@@ -17,7 +17,7 @@ namespace NgrokApi
         // URI to the API resource of this API key
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // human-readable description of what uses the API key to authenticate. optional,
         // max 255 bytes.
@@ -41,10 +41,17 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("token")]
         public string Token { get; set; }
+        // <summary>
+        // If supplied at credential creation, ownership will be assigned to the specified
+        // User or Bot. Only admins may specify an owner other than themselves. Defaults to
+        // the authenticated User or Bot.
+        // </summary>
+        [JsonProperty("owner_id")]
+        public string OwnerId { get; set; }
 
         public override string ToString()
         {
-            return $"ApiKey Id={ Id }  Uri={ Uri }  Description={ Description }  Metadata={ Metadata }  CreatedAt={ CreatedAt }  Token={ Token } ";
+            return $"ApiKey Id={ Id }  Uri={ Uri }  Description={ Description }  Metadata={ Metadata }  CreatedAt={ CreatedAt }  Token={ Token }  OwnerId={ OwnerId } ";
         }
 
         public override int GetHashCode()
@@ -63,6 +70,8 @@ namespace NgrokApi
                 hash = hash * 23 + (CreatedAt?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Token?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (OwnerId?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -83,6 +92,7 @@ namespace NgrokApi
                 && this.Metadata == other.Metadata
                 && this.CreatedAt == other.CreatedAt
                 && this.Token == other.Token
+                && this.OwnerId == other.OwnerId
             );
         }
 
