@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -21,15 +23,13 @@ namespace NgrokApi
         public string Metadata { get; set; }
         // <summary>
         // chain of PEM-encoded certificates, leaf first. See <see
-        // href="https://ngrok.com/docs/api#tls-certificates-pem">Certificate
-        // Bundles</see>.
+        // href="/cloud-edge/endpoints#certificate-chains">Certificate Bundles</see>.
         // </summary>
         [JsonProperty("certificate_pem")]
         public string CertificatePem { get; set; }
         // <summary>
         // private key for the TLS certificate, PEM-encoded. See <see
-        // href="https://ngrok.com/docs/ngrok-link#tls-certificates-key">Private
-        // Keys</see>.
+        // href="/cloud-edge/endpoints#private-keys">Private Keys</see>.
         // </summary>
         [JsonProperty("private_key_pem")]
         public string PrivateKeyPem { get; set; }

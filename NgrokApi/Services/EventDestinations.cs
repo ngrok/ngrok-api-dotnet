@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System.Collections.Generic;
 using System.Net.Http;
@@ -17,8 +19,7 @@ namespace NgrokApi
 
         // <summary>
         // Create a new Event Destination. It will not apply to anything until it is
-        // associated with an Event Stream, and that Event Stream is associated with an
-        // Endpoint Config.
+        // associated with an Event Subscription.
         // </summary>
         //
         // https://ngrok.com/docs/api#api-event-destinations-create
@@ -27,10 +28,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             EventDestinationCreate body = arg;
             return await apiClient.Do<EventDestination>(
-                  path: $"/event_destinations",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/event_destinations",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -51,10 +52,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/event_destinations/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/event_destinations/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
 
@@ -73,10 +74,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EventDestination>(
-                  path: $"/event_destinations/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/event_destinations/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -92,10 +93,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<EventDestinationList>(
-                  path: $"/event_destinations",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/event_destinations",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -127,10 +128,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             EventDestinationUpdate body = arg;
             return await apiClient.Do<EventDestination>(
-                  path: $"/event_destinations/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/event_destinations/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }

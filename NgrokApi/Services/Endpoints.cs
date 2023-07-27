@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System.Collections.Generic;
 using System.Net.Http;
@@ -32,10 +34,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<EndpointList>(
-                  path: $"/endpoints",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/endpoints",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -72,10 +74,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<Endpoint>(
-                  path: $"/endpoints/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/endpoints/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
