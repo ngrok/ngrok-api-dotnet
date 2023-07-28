@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System.Collections.Generic;
 using System.Net.Http;
@@ -25,10 +27,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             EventSubscriptionCreate body = arg;
             return await apiClient.Do<EventSubscription>(
-                  path: $"/event_subscriptions",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/event_subscriptions",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -48,10 +50,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/event_subscriptions/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/event_subscriptions/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
 
@@ -70,10 +72,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EventSubscription>(
-                  path: $"/event_subscriptions/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/event_subscriptions/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -89,10 +91,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<EventSubscriptionList>(
-                  path: $"/event_subscriptions",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/event_subscriptions",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -124,10 +126,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             EventSubscriptionUpdate body = arg;
             return await apiClient.Do<EventSubscription>(
-                  path: $"/event_subscriptions/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/event_subscriptions/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }

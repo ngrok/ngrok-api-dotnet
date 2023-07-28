@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -23,10 +25,15 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("cloudwatch_logs")]
         public EventTargetCloudwatchLogs CloudwatchLogs { get; set; }
+        // <summary>
+        // Configuration used to send events to Datadog.
+        // </summary>
+        [JsonProperty("datadog")]
+        public EventTargetDatadog Datadog { get; set; }
 
         public override string ToString()
         {
-            return $"EventTarget Firehose={ Firehose }  Kinesis={ Kinesis }  CloudwatchLogs={ CloudwatchLogs } ";
+            return $"EventTarget Firehose={ Firehose }  Kinesis={ Kinesis }  CloudwatchLogs={ CloudwatchLogs }  Datadog={ Datadog } ";
         }
 
         public override int GetHashCode()
@@ -39,6 +46,8 @@ namespace NgrokApi
                 hash = hash * 23 + (Kinesis?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (CloudwatchLogs?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (Datadog?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -56,6 +65,7 @@ namespace NgrokApi
                  this.Firehose == other.Firehose
                 && this.Kinesis == other.Kinesis
                 && this.CloudwatchLogs == other.CloudwatchLogs
+                && this.Datadog == other.Datadog
             );
         }
 

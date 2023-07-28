@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -17,7 +19,7 @@ namespace NgrokApi
         // URI of the TLS certificate API resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // timestamp when the TLS certificate was created, RFC 3339 format
         // </summary>
@@ -36,8 +38,7 @@ namespace NgrokApi
         public string Metadata { get; set; }
         // <summary>
         // chain of PEM-encoded certificates, leaf first. See <see
-        // href="https://ngrok.com/docs/api#tls-certificates-pem">Certificate
-        // Bundles</see>.
+        // href="/cloud-edge/endpoints#certificate-chains">Certificate Bundles</see>.
         // </summary>
         [JsonProperty("certificate_pem")]
         public string CertificatePem { get; set; }

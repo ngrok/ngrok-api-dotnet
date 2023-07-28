@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System.Collections.Generic;
 using System.Net.Http;
@@ -32,10 +34,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             AbuseReportCreate body = arg;
             return await apiClient.Do<AbuseReport>(
-                  path: $"/abuse_reports",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/abuse_reports",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -55,10 +57,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<AbuseReport>(
-                  path: $"/abuse_reports/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/abuse_reports/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }

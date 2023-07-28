@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -60,7 +62,7 @@ namespace NgrokApi
         // URI to the API resource of the tunnel session
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
 
         public override string ToString()
         {

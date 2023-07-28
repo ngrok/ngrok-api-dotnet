@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -17,7 +19,7 @@ namespace NgrokApi
         // URL of the ephemeral tunnel's public endpoint
         // </summary>
         [JsonProperty("public_url")]
-        public string PublicUrl { get; set; }
+        public Uri PublicUrl { get; set; }
         // <summary>
         // timestamp when the tunnel was initiated in RFC 3339 format
         // </summary>
@@ -26,9 +28,9 @@ namespace NgrokApi
         // <summary>
         // user-supplied metadata for the tunnel defined in the ngrok configuration file.
         // See the tunnel <see
-        // href="https://ngrok.com/docs#tunnel-definitions-metadata">metadata configuration
-        // option</see> In API version 0, this value was instead pulled from the top-level
-        // <see href="https://ngrok.com/docs#config_metadata">metadata configuration
+        // href="/ngrok-agent/config#common-tunnel-configuration-properties">metadata
+        // configuration option</see> In API version 0, this value was instead pulled from
+        // the top-level <see href="/ngrok-agent/config#metadata">metadata configuration
         // option</see>.
         // </summary>
         [JsonProperty("metadata")]
