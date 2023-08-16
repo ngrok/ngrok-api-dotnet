@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -38,7 +40,7 @@ namespace NgrokApi
         // URI of the edge API resource
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // human-readable description of what this edge will be used for; optional, max 255
         // bytes.
