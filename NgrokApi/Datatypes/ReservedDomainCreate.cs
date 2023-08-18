@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -9,11 +11,10 @@ namespace NgrokApi
     public class ReservedDomainCreate
     {
         // <summary>
-        // the domain name to reserve. It may be a full domain name like app.example.com.
-        // If the name does not contain a '.' it will reserve that subdomain on ngrok.io.
+        // hostname of the reserved domain
         // </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        [JsonProperty("domain")]
+        public string Domain { get; set; }
         // <summary>
         // reserve the domain in this geographic ngrok datacenter. Optional, default is us.
         // (au, eu, ap, us, jp, in, sa)
@@ -47,7 +48,7 @@ namespace NgrokApi
 
         public override string ToString()
         {
-            return $"ReservedDomainCreate Name={ Name }  Region={ Region }  Description={ Description }  Metadata={ Metadata }  CertificateId={ CertificateId }  CertificateManagementPolicy={ CertificateManagementPolicy } ";
+            return $"ReservedDomainCreate Domain={ Domain }  Region={ Region }  Description={ Description }  Metadata={ Metadata }  CertificateId={ CertificateId }  CertificateManagementPolicy={ CertificateManagementPolicy } ";
         }
 
         public override int GetHashCode()
@@ -55,7 +56,7 @@ namespace NgrokApi
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + (Name?.GetHashCode() ?? 0);
+                hash = hash * 23 + (Domain?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Region?.GetHashCode() ?? 0);
 
@@ -80,7 +81,7 @@ namespace NgrokApi
             }
             var other = (ReservedDomainCreate)obj;
             return (
-                 this.Name == other.Name
+                 this.Domain == other.Domain
                 && this.Region == other.Region
                 && this.Description == other.Description
                 && this.Metadata == other.Metadata

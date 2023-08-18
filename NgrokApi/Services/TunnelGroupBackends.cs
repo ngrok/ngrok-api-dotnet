@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System.Collections.Generic;
 using System.Net.Http;
@@ -30,10 +32,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             TunnelGroupBackendCreate body = arg;
             return await apiClient.Do<TunnelGroupBackend>(
-                  path: $"/backends/tunnel_group",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/backends/tunnel_group",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -53,10 +55,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/backends/tunnel_group/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/backends/tunnel_group/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
 
@@ -75,10 +77,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<TunnelGroupBackend>(
-                  path: $"/backends/tunnel_group/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/backends/tunnel_group/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -94,10 +96,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<TunnelGroupBackendList>(
-                  path: $"/backends/tunnel_group",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/backends/tunnel_group",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -129,10 +131,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             TunnelGroupBackendUpdate body = arg;
             return await apiClient.Do<TunnelGroupBackend>(
-                  path: $"/backends/tunnel_group/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/backends/tunnel_group/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }

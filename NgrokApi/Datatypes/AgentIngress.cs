@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -17,7 +19,7 @@ namespace NgrokApi
         // URI to the API resource of this Agent ingress
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // human-readable description of the use of this Agent Ingress. optional, max 255
         // bytes.

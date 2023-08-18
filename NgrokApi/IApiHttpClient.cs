@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 using System;
 using System.IO;
 using System.Net.Http;

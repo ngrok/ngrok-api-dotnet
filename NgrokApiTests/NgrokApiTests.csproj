@@ -1,7 +1,8 @@
+<!-- Code generated for API Clients. DO NOT EDIT. -->
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>

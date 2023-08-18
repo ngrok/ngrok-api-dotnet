@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System.Collections.Generic;
 using System.Net.Http;
@@ -25,10 +27,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             TlsEdgeCreate body = arg;
             return await apiClient.Do<TlsEdge>(
-                  path: $"/edges/tls",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/edges/tls",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
 
         }
@@ -48,10 +50,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<TlsEdge>(
-                  path: $"/edges/tls/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/edges/tls/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -67,10 +69,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<TlsEdgeList>(
-                  path: $"/edges/tls",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/edges/tls",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -105,10 +107,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             TlsEdgeUpdate body = arg;
             return await apiClient.Do<TlsEdge>(
-                  path: $"/edges/tls/{arg.Id}",
-                  method: new HttpMethod("patch"),
-                  body: body,
-                  query: query
+                path: $"/edges/tls/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
             );
 
         }
@@ -128,10 +130,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/edges/tls/{arg.Id}",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/edges/tls/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
     }
