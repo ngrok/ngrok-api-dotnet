@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System.Collections.Generic;
 using System.Net.Http;
@@ -32,10 +34,10 @@ namespace NgrokApi
                 ["limit"] = arg.Limit,
             };
             return await apiClient.Do<TunnelSessionList>(
-                  path: $"/tunnel_sessions",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/tunnel_sessions",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -72,10 +74,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<TunnelSession>(
-                  path: $"/tunnel_sessions/{arg.Id}",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/tunnel_sessions/{arg.Id}",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -95,10 +97,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             Item body = arg;
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/tunnel_sessions/{arg.Id}/restart",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/tunnel_sessions/{arg.Id}/restart",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
         }
 
@@ -115,10 +117,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             Item body = arg;
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/tunnel_sessions/{arg.Id}/stop",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/tunnel_sessions/{arg.Id}/stop",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
         }
 
@@ -145,10 +147,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             TunnelSessionsUpdate body = arg;
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/tunnel_sessions/{arg.Id}/update",
-                  method: new HttpMethod("post"),
-                  body: body,
-                  query: query
+                path: $"/tunnel_sessions/{arg.Id}/update",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
             );
         }
     }

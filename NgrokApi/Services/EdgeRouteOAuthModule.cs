@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System.Collections.Generic;
 using System.Net.Http;
@@ -20,10 +22,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             EndpointOAuth body = arg.Module;
             return await apiClient.Do<EndpointOAuth>(
-                  path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oauth",
-                  method: new HttpMethod("put"),
-                  body: body,
-                  query: query
+                path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oauth",
+                method: new HttpMethod("put"),
+                body: body,
+                query: query
             );
 
         }
@@ -36,10 +38,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EndpointOAuth>(
-                  path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oauth",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oauth",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -52,10 +54,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oauth",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/oauth",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
     }

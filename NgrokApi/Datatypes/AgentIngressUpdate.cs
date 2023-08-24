@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -22,10 +24,16 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
+        // <summary>
+        // configuration for automatic management of TLS certificates for this domain, or
+        // null if automatic management is disabled. Optional.
+        // </summary>
+        [JsonProperty("certificate_management_policy")]
+        public AgentIngressCertPolicy CertificateManagementPolicy { get; set; }
 
         public override string ToString()
         {
-            return $"AgentIngressUpdate Id={ Id }  Description={ Description }  Metadata={ Metadata } ";
+            return $"AgentIngressUpdate Id={ Id }  Description={ Description }  Metadata={ Metadata }  CertificateManagementPolicy={ CertificateManagementPolicy } ";
         }
 
         public override int GetHashCode()
@@ -38,6 +46,8 @@ namespace NgrokApi
                 hash = hash * 23 + (Description?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Metadata?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (CertificateManagementPolicy?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -55,6 +65,7 @@ namespace NgrokApi
                  this.Id == other.Id
                 && this.Description == other.Description
                 && this.Metadata == other.Metadata
+                && this.CertificateManagementPolicy == other.CertificateManagementPolicy
             );
         }
 
