@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System.Collections.Generic;
 using System.Net.Http;
@@ -20,10 +22,10 @@ namespace NgrokApi
             Dictionary<string, string> query = null;
             EndpointIpPolicyMutate body = arg.Module;
             return await apiClient.Do<EndpointIpPolicy>(
-                  path: $"/edges/tcp/{arg.Id}/ip_restriction",
-                  method: new HttpMethod("put"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp/{arg.Id}/ip_restriction",
+                method: new HttpMethod("put"),
+                body: body,
+                query: query
             );
 
         }
@@ -38,10 +40,10 @@ namespace NgrokApi
             {
             };
             return await apiClient.Do<EndpointIpPolicy>(
-                  path: $"/edges/tcp/{arg.Id}/ip_restriction",
-                  method: new HttpMethod("get"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp/{arg.Id}/ip_restriction",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
             );
 
         }
@@ -56,10 +58,10 @@ namespace NgrokApi
             {
             };
             await apiClient.DoNoReturnBody<Empty>(
-                  path: $"/edges/tcp/{arg.Id}/ip_restriction",
-                  method: new HttpMethod("delete"),
-                  body: body,
-                  query: query
+                path: $"/edges/tcp/{arg.Id}/ip_restriction",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
             );
         }
     }

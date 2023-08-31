@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -16,9 +18,8 @@ namespace NgrokApi
         public bool? Enabled { get; set; }
         // <summary>
         // a string indicating which webhook provider will be sending webhooks to this
-        // endpoint. Value must be one of the supported providers: <c>SLACK</c>,
-        // <c>SNS</c>, <c>STRIPE</c>, <c>GITHUB</c>, <c>TWILIO</c>, <c>SHOPIFY</c>,
-        // <c>GITLAB</c>, <c>INTERCOM</c>, <c>SENDGRID</c>, <c>XERO</c>, <c>PAGERDUTY</c>.
+        // endpoint. Value must be one of the supported providers defined at <see
+        // href="https://ngrok.com/docs/cloud-edge/modules/webhook">https://ngrok.com/docs/cloud-edge/modules/webhook</see>
         // </summary>
         [JsonProperty("provider")]
         public string Provider { get; set; }

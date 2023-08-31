@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 namespace NgrokApi
 {
@@ -28,6 +30,21 @@ namespace NgrokApi
         public ApiKeys ApiKeys
         {
             get { return new ApiKeys(apiHttpClient); }
+        }
+
+        public ApplicationSessions ApplicationSessions
+        {
+            get { return new ApplicationSessions(apiHttpClient); }
+        }
+
+        public ApplicationUsers ApplicationUsers
+        {
+            get { return new ApplicationUsers(apiHttpClient); }
+        }
+
+        public TunnelSessions TunnelSessions
+        {
+            get { return new TunnelSessions(apiHttpClient); }
         }
 
         public CertificateAuthorities CertificateAuthorities
@@ -108,11 +125,6 @@ namespace NgrokApi
         public TlsCertificates TlsCertificates
         {
             get { return new TlsCertificates(apiHttpClient); }
-        }
-
-        public TunnelSessions TunnelSessions
-        {
-            get { return new TunnelSessions(apiHttpClient); }
         }
 
         public Tunnels Tunnels

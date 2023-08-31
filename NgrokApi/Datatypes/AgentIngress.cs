@@ -1,3 +1,5 @@
+/* Code generated for API Clients. DO NOT EDIT. */
+
 
 using System;
 using System.Runtime;
@@ -17,7 +19,7 @@ namespace NgrokApi
         // URI to the API resource of this Agent ingress
         // </summary>
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
         // <summary>
         // human-readable description of the use of this Agent Ingress. optional, max 255
         // bytes.
@@ -53,10 +55,22 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
+        // <summary>
+        // configuration for automatic management of TLS certificates for this domain, or
+        // null if automatic management is disabled
+        // </summary>
+        [JsonProperty("certificate_management_policy")]
+        public AgentIngressCertPolicy CertificateManagementPolicy { get; set; }
+        // <summary>
+        // status of the automatic certificate management for this domain, or null if
+        // automatic management is disabled
+        // </summary>
+        [JsonProperty("certificate_management_status")]
+        public AgentIngressCertStatus CertificateManagementStatus { get; set; }
 
         public override string ToString()
         {
-            return $"AgentIngress Id={ Id }  Uri={ Uri }  Description={ Description }  Metadata={ Metadata }  Domain={ Domain }  NsTargets={ NsTargets }  RegionDomains={ RegionDomains }  CreatedAt={ CreatedAt } ";
+            return $"AgentIngress Id={ Id }  Uri={ Uri }  Description={ Description }  Metadata={ Metadata }  Domain={ Domain }  NsTargets={ NsTargets }  RegionDomains={ RegionDomains }  CreatedAt={ CreatedAt }  CertificateManagementPolicy={ CertificateManagementPolicy }  CertificateManagementStatus={ CertificateManagementStatus } ";
         }
 
         public override int GetHashCode()
@@ -80,6 +94,10 @@ namespace NgrokApi
 
                 hash = hash * 23 + (CreatedAt?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (CertificateManagementPolicy?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (CertificateManagementStatus?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -101,6 +119,8 @@ namespace NgrokApi
                 && this.NsTargets == other.NsTargets
                 && this.RegionDomains == other.RegionDomains
                 && this.CreatedAt == other.CreatedAt
+                && this.CertificateManagementPolicy == other.CertificateManagementPolicy
+                && this.CertificateManagementStatus == other.CertificateManagementStatus
             );
         }
 
