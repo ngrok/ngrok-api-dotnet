@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NgrokApi", "NgrokApi\NgrokApi.csproj", "{6793D15D-FB24-41A4-878B-6A2C33EF4866}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NgrokApiTests", "NgrokApiTests\NgrokApiTests.csproj", "{182DFCAC-3E6D-4363-96C5-46052FD8AFE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6793D15D-FB24-41A4-878B-6A2C33EF4866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6793D15D-FB24-41A4-878B-6A2C33EF4866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6793D15D-FB24-41A4-878B-6A2C33EF4866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6793D15D-FB24-41A4-878B-6A2C33EF4866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182DFCAC-3E6D-4363-96C5-46052FD8AFE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182DFCAC-3E6D-4363-96C5-46052FD8AFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182DFCAC-3E6D-4363-96C5-46052FD8AFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182DFCAC-3E6D-4363-96C5-46052FD8AFE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
