@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace NgrokApi
 {
-    public class EndpointWebhookValidation
+    public class EndpointPolicy
     {
         // <summary>
         // <c>true</c> if the module will be applied to traffic, <c>false</c> to disable.
@@ -17,22 +17,19 @@ namespace NgrokApi
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
         // <summary>
-        // a string indicating which webhook provider will be sending webhooks to this
-        // endpoint. Value must be one of the supported providers defined at <see
-        // href="https://ngrok.com/docs/cloud-edge/modules/webhook-verification">https://ngrok.com/docs/cloud-edge/modules/webhook-verification</see>
+        // the inbound rules of the traffic policy.
         // </summary>
-        [JsonProperty("provider")]
-        public string Provider { get; set; }
+        [JsonProperty("inbound")]
+        public List<EndpointRule> Inbound { get; set; }
         // <summary>
-        // a string secret used to validate requests from the given provider. All providers
-        // except AWS SNS require a secret
+        // the outbound rules on the traffic policy.
         // </summary>
-        [JsonProperty("secret")]
-        public string Secret { get; set; }
+        [JsonProperty("outbound")]
+        public List<EndpointRule> Outbound { get; set; }
 
         public override string ToString()
         {
-            return $"EndpointWebhookValidation Enabled={ Enabled }  Provider={ Provider }  Secret={ Secret } ";
+            return $"EndpointPolicy Enabled={ Enabled }  Inbound={ Inbound }  Outbound={ Outbound } ";
         }
 
         public override int GetHashCode()
@@ -41,9 +38,9 @@ namespace NgrokApi
             {
                 int hash = 17;
                 hash = hash * 23 + Convert.ToInt32(Enabled);
-                hash = hash * 23 + (Provider?.GetHashCode() ?? 0);
+                hash = hash * 23 + (Inbound?.GetHashCode() ?? 0);
 
-                hash = hash * 23 + (Secret?.GetHashCode() ?? 0);
+                hash = hash * 23 + (Outbound?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -56,11 +53,11 @@ namespace NgrokApi
             {
                 return false;
             }
-            var other = (EndpointWebhookValidation)obj;
+            var other = (EndpointPolicy)obj;
             return (
                  this.Enabled == other.Enabled
-                && this.Provider == other.Provider
-                && this.Secret == other.Secret
+                && this.Inbound == other.Inbound
+                && this.Outbound == other.Outbound
             );
         }
 

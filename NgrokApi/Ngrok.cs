@@ -47,6 +47,11 @@ namespace NgrokApi
             get { return new TunnelSessions(apiHttpClient); }
         }
 
+        public BotUsers BotUsers
+        {
+            get { return new BotUsers(apiHttpClient); }
+        }
+
         public CertificateAuthorities CertificateAuthorities
         {
             get { return new CertificateAuthorities(apiHttpClient); }
@@ -167,6 +172,11 @@ namespace NgrokApi
             get { return new HttpResponseBackends(apiHttpClient); }
         }
 
+        public StaticBackends StaticAddress
+        {
+            get { return new StaticBackends(apiHttpClient); }
+        }
+
         public TunnelGroupBackends TunnelGroup
         {
             get { return new TunnelGroupBackends(apiHttpClient); }
@@ -278,6 +288,11 @@ namespace NgrokApi
         public EdgeRouteWebsocketTcpConverterModule HttpsEdgeRouteWebsocketTcpConverter
         {
             get { return new EdgeRouteWebsocketTcpConverterModule(apiHttpClient); }
+        }
+
+        public EdgeRouteUserAgentFilterModule HttpsEdgeRouteUserAgentFilter
+        {
+            get { return new EdgeRouteUserAgentFilterModule(apiHttpClient); }
         }
 
         public TcpEdgeBackendModule TcpEdgeBackend

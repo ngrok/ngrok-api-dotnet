@@ -93,10 +93,17 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("websocket_tcp_converter")]
         public EndpointWebsocketTcpConverter WebsocketTcpConverter { get; set; }
+        [JsonProperty("user_agent_filter")]
+        public EndpointUserAgentFilter UserAgentFilter { get; set; }
+        // <summary>
+        // the traffic policy associated with this edge or null
+        // </summary>
+        [JsonProperty("policy")]
+        public EndpointPolicy Policy { get; set; }
 
         public override string ToString()
         {
-            return $"HttpsEdgeRouteCreate EdgeId={ EdgeId }  MatchType={ MatchType }  Match={ Match }  Description={ Description }  Metadata={ Metadata }  Backend={ Backend }  IpRestriction={ IpRestriction }  CircuitBreaker={ CircuitBreaker }  Compression={ Compression }  RequestHeaders={ RequestHeaders }  ResponseHeaders={ ResponseHeaders }  WebhookVerification={ WebhookVerification }  Oauth={ Oauth }  Saml={ Saml }  Oidc={ Oidc }  WebsocketTcpConverter={ WebsocketTcpConverter } ";
+            return $"HttpsEdgeRouteCreate EdgeId={ EdgeId }  MatchType={ MatchType }  Match={ Match }  Description={ Description }  Metadata={ Metadata }  Backend={ Backend }  IpRestriction={ IpRestriction }  CircuitBreaker={ CircuitBreaker }  Compression={ Compression }  RequestHeaders={ RequestHeaders }  ResponseHeaders={ ResponseHeaders }  WebhookVerification={ WebhookVerification }  Oauth={ Oauth }  Saml={ Saml }  Oidc={ Oidc }  WebsocketTcpConverter={ WebsocketTcpConverter }  UserAgentFilter={ UserAgentFilter }  Policy={ Policy } ";
         }
 
         public override int GetHashCode()
@@ -136,6 +143,10 @@ namespace NgrokApi
 
                 hash = hash * 23 + (WebsocketTcpConverter?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (UserAgentFilter?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (Policy?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -165,6 +176,8 @@ namespace NgrokApi
                 && this.Saml == other.Saml
                 && this.Oidc == other.Oidc
                 && this.WebsocketTcpConverter == other.WebsocketTcpConverter
+                && this.UserAgentFilter == other.UserAgentFilter
+                && this.Policy == other.Policy
             );
         }
 
