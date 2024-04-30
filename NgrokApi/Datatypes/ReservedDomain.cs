@@ -42,14 +42,16 @@ namespace NgrokApi
         [JsonProperty("domain")]
         public string Domain { get; set; }
         // <summary>
-        // reserve the domain in this geographic ngrok datacenter. Optional, default is us.
-        // (au, eu, ap, us, jp, in, sa)
+        // deprecated: With the launch of the ngrok Global Network domains traffic is now
+        // handled globally. This field applied only to endpoints. Note that agents may
+        // still connect to specific regions. Optional, null by default. (au, eu, ap, us,
+        // jp, in, sa)
         // </summary>
         [JsonProperty("region")]
         public string Region { get; set; }
         // <summary>
         // DNS CNAME target for a custom hostname, or null if the reserved domain is a
-        // subdomain of *.ngrok.io
+        // subdomain of an ngrok owned domain (e.g. *.ngrok.app)
         // </summary>
         [JsonProperty("cname_target")]
         public string CnameTarget { get; set; }

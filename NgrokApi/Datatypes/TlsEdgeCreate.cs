@@ -38,10 +38,15 @@ namespace NgrokApi
         public EndpointMutualTlsMutate MutualTls { get; set; }
         [JsonProperty("tls_termination")]
         public EndpointTlsTermination TlsTermination { get; set; }
+        // <summary>
+        // the traffic policy associated with this edge or null
+        // </summary>
+        [JsonProperty("policy")]
+        public EndpointPolicy Policy { get; set; }
 
         public override string ToString()
         {
-            return $"TlsEdgeCreate Description={ Description }  Metadata={ Metadata }  Hostports={ Hostports }  Backend={ Backend }  IpRestriction={ IpRestriction }  MutualTls={ MutualTls }  TlsTermination={ TlsTermination } ";
+            return $"TlsEdgeCreate Description={ Description }  Metadata={ Metadata }  Hostports={ Hostports }  Backend={ Backend }  IpRestriction={ IpRestriction }  MutualTls={ MutualTls }  TlsTermination={ TlsTermination }  Policy={ Policy } ";
         }
 
         public override int GetHashCode()
@@ -63,6 +68,8 @@ namespace NgrokApi
 
                 hash = hash * 23 + (TlsTermination?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (Policy?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -83,6 +90,7 @@ namespace NgrokApi
                 && this.IpRestriction == other.IpRestriction
                 && this.MutualTls == other.MutualTls
                 && this.TlsTermination == other.TlsTermination
+                && this.Policy == other.Policy
             );
         }
 
