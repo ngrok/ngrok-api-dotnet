@@ -113,12 +113,12 @@ namespace NgrokApi
         // <summary>
         // the traffic policy associated with this edge or null
         // </summary>
-        [JsonProperty("policy")]
-        public EndpointPolicy Policy { get; set; }
+        [JsonProperty("traffic_policy")]
+        public EndpointTrafficPolicy TrafficPolicy { get; set; }
 
         public override string ToString()
         {
-            return $"HttpsEdgeRoute EdgeId={ EdgeId }  Id={ Id }  CreatedAt={ CreatedAt }  MatchType={ MatchType }  Match={ Match }  Uri={ Uri }  Description={ Description }  Metadata={ Metadata }  Backend={ Backend }  IpRestriction={ IpRestriction }  CircuitBreaker={ CircuitBreaker }  Compression={ Compression }  RequestHeaders={ RequestHeaders }  ResponseHeaders={ ResponseHeaders }  WebhookVerification={ WebhookVerification }  Oauth={ Oauth }  Saml={ Saml }  Oidc={ Oidc }  WebsocketTcpConverter={ WebsocketTcpConverter }  UserAgentFilter={ UserAgentFilter }  Policy={ Policy } ";
+            return $"HttpsEdgeRoute EdgeId={ EdgeId }  Id={ Id }  CreatedAt={ CreatedAt }  MatchType={ MatchType }  Match={ Match }  Uri={ Uri }  Description={ Description }  Metadata={ Metadata }  Backend={ Backend }  IpRestriction={ IpRestriction }  CircuitBreaker={ CircuitBreaker }  Compression={ Compression }  RequestHeaders={ RequestHeaders }  ResponseHeaders={ ResponseHeaders }  WebhookVerification={ WebhookVerification }  Oauth={ Oauth }  Saml={ Saml }  Oidc={ Oidc }  WebsocketTcpConverter={ WebsocketTcpConverter }  UserAgentFilter={ UserAgentFilter }  TrafficPolicy={ TrafficPolicy } ";
         }
 
         public override int GetHashCode()
@@ -166,7 +166,7 @@ namespace NgrokApi
 
                 hash = hash * 23 + (UserAgentFilter?.GetHashCode() ?? 0);
 
-                hash = hash * 23 + (Policy?.GetHashCode() ?? 0);
+                hash = hash * 23 + (TrafficPolicy?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -201,7 +201,7 @@ namespace NgrokApi
                 && this.Oidc == other.Oidc
                 && this.WebsocketTcpConverter == other.WebsocketTcpConverter
                 && this.UserAgentFilter == other.UserAgentFilter
-                && this.Policy == other.Policy
+                && this.TrafficPolicy == other.TrafficPolicy
             );
         }
 

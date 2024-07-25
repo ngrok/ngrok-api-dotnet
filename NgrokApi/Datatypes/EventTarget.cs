@@ -30,10 +30,12 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("datadog")]
         public EventTargetDatadog Datadog { get; set; }
+        [JsonProperty("azure_logs_ingestion")]
+        public EventTargetAzureLogsIngestion AzureLogsIngestion { get; set; }
 
         public override string ToString()
         {
-            return $"EventTarget Firehose={ Firehose }  Kinesis={ Kinesis }  CloudwatchLogs={ CloudwatchLogs }  Datadog={ Datadog } ";
+            return $"EventTarget Firehose={ Firehose }  Kinesis={ Kinesis }  CloudwatchLogs={ CloudwatchLogs }  Datadog={ Datadog }  AzureLogsIngestion={ AzureLogsIngestion } ";
         }
 
         public override int GetHashCode()
@@ -48,6 +50,8 @@ namespace NgrokApi
                 hash = hash * 23 + (CloudwatchLogs?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Datadog?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (AzureLogsIngestion?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -66,6 +70,7 @@ namespace NgrokApi
                 && this.Kinesis == other.Kinesis
                 && this.CloudwatchLogs == other.CloudwatchLogs
                 && this.Datadog == other.Datadog
+                && this.AzureLogsIngestion == other.AzureLogsIngestion
             );
         }
 
