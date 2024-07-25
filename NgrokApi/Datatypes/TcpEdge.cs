@@ -52,12 +52,12 @@ namespace NgrokApi
         // <summary>
         // the traffic policy associated with this edge or null
         // </summary>
-        [JsonProperty("policy")]
-        public EndpointPolicy Policy { get; set; }
+        [JsonProperty("traffic_policy")]
+        public EndpointTrafficPolicy TrafficPolicy { get; set; }
 
         public override string ToString()
         {
-            return $"TcpEdge Id={ Id }  Description={ Description }  Metadata={ Metadata }  CreatedAt={ CreatedAt }  Uri={ Uri }  Hostports={ Hostports }  Backend={ Backend }  IpRestriction={ IpRestriction }  Policy={ Policy } ";
+            return $"TcpEdge Id={ Id }  Description={ Description }  Metadata={ Metadata }  CreatedAt={ CreatedAt }  Uri={ Uri }  Hostports={ Hostports }  Backend={ Backend }  IpRestriction={ IpRestriction }  TrafficPolicy={ TrafficPolicy } ";
         }
 
         public override int GetHashCode()
@@ -81,7 +81,7 @@ namespace NgrokApi
 
                 hash = hash * 23 + (IpRestriction?.GetHashCode() ?? 0);
 
-                hash = hash * 23 + (Policy?.GetHashCode() ?? 0);
+                hash = hash * 23 + (TrafficPolicy?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -104,7 +104,7 @@ namespace NgrokApi
                 && this.Hostports == other.Hostports
                 && this.Backend == other.Backend
                 && this.IpRestriction == other.IpRestriction
-                && this.Policy == other.Policy
+                && this.TrafficPolicy == other.TrafficPolicy
             );
         }
 
