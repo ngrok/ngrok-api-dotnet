@@ -36,7 +36,7 @@ namespace NgrokApi
         [JsonProperty("data_collection_rule_id")]
         public string DataCollectionRuleId { get; set; }
         // <summary>
-        // Data collection stream name to use as destination, located instide the DCR
+        // Data collection stream name to use as destination, located inside the DCR
         // </summary>
         [JsonProperty("data_collection_stream_name")]
         public string DataCollectionStreamName { get; set; }

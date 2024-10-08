@@ -41,14 +41,21 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("proto")]
         public string Proto { get; set; }
+        [JsonProperty("scheme")]
+        public string Scheme { get; set; }
         // <summary>
-        // hostport served by this endpoint (hostname:port)
+        // hostport served by this endpoint (hostname:port) -> soon to be deprecated
         // </summary>
         [JsonProperty("hostport")]
         public string Hostport { get; set; }
+        [JsonProperty("host")]
+        public string Host { get; set; }
+        [JsonProperty("port")]
+        public int Port { get; set; }
         // <summary>
         // whether the endpoint is <c>ephemeral</c> (served directly by an agent-initiated
-        // tunnel) or <c>edge</c> (served by an edge)
+        // tunnel) or <c>edge</c> (served by an edge) or <c>cloud (represents a cloud
+        // endpoint)</c>
         // </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -57,6 +64,11 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
+        // <summary>
+        // user-supplied description of the associated tunnel
+        // </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
         // <summary>
         // the domain reserved for this endpoint
         // </summary>
@@ -77,10 +89,50 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("edge")]
         public Ref Edge { get; set; }
+        // <summary>
+        // the local address the tunnel forwards to
+        // </summary>
+        [JsonProperty("upstream_url")]
+        public string UpstreamUrl { get; set; }
+        // <summary>
+        // the protocol the agent uses to forward with
+        // </summary>
+        [JsonProperty("upstream_proto")]
+        public string UpstreamProto { get; set; }
+        // <summary>
+        // the url of the endpoint
+        // </summary>
+        [JsonProperty("url")]
+        public string Url { get; set; }
+        // <summary>
+        // The ID of the owner (bot or user) that owns this endpoint
+        // </summary>
+        [JsonProperty("principal_id")]
+        public Ref PrincipalId { get; set; }
+        // <summary>
+        // The traffic policy attached to this endpoint
+        // </summary>
+        [JsonProperty("traffic_policy")]
+        public string TrafficPolicy { get; set; }
+        // <summary>
+        // the bindings associated with this endpoint
+        // </summary>
+        [JsonProperty("bindings")]
+        public List<string> Bindings { get; set; }
+        // <summary>
+        // The tunnel session of the agent for this endpoint
+        // </summary>
+        [JsonProperty("tunnel_session")]
+        public Ref TunnelSession { get; set; }
+        // <summary>
+        // URI of the clep API resource
+        // </summary>
+        [JsonProperty("uri")]
+        public Uri Uri { get; set; }
 
         public override string ToString()
         {
-            return $"Endpoint Id={ Id }  Region={ Region }  CreatedAt={ CreatedAt }  UpdatedAt={ UpdatedAt }  PublicUrl={ PublicUrl }  Proto={ Proto }  Hostport={ Hostport }  Type={ Type }  Metadata={ Metadata }  Domain={ Domain }  TcpAddr={ TcpAddr }  Tunnel={ Tunnel }  Edge={ Edge } ";
+            return $"Endpoint Id={ Id }  Region={ Region }  CreatedAt={ CreatedAt }  UpdatedAt={ UpdatedAt }  PublicUrl={ PublicUrl }  Proto={ Proto }  Scheme={ Scheme }  Hostport={ Hostport }  Host={ Host }  Port={ Port }  Type={ Type }  Metadata={ Metadata }  Description={ Description }  Domain={ Domain }  TcpAddr={ TcpAddr }  Tunnel={ Tunnel }  Edge={ Edge }  UpstreamUrl={ UpstreamUrl }  UpstreamProto={ UpstreamProto }  Url={ Url }  PrincipalId={ PrincipalId }  TrafficPolicy={ TrafficPolicy }  Bindings={ Bindings }  TunnelSession={ TunnelSession }  Uri={ Uri } ";
         }
 
         public override int GetHashCode()
@@ -100,11 +152,18 @@ namespace NgrokApi
 
                 hash = hash * 23 + (Proto?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (Scheme?.GetHashCode() ?? 0);
+
                 hash = hash * 23 + (Hostport?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (Host?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + Convert.ToInt32(Port);
                 hash = hash * 23 + (Type?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Metadata?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (Description?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Domain?.GetHashCode() ?? 0);
 
@@ -113,6 +172,22 @@ namespace NgrokApi
                 hash = hash * 23 + (Tunnel?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Edge?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (UpstreamUrl?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (UpstreamProto?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (Url?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (PrincipalId?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (TrafficPolicy?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (Bindings?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (TunnelSession?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (Uri?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -133,13 +208,25 @@ namespace NgrokApi
                 && this.UpdatedAt == other.UpdatedAt
                 && this.PublicUrl == other.PublicUrl
                 && this.Proto == other.Proto
+                && this.Scheme == other.Scheme
                 && this.Hostport == other.Hostport
+                && this.Host == other.Host
+                && this.Port == other.Port
                 && this.Type == other.Type
                 && this.Metadata == other.Metadata
+                && this.Description == other.Description
                 && this.Domain == other.Domain
                 && this.TcpAddr == other.TcpAddr
                 && this.Tunnel == other.Tunnel
                 && this.Edge == other.Edge
+                && this.UpstreamUrl == other.UpstreamUrl
+                && this.UpstreamProto == other.UpstreamProto
+                && this.Url == other.Url
+                && this.PrincipalId == other.PrincipalId
+                && this.TrafficPolicy == other.TrafficPolicy
+                && this.Bindings == other.Bindings
+                && this.TunnelSession == other.TunnelSession
+                && this.Uri == other.Uri
             );
         }
 
