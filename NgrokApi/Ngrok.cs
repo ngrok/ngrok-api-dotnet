@@ -295,6 +295,11 @@ namespace NgrokApi
             get { return new EdgeRouteUserAgentFilterModule(apiHttpClient); }
         }
 
+        public EdgeRouteTrafficPolicyModule HttpsEdgeRouteTrafficPolicy
+        {
+            get { return new EdgeRouteTrafficPolicyModule(apiHttpClient); }
+        }
+
         public TcpEdgeBackendModule TcpEdgeBackend
         {
             get { return new TcpEdgeBackendModule(apiHttpClient); }
@@ -303,6 +308,11 @@ namespace NgrokApi
         public TcpEdgeIpRestrictionModule TcpEdgeIpRestriction
         {
             get { return new TcpEdgeIpRestrictionModule(apiHttpClient); }
+        }
+
+        public TcpEdgeTrafficPolicyModule TcpEdgeTrafficPolicy
+        {
+            get { return new TcpEdgeTrafficPolicyModule(apiHttpClient); }
         }
 
         public TlsEdgeBackendModule TlsEdgeBackend
@@ -323,6 +333,11 @@ namespace NgrokApi
         public TlsEdgeTlsTerminationModule TlsEdgeTlsTermination
         {
             get { return new TlsEdgeTlsTerminationModule(apiHttpClient); }
+        }
+
+        public TlsEdgeTrafficPolicyModule TlsEdgeTrafficPolicy
+        {
+            get { return new TlsEdgeTrafficPolicyModule(apiHttpClient); }
         }
 
     }
