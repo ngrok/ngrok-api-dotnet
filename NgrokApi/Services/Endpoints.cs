@@ -23,6 +23,24 @@ namespace NgrokApi
             this.apiClient = apiClient;
         }
 
+        // <summary>
+        // Create an endpoint, currently available only for cloud endpoints
+        // </summary>
+        //
+        // https://ngrok.com/docs/api#api-endpoints-create
+        public async Task<Endpoint> Create(EndpointCreate arg)
+        {
+            Dictionary<string, string> query = null;
+            EndpointCreate body = arg;
+            return await apiClient.Do<Endpoint>(
+                path: $"/endpoints",
+                method: new HttpMethod("post"),
+                body: body,
+                query: query
+            );
+
+        }
+
         private async Task<EndpointList> ListPage(Paging arg)
 
         {
@@ -80,6 +98,46 @@ namespace NgrokApi
                 query: query
             );
 
+        }
+
+        // <summary>
+        // Update an Endpoint by ID, currently available only for cloud endpoints
+        // </summary>
+        //
+        // https://ngrok.com/docs/api#api-endpoints-update
+        public async Task<Endpoint> Update(EndpointUpdate arg)
+        {
+            Dictionary<string, string> query = null;
+            EndpointUpdate body = arg;
+            return await apiClient.Do<Endpoint>(
+                path: $"/endpoints/{arg.Id}",
+                method: new HttpMethod("patch"),
+                body: body,
+                query: query
+            );
+
+        }
+
+        // <summary>
+        // Delete an Endpoint by ID, currently available only for cloud endpoints
+        // </summary>
+        //
+        // https://ngrok.com/docs/api#api-endpoints-delete
+        public async Task Delete(string id)
+        {
+            var arg = new Item() { Id = id };
+
+            Dictionary<string, string> query = null;
+            Item body = null;
+            query = new Dictionary<string, string>()
+            {
+            };
+            await apiClient.DoNoReturnBody<Empty>(
+                path: $"/endpoints/{arg.Id}",
+                method: new HttpMethod("delete"),
+                body: body,
+                query: query
+            );
         }
     }
 }
