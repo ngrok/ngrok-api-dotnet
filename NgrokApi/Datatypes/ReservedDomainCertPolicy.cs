@@ -17,8 +17,8 @@ namespace NgrokApi
         [JsonProperty("authority")]
         public string Authority { get; set; }
         // <summary>
-        // type of private key to use when requesting certificates. Defaults to rsa, can be
-        // either rsa or ecdsa.
+        // type of private key to use when requesting certificates. Defaults to ecdsa, can
+        // be either rsa or ecdsa.
         // </summary>
         [JsonProperty("private_key_type")]
         public string PrivateKeyType { get; set; }
