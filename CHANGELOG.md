@@ -1,4 +1,6 @@
 <!-- Code generated for API Clients. DO NOT EDIT. -->
+## 0.14.0
+* Renamed `upstream_proto` to `upstream_protocol` for `endpoint` resources
 
 ## 0.13.0
 * Added support for Cloud Endpoints (currently in private beta).

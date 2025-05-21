@@ -97,6 +97,11 @@ namespace NgrokApi
             get { return new IpRestrictions(apiHttpClient); }
         }
 
+        public KubernetesOperators KubernetesOperators
+        {
+            get { return new KubernetesOperators(apiHttpClient); }
+        }
+
         public ReservedAddrs ReservedAddrs
         {
             get { return new ReservedAddrs(apiHttpClient); }
