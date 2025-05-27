@@ -16,9 +16,8 @@ namespace NgrokApi
         [JsonProperty("url")]
         public string Url { get; set; }
         // <summary>
-        // whether the endpoint is <c>ephemeral</c> (served directly by an agent-initiated
-        // tunnel) or <c>edge</c> (served by an edge) or <c>cloud (represents a cloud
-        // endpoint)</c>
+        // Type of endpoint. Only 'cloud' is currently supported (represents a cloud
+        // endpoint). Defaults to 'cloud' if not specified.
         // </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -42,10 +41,12 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("bindings")]
         public List<string> Bindings { get; set; }
+        [JsonProperty("pooling_enabled")]
+        public bool PoolingEnabled { get; set; }
 
         public override string ToString()
         {
-            return $"EndpointCreate Url={ Url }  Type={ Type }  TrafficPolicy={ TrafficPolicy }  Description={ Description }  Metadata={ Metadata }  Bindings={ Bindings } ";
+            return $"EndpointCreate Url={ Url }  Type={ Type }  TrafficPolicy={ TrafficPolicy }  Description={ Description }  Metadata={ Metadata }  Bindings={ Bindings }  PoolingEnabled={ PoolingEnabled } ";
         }
 
         public override int GetHashCode()
@@ -65,6 +66,7 @@ namespace NgrokApi
 
                 hash = hash * 23 + (Bindings?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + Convert.ToInt32(PoolingEnabled);
                 return hash;
             }
         }
@@ -84,6 +86,7 @@ namespace NgrokApi
                 && this.Description == other.Description
                 && this.Metadata == other.Metadata
                 && this.Bindings == other.Bindings
+                && this.PoolingEnabled == other.PoolingEnabled
             );
         }
 

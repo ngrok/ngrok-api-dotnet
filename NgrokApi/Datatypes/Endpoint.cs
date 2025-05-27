@@ -97,8 +97,8 @@ namespace NgrokApi
         // <summary>
         // the protocol the agent uses to forward with
         // </summary>
-        [JsonProperty("upstream_proto")]
-        public string UpstreamProto { get; set; }
+        [JsonProperty("upstream_protocol")]
+        public string UpstreamProtocol { get; set; }
         // <summary>
         // the url of the endpoint
         // </summary>
@@ -109,11 +109,6 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("principal")]
         public Ref Principal { get; set; }
-        // <summary>
-        // TODO: deprecate me!
-        // </summary>
-        [JsonProperty("principal_id")]
-        public Ref PrincipalId { get; set; }
         // <summary>
         // The traffic policy attached to this endpoint
         // </summary>
@@ -139,10 +134,15 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
+        // <summary>
+        // whether the endpoint allows pooling
+        // </summary>
+        [JsonProperty("pooling_enabled")]
+        public bool PoolingEnabled { get; set; }
 
         public override string ToString()
         {
-            return $"Endpoint Id={ Id }  Region={ Region }  CreatedAt={ CreatedAt }  UpdatedAt={ UpdatedAt }  PublicUrl={ PublicUrl }  Proto={ Proto }  Scheme={ Scheme }  Hostport={ Hostport }  Host={ Host }  Port={ Port }  Type={ Type }  Metadata={ Metadata }  Description={ Description }  Domain={ Domain }  TcpAddr={ TcpAddr }  Tunnel={ Tunnel }  Edge={ Edge }  UpstreamUrl={ UpstreamUrl }  UpstreamProto={ UpstreamProto }  Url={ Url }  Principal={ Principal }  PrincipalId={ PrincipalId }  TrafficPolicy={ TrafficPolicy }  Bindings={ Bindings }  TunnelSession={ TunnelSession }  Uri={ Uri }  Name={ Name } ";
+            return $"Endpoint Id={ Id }  Region={ Region }  CreatedAt={ CreatedAt }  UpdatedAt={ UpdatedAt }  PublicUrl={ PublicUrl }  Proto={ Proto }  Scheme={ Scheme }  Hostport={ Hostport }  Host={ Host }  Port={ Port }  Type={ Type }  Metadata={ Metadata }  Description={ Description }  Domain={ Domain }  TcpAddr={ TcpAddr }  Tunnel={ Tunnel }  Edge={ Edge }  UpstreamUrl={ UpstreamUrl }  UpstreamProtocol={ UpstreamProtocol }  Url={ Url }  Principal={ Principal }  TrafficPolicy={ TrafficPolicy }  Bindings={ Bindings }  TunnelSession={ TunnelSession }  Uri={ Uri }  Name={ Name }  PoolingEnabled={ PoolingEnabled } ";
         }
 
         public override int GetHashCode()
@@ -185,13 +185,11 @@ namespace NgrokApi
 
                 hash = hash * 23 + (UpstreamUrl?.GetHashCode() ?? 0);
 
-                hash = hash * 23 + (UpstreamProto?.GetHashCode() ?? 0);
+                hash = hash * 23 + (UpstreamProtocol?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Url?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Principal?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (PrincipalId?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (TrafficPolicy?.GetHashCode() ?? 0);
 
@@ -203,6 +201,7 @@ namespace NgrokApi
 
                 hash = hash * 23 + (Name?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + Convert.ToInt32(PoolingEnabled);
                 return hash;
             }
         }
@@ -234,15 +233,15 @@ namespace NgrokApi
                 && this.Tunnel == other.Tunnel
                 && this.Edge == other.Edge
                 && this.UpstreamUrl == other.UpstreamUrl
-                && this.UpstreamProto == other.UpstreamProto
+                && this.UpstreamProtocol == other.UpstreamProtocol
                 && this.Url == other.Url
                 && this.Principal == other.Principal
-                && this.PrincipalId == other.PrincipalId
                 && this.TrafficPolicy == other.TrafficPolicy
                 && this.Bindings == other.Bindings
                 && this.TunnelSession == other.TunnelSession
                 && this.Uri == other.Uri
                 && this.Name == other.Name
+                && this.PoolingEnabled == other.PoolingEnabled
             );
         }
 
