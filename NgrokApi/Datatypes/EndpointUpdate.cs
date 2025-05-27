@@ -40,10 +40,12 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("bindings")]
         public List<string> Bindings { get; set; }
+        [JsonProperty("pooling_enabled")]
+        public bool PoolingEnabled { get; set; }
 
         public override string ToString()
         {
-            return $"EndpointUpdate Id={ Id }  Url={ Url }  TrafficPolicy={ TrafficPolicy }  Description={ Description }  Metadata={ Metadata }  Bindings={ Bindings } ";
+            return $"EndpointUpdate Id={ Id }  Url={ Url }  TrafficPolicy={ TrafficPolicy }  Description={ Description }  Metadata={ Metadata }  Bindings={ Bindings }  PoolingEnabled={ PoolingEnabled } ";
         }
 
         public override int GetHashCode()
@@ -63,6 +65,7 @@ namespace NgrokApi
 
                 hash = hash * 23 + (Bindings?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + Convert.ToInt32(PoolingEnabled);
                 return hash;
             }
         }
@@ -82,6 +85,7 @@ namespace NgrokApi
                 && this.Description == other.Description
                 && this.Metadata == other.Metadata
                 && this.Bindings == other.Bindings
+                && this.PoolingEnabled == other.PoolingEnabled
             );
         }
 
