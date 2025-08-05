@@ -107,6 +107,11 @@ namespace NgrokApi
             get { return new ReservedDomains(apiHttpClient); }
         }
 
+        public Secrets Secrets
+        {
+            get { return new Secrets(apiHttpClient); }
+        }
+
         public SshCertificateAuthorities SshCertificateAuthorities
         {
             get { return new SshCertificateAuthorities(apiHttpClient); }
@@ -135,6 +140,11 @@ namespace NgrokApi
         public Tunnels Tunnels
         {
             get { return new Tunnels(apiHttpClient); }
+        }
+
+        public Vaults Vaults
+        {
+            get { return new Vaults(apiHttpClient); }
         }
 
 
