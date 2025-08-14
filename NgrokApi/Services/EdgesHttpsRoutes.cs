@@ -24,7 +24,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-edges-https-routes-create
         public async Task<HttpsEdgeRoute> Create(HttpsEdgeRouteCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             HttpsEdgeRouteCreate body = arg;
             return await apiClient.Do<HttpsEdgeRoute>(
                 path: $"/edges/https/{arg.EdgeId}/routes",
@@ -42,11 +42,10 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-edges-https-routes-get
         public async Task<HttpsEdgeRoute> Get(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<HttpsEdgeRoute>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -66,7 +65,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-edges-https-routes-update
         public async Task<HttpsEdgeRoute> Update(HttpsEdgeRouteUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             HttpsEdgeRouteUpdate body = arg;
             return await apiClient.Do<HttpsEdgeRoute>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}",
@@ -84,11 +83,10 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-edges-https-routes-delete
         public async Task Delete(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}",
                 method: new HttpMethod("delete"),

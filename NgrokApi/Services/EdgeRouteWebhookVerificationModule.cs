@@ -19,7 +19,7 @@ namespace NgrokApi
 
         public async Task<EndpointWebhookValidation> Replace(EdgeRouteWebhookVerificationReplace arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EndpointWebhookValidation body = arg.Module;
             return await apiClient.Do<EndpointWebhookValidation>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/webhook_verification",
@@ -32,11 +32,10 @@ namespace NgrokApi
 
         public async Task<EndpointWebhookValidation> Get(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EndpointWebhookValidation>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/webhook_verification",
                 method: new HttpMethod("get"),
@@ -48,11 +47,10 @@ namespace NgrokApi
 
         public async Task Delete(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/webhook_verification",
                 method: new HttpMethod("delete"),

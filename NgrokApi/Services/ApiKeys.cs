@@ -35,7 +35,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-api-keys-create
         public async Task<ApiKey> Create(ApiKeyCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             ApiKeyCreate body = arg;
             return await apiClient.Do<ApiKey>(
                 path: $"/api_keys",
@@ -55,11 +55,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/api_keys/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -77,11 +76,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<ApiKey>(
                 path: $"/api_keys/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -94,13 +92,12 @@ namespace NgrokApi
         private async Task<ApiKeyList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<ApiKeyList>(
                 path: $"/api_keys",
                 method: new HttpMethod("get"),
@@ -134,7 +131,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-api-keys-update
         public async Task<ApiKey> Update(ApiKeyUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             ApiKeyUpdate body = arg;
             return await apiClient.Do<ApiKey>(
                 path: $"/api_keys/{arg.Id}",

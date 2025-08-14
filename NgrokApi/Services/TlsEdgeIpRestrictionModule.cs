@@ -19,7 +19,7 @@ namespace NgrokApi
 
         public async Task<EndpointIpPolicy> Replace(EdgeIpRestrictionReplace arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EndpointIpPolicyMutate body = arg.Module;
             return await apiClient.Do<EndpointIpPolicy>(
                 path: $"/edges/tls/{arg.Id}/ip_restriction",
@@ -34,11 +34,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EndpointIpPolicy>(
                 path: $"/edges/tls/{arg.Id}/ip_restriction",
                 method: new HttpMethod("get"),
@@ -52,11 +51,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/edges/tls/{arg.Id}/ip_restriction",
                 method: new HttpMethod("delete"),

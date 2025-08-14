@@ -33,7 +33,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-ip-restrictions-create
         public async Task<IpRestriction> Create(IpRestrictionCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             IpRestrictionCreate body = arg;
             return await apiClient.Do<IpRestriction>(
                 path: $"/ip_restrictions",
@@ -53,11 +53,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/ip_restrictions/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -75,11 +74,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<IpRestriction>(
                 path: $"/ip_restrictions/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -92,13 +90,12 @@ namespace NgrokApi
         private async Task<IpRestrictionList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<IpRestrictionList>(
                 path: $"/ip_restrictions",
                 method: new HttpMethod("get"),
@@ -132,7 +129,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-ip-restrictions-update
         public async Task<IpRestriction> Update(IpRestrictionUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             IpRestrictionUpdate body = arg;
             return await apiClient.Do<IpRestriction>(
                 path: $"/ip_restrictions/{arg.Id}",

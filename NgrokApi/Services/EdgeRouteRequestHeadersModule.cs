@@ -19,7 +19,7 @@ namespace NgrokApi
 
         public async Task<EndpointRequestHeaders> Replace(EdgeRouteRequestHeadersReplace arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EndpointRequestHeaders body = arg.Module;
             return await apiClient.Do<EndpointRequestHeaders>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/request_headers",
@@ -32,11 +32,10 @@ namespace NgrokApi
 
         public async Task<EndpointRequestHeaders> Get(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EndpointRequestHeaders>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/request_headers",
                 method: new HttpMethod("get"),
@@ -48,11 +47,10 @@ namespace NgrokApi
 
         public async Task Delete(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/request_headers",
                 method: new HttpMethod("delete"),

@@ -30,7 +30,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-ssh-credentials-create
         public async Task<SshCredential> Create(SshCredentialCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             SshCredentialCreate body = arg;
             return await apiClient.Do<SshCredential>(
                 path: $"/ssh_credentials",
@@ -50,11 +50,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/ssh_credentials/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -72,11 +71,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<SshCredential>(
                 path: $"/ssh_credentials/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -89,13 +87,12 @@ namespace NgrokApi
         private async Task<SshCredentialList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<SshCredentialList>(
                 path: $"/ssh_credentials",
                 method: new HttpMethod("get"),
@@ -129,7 +126,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-ssh-credentials-update
         public async Task<SshCredential> Update(SshCredentialUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             SshCredentialUpdate body = arg;
             return await apiClient.Do<SshCredential>(
                 path: $"/ssh_credentials/{arg.Id}",

@@ -31,7 +31,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-reserved-domains-create
         public async Task<ReservedDomain> Create(ReservedDomainCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             ReservedDomainCreate body = arg;
             return await apiClient.Do<ReservedDomain>(
                 path: $"/reserved_domains",
@@ -51,11 +51,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/reserved_domains/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -73,11 +72,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<ReservedDomain>(
                 path: $"/reserved_domains/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -90,13 +88,12 @@ namespace NgrokApi
         private async Task<ReservedDomainList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<ReservedDomainList>(
                 path: $"/reserved_domains",
                 method: new HttpMethod("get"),
@@ -130,7 +127,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-reserved-domains-update
         public async Task<ReservedDomain> Update(ReservedDomainUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             ReservedDomainUpdate body = arg;
             return await apiClient.Do<ReservedDomain>(
                 path: $"/reserved_domains/{arg.Id}",
@@ -150,11 +147,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/reserved_domains/{arg.Id}/certificate_management_policy",
                 method: new HttpMethod("delete"),
@@ -172,11 +168,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/reserved_domains/{arg.Id}/certificate",
                 method: new HttpMethod("delete"),

@@ -24,7 +24,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-event-subscriptions-create
         public async Task<EventSubscription> Create(EventSubscriptionCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EventSubscriptionCreate body = arg;
             return await apiClient.Do<EventSubscription>(
                 path: $"/event_subscriptions",
@@ -44,11 +44,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/event_subscriptions/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -66,11 +65,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EventSubscription>(
                 path: $"/event_subscriptions/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -83,13 +81,12 @@ namespace NgrokApi
         private async Task<EventSubscriptionList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<EventSubscriptionList>(
                 path: $"/event_subscriptions",
                 method: new HttpMethod("get"),
@@ -123,7 +120,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-event-subscriptions-update
         public async Task<EventSubscription> Update(EventSubscriptionUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EventSubscriptionUpdate body = arg;
             return await apiClient.Do<EventSubscription>(
                 path: $"/event_subscriptions/{arg.Id}",
