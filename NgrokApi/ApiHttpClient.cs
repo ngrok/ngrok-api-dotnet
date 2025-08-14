@@ -46,7 +46,7 @@ namespace NgrokApi
             this.mockResponses.Enqueue(resp);
         }
 
-        public async Task<T> Do<T>(HttpMethod method, string path, Dictionary<string, string> query = null, Object body = null)
+        public async Task<T> Do<T>(HttpMethod method, string path, IEnumerable<KeyValuePair<string, string>> query = null, Object body = null)
         {
             var msg = PrepareRequest(method, path, query, body);
             HttpResponseMessage response = await SendAsync(msg);
@@ -57,7 +57,7 @@ namespace NgrokApi
             return responseObject;
         }
 
-        public async Task DoNoReturnBody<T>(HttpMethod method, string path, Dictionary<string, string> query = null, Object body = null)
+        public async Task DoNoReturnBody<T>(HttpMethod method, string path, IEnumerable<KeyValuePair<string, string>> query = null, Object body = null)
         {
             var msg = PrepareRequest(method, path, query, body);
             HttpResponseMessage response = await SendAsync(msg);
@@ -88,11 +88,11 @@ namespace NgrokApi
             throw new NgrokException(err);
         }
 
-        private HttpRequestMessage PrepareRequest(HttpMethod method, string path, Dictionary<string, string> query = null, Object body = null)
+        private HttpRequestMessage PrepareRequest(HttpMethod method, string path, IEnumerable<KeyValuePair<string, string>> query = null, Object body = null)
         {
-            if (query != null && query.Count != 0)
+            if (query != null && query.Any())
             {
-                var filteredQuery = query.Where(it => it.Value != null).ToDictionary(it => it.Key, it => it.Value);
+                var filteredQuery = query.Where(it => it.Value != null);
                 var queryString = new FormUrlEncodedContent(filteredQuery);
                 path = path + "?" + queryString.ReadAsStringAsync().Result;
             }

@@ -25,7 +25,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-agent-ingresses-create
         public async Task<AgentIngress> Create(AgentIngressCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             AgentIngressCreate body = arg;
             return await apiClient.Do<AgentIngress>(
                 path: $"/agent_ingresses",
@@ -45,11 +45,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/agent_ingresses/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -67,11 +66,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<AgentIngress>(
                 path: $"/agent_ingresses/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -84,13 +82,12 @@ namespace NgrokApi
         private async Task<AgentIngressList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<AgentIngressList>(
                 path: $"/agent_ingresses",
                 method: new HttpMethod("get"),
@@ -124,7 +121,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-agent-ingresses-update
         public async Task<AgentIngress> Update(AgentIngressUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             AgentIngressUpdate body = arg;
             return await apiClient.Do<AgentIngress>(
                 path: $"/agent_ingresses/{arg.Id}",

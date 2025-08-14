@@ -30,7 +30,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-endpoints-create
         public async Task<Endpoint> Create(EndpointCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EndpointCreate body = arg;
             return await apiClient.Do<Endpoint>(
                 path: $"/endpoints",
@@ -41,16 +41,29 @@ namespace NgrokApi
 
         }
 
-        private async Task<EndpointList> ListPage(Paging arg)
+        private async Task<EndpointList> ListPage(EndpointListArgs arg)
 
         {
-            Dictionary<string, string> query = null;
-            Paging body = null;
-            query = new Dictionary<string, string>()
+            List<KeyValuePair<string, string>> query = null;
+            EndpointListArgs body = null;
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            if (arg.Ids != null)
             {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+                foreach (var item in arg.Ids)
+                {
+                    queryParams.Add(new KeyValuePair<string, string>("ids", item));
+                }
+            }
+            if (arg.Urls != null)
+            {
+                foreach (var item in arg.Urls)
+                {
+                    queryParams.Add(new KeyValuePair<string, string>("urls", item));
+                }
+            }
+            query = queryParams;
             return await apiClient.Do<EndpointList>(
                 path: $"/endpoints",
                 method: new HttpMethod("get"),
@@ -68,7 +81,7 @@ namespace NgrokApi
         {
             return new Iterator<Endpoint>(beforeId, async lastId =>
             {
-                var result = await this.ListPage(new Paging()
+                var result = await this.ListPage(new EndpointListArgs()
                 {
                     BeforeId = lastId,
                     Limit = limit,
@@ -86,11 +99,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<Endpoint>(
                 path: $"/endpoints/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -107,7 +119,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-endpoints-update
         public async Task<Endpoint> Update(EndpointUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EndpointUpdate body = arg;
             return await apiClient.Do<Endpoint>(
                 path: $"/endpoints/{arg.Id}",
@@ -127,11 +139,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/endpoints/{arg.Id}",
                 method: new HttpMethod("delete"),

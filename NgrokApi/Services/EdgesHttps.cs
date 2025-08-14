@@ -24,7 +24,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-edges-https-create
         public async Task<HttpsEdge> Create(HttpsEdgeCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             HttpsEdgeCreate body = arg;
             return await apiClient.Do<HttpsEdge>(
                 path: $"/edges/https",
@@ -44,11 +44,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<HttpsEdge>(
                 path: $"/edges/https/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -61,13 +60,12 @@ namespace NgrokApi
         private async Task<HttpsEdgeList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<HttpsEdgeList>(
                 path: $"/edges/https",
                 method: new HttpMethod("get"),
@@ -104,7 +102,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-edges-https-update
         public async Task<HttpsEdge> Update(HttpsEdgeUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             HttpsEdgeUpdate body = arg;
             return await apiClient.Do<HttpsEdge>(
                 path: $"/edges/https/{arg.Id}",
@@ -124,11 +122,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/edges/https/{arg.Id}",
                 method: new HttpMethod("delete"),

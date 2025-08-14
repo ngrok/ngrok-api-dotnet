@@ -26,13 +26,12 @@ namespace NgrokApi
         private async Task<TunnelSessionList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<TunnelSessionList>(
                 path: $"/tunnel_sessions",
                 method: new HttpMethod("get"),
@@ -68,11 +67,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<TunnelSession>(
                 path: $"/tunnel_sessions/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -94,7 +92,7 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = arg;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/tunnel_sessions/{arg.Id}/restart",
@@ -114,7 +112,7 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = arg;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/tunnel_sessions/{arg.Id}/stop",
@@ -144,7 +142,7 @@ namespace NgrokApi
         {
             var arg = new TunnelSessionsUpdate() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             TunnelSessionsUpdate body = arg;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/tunnel_sessions/{arg.Id}/update",

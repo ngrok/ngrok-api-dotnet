@@ -10,8 +10,8 @@ namespace NgrokApi
 {
     public interface IApiHttpClient
     {
-        Task<T> Do<T>(HttpMethod method, string path, Dictionary<string, string> query = null, Object body = null);
-        Task DoNoReturnBody<T>(HttpMethod method, string path, Dictionary<string, string> query = null, Object body = null);
+        Task<T> Do<T>(HttpMethod method, string path, IEnumerable<KeyValuePair<string, string>> query = null, Object body = null);
+        Task DoNoReturnBody<T>(HttpMethod method, string path, IEnumerable<KeyValuePair<string, string>> query = null, Object body = null);
         void LogTo(TextWriter debugStream);
         void UseMocks(bool useMocks);
         void PushMockResponse(int httpStatusCode, string responseData);

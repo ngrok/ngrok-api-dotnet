@@ -29,7 +29,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-static-backends-create
         public async Task<StaticBackend> Create(StaticBackendCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             StaticBackendCreate body = arg;
             return await apiClient.Do<StaticBackend>(
                 path: $"/backends/static",
@@ -49,11 +49,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/backends/static/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -71,11 +70,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<StaticBackend>(
                 path: $"/backends/static/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -88,13 +86,12 @@ namespace NgrokApi
         private async Task<StaticBackendList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<StaticBackendList>(
                 path: $"/backends/static",
                 method: new HttpMethod("get"),
@@ -128,7 +125,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-static-backends-update
         public async Task<StaticBackend> Update(StaticBackendUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             StaticBackendUpdate body = arg;
             return await apiClient.Do<StaticBackend>(
                 path: $"/backends/static/{arg.Id}",

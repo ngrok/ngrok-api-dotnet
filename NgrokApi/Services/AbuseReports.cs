@@ -31,7 +31,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-abuse-reports-create
         public async Task<AbuseReport> Create(AbuseReportCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             AbuseReportCreate body = arg;
             return await apiClient.Do<AbuseReport>(
                 path: $"/abuse_reports",
@@ -51,11 +51,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<AbuseReport>(
                 path: $"/abuse_reports/{arg.Id}",
                 method: new HttpMethod("get"),

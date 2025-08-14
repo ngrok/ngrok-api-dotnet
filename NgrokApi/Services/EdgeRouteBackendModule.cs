@@ -19,7 +19,7 @@ namespace NgrokApi
 
         public async Task<EndpointBackend> Replace(EdgeRouteBackendReplace arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EndpointBackendMutate body = arg.Module;
             return await apiClient.Do<EndpointBackend>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/backend",
@@ -32,11 +32,10 @@ namespace NgrokApi
 
         public async Task<EndpointBackend> Get(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EndpointBackend>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/backend",
                 method: new HttpMethod("get"),
@@ -48,11 +47,10 @@ namespace NgrokApi
 
         public async Task Delete(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/backend",
                 method: new HttpMethod("delete"),

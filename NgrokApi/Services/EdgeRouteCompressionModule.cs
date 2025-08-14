@@ -19,7 +19,7 @@ namespace NgrokApi
 
         public async Task<EndpointCompression> Replace(EdgeRouteCompressionReplace arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EndpointCompression body = arg.Module;
             return await apiClient.Do<EndpointCompression>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/compression",
@@ -32,11 +32,10 @@ namespace NgrokApi
 
         public async Task<EndpointCompression> Get(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EndpointCompression>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/compression",
                 method: new HttpMethod("get"),
@@ -48,11 +47,10 @@ namespace NgrokApi
 
         public async Task Delete(EdgeRouteItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EdgeRouteItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/edges/https/{arg.EdgeId}/routes/{arg.Id}/compression",
                 method: new HttpMethod("delete"),

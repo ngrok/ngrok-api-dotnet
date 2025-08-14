@@ -19,7 +19,7 @@ namespace NgrokApi
 
         public async Task<EndpointMutualTls> Replace(EdgeMutualTlsReplace arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EndpointMutualTlsMutate body = arg.Module;
             return await apiClient.Do<EndpointMutualTls>(
                 path: $"/edges/https/{arg.Id}/mutual_tls",
@@ -34,11 +34,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EndpointMutualTls>(
                 path: $"/edges/https/{arg.Id}/mutual_tls",
                 method: new HttpMethod("get"),
@@ -52,11 +51,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/edges/https/{arg.Id}/mutual_tls",
                 method: new HttpMethod("delete"),
