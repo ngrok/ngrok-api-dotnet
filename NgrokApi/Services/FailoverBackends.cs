@@ -31,7 +31,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-failover-backends-create
         public async Task<FailoverBackend> Create(FailoverBackendCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             FailoverBackendCreate body = arg;
             return await apiClient.Do<FailoverBackend>(
                 path: $"/backends/failover",
@@ -51,11 +51,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/backends/failover/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -73,11 +72,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<FailoverBackend>(
                 path: $"/backends/failover/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -90,13 +88,12 @@ namespace NgrokApi
         private async Task<FailoverBackendList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<FailoverBackendList>(
                 path: $"/backends/failover",
                 method: new HttpMethod("get"),
@@ -130,7 +127,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-failover-backends-update
         public async Task<FailoverBackend> Update(FailoverBackendUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             FailoverBackendUpdate body = arg;
             return await apiClient.Do<FailoverBackend>(
                 path: $"/backends/failover/{arg.Id}",

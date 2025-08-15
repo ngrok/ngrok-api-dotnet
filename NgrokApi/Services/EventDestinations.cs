@@ -25,7 +25,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-event-destinations-create
         public async Task<EventDestination> Create(EventDestinationCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EventDestinationCreate body = arg;
             return await apiClient.Do<EventDestination>(
                 path: $"/event_destinations",
@@ -46,11 +46,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/event_destinations/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -68,11 +67,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EventDestination>(
                 path: $"/event_destinations/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -85,13 +83,12 @@ namespace NgrokApi
         private async Task<EventDestinationList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<EventDestinationList>(
                 path: $"/event_destinations",
                 method: new HttpMethod("get"),
@@ -125,7 +122,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-event-destinations-update
         public async Task<EventDestination> Update(EventDestinationUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EventDestinationUpdate body = arg;
             return await apiClient.Do<EventDestination>(
                 path: $"/event_destinations/{arg.Id}",

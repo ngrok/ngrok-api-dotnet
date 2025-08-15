@@ -125,7 +125,7 @@ namespace NgrokApi
         [JsonProperty("tunnel_session")]
         public Ref TunnelSession { get; set; }
         // <summary>
-        // URI of the clep API resource
+        // URI of the Cloud Endpoint API resource
         // </summary>
         [JsonProperty("uri")]
         public Uri Uri { get; set; }

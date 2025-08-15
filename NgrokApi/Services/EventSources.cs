@@ -24,7 +24,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-event-sources-create
         public async Task<EventSource> Create(EventSourceCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EventSourceCreate body = arg;
             return await apiClient.Do<EventSource>(
                 path: $"/event_subscriptions/{arg.SubscriptionId}/sources",
@@ -42,11 +42,10 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-event-sources-delete
         public async Task Delete(EventSourceItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EventSourceItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",
                 method: new HttpMethod("delete"),
@@ -62,11 +61,10 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-event-sources-get
         public async Task<EventSource> Get(EventSourceItem arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EventSourceItem body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EventSource>(
                 path: $"/event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",
                 method: new HttpMethod("get"),
@@ -85,11 +83,10 @@ namespace NgrokApi
         {
             var arg = new EventSourcePaging() { SubscriptionId = subscriptionId };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EventSourcePaging body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EventSourceList>(
                 path: $"/event_subscriptions/{arg.SubscriptionId}/sources",
                 method: new HttpMethod("get"),
@@ -106,7 +103,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-event-sources-update
         public async Task<EventSource> Update(EventSourceUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EventSourceUpdate body = arg;
             return await apiClient.Do<EventSource>(
                 path: $"/event_subscriptions/{arg.SubscriptionId}/sources/{arg.Type}",

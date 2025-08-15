@@ -32,7 +32,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-certificate-authorities-create
         public async Task<CertificateAuthority> Create(CertificateAuthorityCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             CertificateAuthorityCreate body = arg;
             return await apiClient.Do<CertificateAuthority>(
                 path: $"/certificate_authorities",
@@ -52,11 +52,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/certificate_authorities/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -74,11 +73,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<CertificateAuthority>(
                 path: $"/certificate_authorities/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -91,13 +89,12 @@ namespace NgrokApi
         private async Task<CertificateAuthorityList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<CertificateAuthorityList>(
                 path: $"/certificate_authorities",
                 method: new HttpMethod("get"),
@@ -131,7 +128,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-certificate-authorities-update
         public async Task<CertificateAuthority> Update(CertificateAuthorityUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             CertificateAuthorityUpdate body = arg;
             return await apiClient.Do<CertificateAuthority>(
                 path: $"/certificate_authorities/{arg.Id}",

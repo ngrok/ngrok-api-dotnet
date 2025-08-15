@@ -29,7 +29,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-ip-policy-rules-create
         public async Task<IpPolicyRule> Create(IpPolicyRuleCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             IpPolicyRuleCreate body = arg;
             return await apiClient.Do<IpPolicyRule>(
                 path: $"/ip_policy_rules",
@@ -49,11 +49,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/ip_policy_rules/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -71,11 +70,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<IpPolicyRule>(
                 path: $"/ip_policy_rules/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -88,13 +86,12 @@ namespace NgrokApi
         private async Task<IpPolicyRuleList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<IpPolicyRuleList>(
                 path: $"/ip_policy_rules",
                 method: new HttpMethod("get"),
@@ -128,7 +125,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-ip-policy-rules-update
         public async Task<IpPolicyRule> Update(IpPolicyRuleUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             IpPolicyRuleUpdate body = arg;
             return await apiClient.Do<IpPolicyRule>(
                 path: $"/ip_policy_rules/{arg.Id}",

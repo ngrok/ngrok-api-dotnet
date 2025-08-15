@@ -19,7 +19,7 @@ namespace NgrokApi
 
         public async Task<EndpointTrafficPolicy> Replace(EdgeTrafficPolicyReplace arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             EndpointTrafficPolicy body = arg.Module;
             return await apiClient.Do<EndpointTrafficPolicy>(
                 path: $"/edges/tls/{arg.Id}/traffic_policy",
@@ -34,11 +34,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<EndpointTrafficPolicy>(
                 path: $"/edges/tls/{arg.Id}/traffic_policy",
                 method: new HttpMethod("get"),
@@ -52,11 +51,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/edges/tls/{arg.Id}/traffic_policy",
                 method: new HttpMethod("delete"),

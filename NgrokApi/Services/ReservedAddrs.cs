@@ -30,7 +30,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-reserved-addrs-create
         public async Task<ReservedAddr> Create(ReservedAddrCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             ReservedAddrCreate body = arg;
             return await apiClient.Do<ReservedAddr>(
                 path: $"/reserved_addrs",
@@ -50,11 +50,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/reserved_addrs/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -72,11 +71,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<ReservedAddr>(
                 path: $"/reserved_addrs/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -89,13 +87,12 @@ namespace NgrokApi
         private async Task<ReservedAddrList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<ReservedAddrList>(
                 path: $"/reserved_addrs",
                 method: new HttpMethod("get"),
@@ -129,7 +126,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-reserved-addrs-update
         public async Task<ReservedAddr> Update(ReservedAddrUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             ReservedAddrUpdate body = arg;
             return await apiClient.Do<ReservedAddr>(
                 path: $"/reserved_addrs/{arg.Id}",

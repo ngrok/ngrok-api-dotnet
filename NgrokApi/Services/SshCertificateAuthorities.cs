@@ -29,7 +29,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-ssh-certificate-authorities-create
         public async Task<SshCertificateAuthority> Create(SshCertificateAuthorityCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             SshCertificateAuthorityCreate body = arg;
             return await apiClient.Do<SshCertificateAuthority>(
                 path: $"/ssh_certificate_authorities",
@@ -49,11 +49,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/ssh_certificate_authorities/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -71,11 +70,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<SshCertificateAuthority>(
                 path: $"/ssh_certificate_authorities/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -88,13 +86,12 @@ namespace NgrokApi
         private async Task<SshCertificateAuthorityList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<SshCertificateAuthorityList>(
                 path: $"/ssh_certificate_authorities",
                 method: new HttpMethod("get"),
@@ -128,7 +125,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-ssh-certificate-authorities-update
         public async Task<SshCertificateAuthority> Update(SshCertificateAuthorityUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             SshCertificateAuthorityUpdate body = arg;
             return await apiClient.Do<SshCertificateAuthority>(
                 path: $"/ssh_certificate_authorities/{arg.Id}",

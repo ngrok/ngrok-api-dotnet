@@ -29,7 +29,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-secrets-create
         public async Task<Secret> Create(SecretCreate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             SecretCreate body = arg;
             return await apiClient.Do<Secret>(
                 path: $"/vault_secrets",
@@ -47,7 +47,7 @@ namespace NgrokApi
         // https://ngrok.com/docs/api#api-secrets-update
         public async Task<Secret> Update(SecretUpdate arg)
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             SecretUpdate body = arg;
             return await apiClient.Do<Secret>(
                 path: $"/vault_secrets/{arg.Id}",
@@ -67,11 +67,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
                 path: $"/vault_secrets/{arg.Id}",
                 method: new HttpMethod("delete"),
@@ -89,11 +88,10 @@ namespace NgrokApi
         {
             var arg = new Item() { Id = id };
 
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Item body = null;
-            query = new Dictionary<string, string>()
-            {
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            query = queryParams;
             return await apiClient.Do<Secret>(
                 path: $"/vault_secrets/{arg.Id}",
                 method: new HttpMethod("get"),
@@ -106,13 +104,12 @@ namespace NgrokApi
         private async Task<SecretList> ListPage(Paging arg)
 
         {
-            Dictionary<string, string> query = null;
+            List<KeyValuePair<string, string>> query = null;
             Paging body = null;
-            query = new Dictionary<string, string>()
-            {
-                ["before_id"] = arg.BeforeId,
-                ["limit"] = arg.Limit,
-            };
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
             return await apiClient.Do<SecretList>(
                 path: $"/vault_secrets",
                 method: new HttpMethod("get"),
