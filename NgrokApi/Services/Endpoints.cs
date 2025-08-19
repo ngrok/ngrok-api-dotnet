@@ -49,18 +49,18 @@ namespace NgrokApi
             var queryParams = new List<KeyValuePair<string, string>>();
             if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
             if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
-            if (arg.Ids != null)
+            if (arg.Id != null)
             {
-                foreach (var item in arg.Ids)
+                foreach (var item in arg.Id)
                 {
-                    queryParams.Add(new KeyValuePair<string, string>("ids", item));
+                    queryParams.Add(new KeyValuePair<string, string>("id", item));
                 }
             }
-            if (arg.Urls != null)
+            if (arg.Url != null)
             {
-                foreach (var item in arg.Urls)
+                foreach (var item in arg.Url)
                 {
-                    queryParams.Add(new KeyValuePair<string, string>("urls", item));
+                    queryParams.Add(new KeyValuePair<string, string>("url", item));
                 }
             }
             query = queryParams;

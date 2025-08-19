@@ -101,6 +101,42 @@ namespace NgrokApi
 
         }
 
+        private async Task<SecretList> GetSecretsByVaultPage(ItemPaging arg)
+
+        {
+            List<KeyValuePair<string, string>> query = null;
+            ItemPaging body = null;
+            var queryParams = new List<KeyValuePair<string, string>>();
+            if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
+            if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            query = queryParams;
+            return await apiClient.Do<SecretList>(
+                path: $"/vaults/{arg.Id}/secrets",
+                method: new HttpMethod("get"),
+                body: body,
+                query: query
+            );
+
+        }
+        // <summary>
+        // Get Secrets by Vault ID
+        // </summary>
+        //
+        // https://ngrok.com/docs/api#api-vaults-get-secrets-by-vault
+        public IAsyncEnumerable<Secret> GetSecretsByVault(string id, string limit = null, string beforeId = null)
+        {
+            return new Iterator<Secret>(beforeId, async lastId =>
+            {
+                var result = await this.GetSecretsByVaultPage(new ItemPaging()
+                {
+                    Id = id,
+                    BeforeId = lastId,
+                    Limit = limit,
+                });
+                return result.Secrets;
+            });
+        }
+
         private async Task<VaultList> ListPage(Paging arg)
 
         {
