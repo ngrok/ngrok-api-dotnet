@@ -8,20 +8,21 @@ using Newtonsoft.Json;
 
 namespace NgrokApi
 {
-    public class EndpointListArgs
+    public class ItemPaging : HasId
     {
+        // <summary>
+        // a resource identifier
+        // </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
         [JsonProperty("before_id")]
         public string BeforeId { get; set; }
         [JsonProperty("limit")]
         public string Limit { get; set; }
-        [JsonProperty("id")]
-        public List<string> Id { get; set; }
-        [JsonProperty("url")]
-        public List<string> Url { get; set; }
 
         public override string ToString()
         {
-            return $"EndpointListArgs BeforeId={ BeforeId }  Limit={ Limit }  Id={ Id }  Url={ Url } ";
+            return $"ItemPaging Id={ Id }  BeforeId={ BeforeId }  Limit={ Limit } ";
         }
 
         public override int GetHashCode()
@@ -29,13 +30,11 @@ namespace NgrokApi
             unchecked
             {
                 int hash = 17;
+                hash = hash * 23 + (Id?.GetHashCode() ?? 0);
+
                 hash = hash * 23 + (BeforeId?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Limit?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (Id?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (Url?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -48,12 +47,11 @@ namespace NgrokApi
             {
                 return false;
             }
-            var other = (EndpointListArgs)obj;
+            var other = (ItemPaging)obj;
             return (
-                 this.BeforeId == other.BeforeId
+                 this.Id == other.Id
+                && this.BeforeId == other.BeforeId
                 && this.Limit == other.Limit
-                && this.Id == other.Id
-                && this.Url == other.Url
             );
         }
 
