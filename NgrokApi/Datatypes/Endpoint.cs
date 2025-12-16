@@ -31,7 +31,7 @@ namespace NgrokApi
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
         // <summary>
-        // URL of the hostport served by this endpoint
+        // deprecated [replaced by URL]: URL of the hostport served by this endpoint
         // </summary>
         [JsonProperty("public_url")]
         public Uri PublicUrl { get; set; }

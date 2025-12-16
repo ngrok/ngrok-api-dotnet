@@ -8,22 +8,18 @@ using Newtonsoft.Json;
 
 namespace NgrokApi
 {
-    public class EndpointListArgs
+    public class FilteredPaging
     {
         [JsonProperty("before_id")]
         public string BeforeId { get; set; }
         [JsonProperty("limit")]
         public string Limit { get; set; }
-        [JsonProperty("id")]
-        public List<string> Id { get; set; }
-        [JsonProperty("url")]
-        public List<string> Url { get; set; }
         [JsonProperty("filter")]
         public string Filter { get; set; }
 
         public override string ToString()
         {
-            return $"EndpointListArgs BeforeId={ BeforeId }  Limit={ Limit }  Id={ Id }  Url={ Url }  Filter={ Filter } ";
+            return $"FilteredPaging BeforeId={ BeforeId }  Limit={ Limit }  Filter={ Filter } ";
         }
 
         public override int GetHashCode()
@@ -34,10 +30,6 @@ namespace NgrokApi
                 hash = hash * 23 + (BeforeId?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Limit?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (Id?.GetHashCode() ?? 0);
-
-                hash = hash * 23 + (Url?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (Filter?.GetHashCode() ?? 0);
 
@@ -52,12 +44,10 @@ namespace NgrokApi
             {
                 return false;
             }
-            var other = (EndpointListArgs)obj;
+            var other = (FilteredPaging)obj;
             return (
                  this.BeforeId == other.BeforeId
                 && this.Limit == other.Limit
-                && this.Id == other.Id
-                && this.Url == other.Url
                 && this.Filter == other.Filter
             );
         }

@@ -78,14 +78,15 @@ namespace NgrokApi
 
         }
 
-        private async Task<EventSubscriptionList> ListPage(Paging arg)
+        private async Task<EventSubscriptionList> ListPage(FilteredPaging arg)
 
         {
             List<KeyValuePair<string, string>> query = null;
-            Paging body = null;
+            FilteredPaging body = null;
             var queryParams = new List<KeyValuePair<string, string>>();
             if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
             if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            if (arg.Filter != null) queryParams.Add(new KeyValuePair<string, string>("filter", arg.Filter));
             query = queryParams;
             return await apiClient.Do<EventSubscriptionList>(
                 path: $"/event_subscriptions",
@@ -104,7 +105,7 @@ namespace NgrokApi
         {
             return new Iterator<EventSubscription>(beforeId, async lastId =>
             {
-                var result = await this.ListPage(new Paging()
+                var result = await this.ListPage(new FilteredPaging()
                 {
                     BeforeId = lastId,
                     Limit = limit,

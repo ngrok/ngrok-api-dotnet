@@ -63,6 +63,7 @@ namespace NgrokApi
                     queryParams.Add(new KeyValuePair<string, string>("url", item));
                 }
             }
+            if (arg.Filter != null) queryParams.Add(new KeyValuePair<string, string>("filter", arg.Filter));
             query = queryParams;
             return await apiClient.Do<EndpointList>(
                 path: $"/endpoints",

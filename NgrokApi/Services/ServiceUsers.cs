@@ -8,32 +8,26 @@ using System.Threading.Tasks;
 namespace NgrokApi
 {
 
-    // <summary>
-    // SSH User Certificates are presented by SSH clients when connecting to an SSH
-    //  server to authenticate their connection. The SSH server must trust the SSH
-    //  Certificate Authority used to sign the certificate.
-    // </summary>
-
-    public class SshUserCertificates
+    public class ServiceUsers
     {
         private IApiHttpClient apiClient;
 
-        internal SshUserCertificates(IApiHttpClient apiClient)
+        internal ServiceUsers(IApiHttpClient apiClient)
         {
             this.apiClient = apiClient;
         }
 
         // <summary>
-        // Create a new SSH User Certificate
+        // Create a new service user
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ssh-user-certificates-create
-        public async Task<SshUserCertificate> Create(SshUserCertificateCreate arg)
+        // https://ngrok.com/docs/api#api-service-users-create
+        public async Task<ServiceUser> Create(ServiceUserCreate arg)
         {
             List<KeyValuePair<string, string>> query = null;
-            SshUserCertificateCreate body = arg;
-            return await apiClient.Do<SshUserCertificate>(
-                path: $"/ssh_user_certificates",
+            ServiceUserCreate body = arg;
+            return await apiClient.Do<ServiceUser>(
+                path: $"/service_users",
                 method: new HttpMethod("post"),
                 body: body,
                 query: query
@@ -42,10 +36,10 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Delete an SSH User Certificate
+        // Delete a service user by ID
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ssh-user-certificates-delete
+        // https://ngrok.com/docs/api#api-service-users-delete
         public async Task Delete(string id)
         {
             var arg = new Item() { Id = id };
@@ -55,7 +49,7 @@ namespace NgrokApi
             var queryParams = new List<KeyValuePair<string, string>>();
             query = queryParams;
             await apiClient.DoNoReturnBody<Empty>(
-                path: $"/ssh_user_certificates/{arg.Id}",
+                path: $"/service_users/{arg.Id}",
                 method: new HttpMethod("delete"),
                 body: body,
                 query: query
@@ -63,11 +57,11 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Get detailed information about an SSH User Certificate
+        // Get the details of a Bot User by ID.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ssh-user-certificates-get
-        public async Task<SshUserCertificate> Get(string id)
+        // https://ngrok.com/docs/api#api-service-users-get
+        public async Task<ServiceUser> Get(string id)
         {
             var arg = new Item() { Id = id };
 
@@ -75,8 +69,8 @@ namespace NgrokApi
             Item body = null;
             var queryParams = new List<KeyValuePair<string, string>>();
             query = queryParams;
-            return await apiClient.Do<SshUserCertificate>(
-                path: $"/ssh_user_certificates/{arg.Id}",
+            return await apiClient.Do<ServiceUser>(
+                path: $"/service_users/{arg.Id}",
                 method: new HttpMethod("get"),
                 body: body,
                 query: query
@@ -84,17 +78,18 @@ namespace NgrokApi
 
         }
 
-        private async Task<SshUserCertificateList> ListPage(Paging arg)
+        private async Task<ServiceUserList> ListPage(FilteredPaging arg)
 
         {
             List<KeyValuePair<string, string>> query = null;
-            Paging body = null;
+            FilteredPaging body = null;
             var queryParams = new List<KeyValuePair<string, string>>();
             if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
             if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            if (arg.Filter != null) queryParams.Add(new KeyValuePair<string, string>("filter", arg.Filter));
             query = queryParams;
-            return await apiClient.Do<SshUserCertificateList>(
-                path: $"/ssh_user_certificates",
+            return await apiClient.Do<ServiceUserList>(
+                path: $"/service_users",
                 method: new HttpMethod("get"),
                 body: body,
                 query: query
@@ -102,34 +97,34 @@ namespace NgrokApi
 
         }
         // <summary>
-        // List all SSH User Certificates issued on this account
+        // List all service users in this account.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ssh-user-certificates-list
-        public IAsyncEnumerable<SshUserCertificate> List(string limit = null, string beforeId = null)
+        // https://ngrok.com/docs/api#api-service-users-list
+        public IAsyncEnumerable<ServiceUser> List(string limit = null, string beforeId = null)
         {
-            return new Iterator<SshUserCertificate>(beforeId, async lastId =>
+            return new Iterator<ServiceUser>(beforeId, async lastId =>
             {
-                var result = await this.ListPage(new Paging()
+                var result = await this.ListPage(new FilteredPaging()
                 {
                     BeforeId = lastId,
                     Limit = limit,
                 });
-                return result.SshUserCertificates;
+                return result.ServiceUsers;
             });
         }
 
         // <summary>
-        // Update an SSH User Certificate
+        // Update attributes of a service user by ID.
         // </summary>
         //
-        // https://ngrok.com/docs/api#api-ssh-user-certificates-update
-        public async Task<SshUserCertificate> Update(SshUserCertificateUpdate arg)
+        // https://ngrok.com/docs/api#api-service-users-update
+        public async Task<ServiceUser> Update(ServiceUserUpdate arg)
         {
             List<KeyValuePair<string, string>> query = null;
-            SshUserCertificateUpdate body = arg;
-            return await apiClient.Do<SshUserCertificate>(
-                path: $"/ssh_user_certificates/{arg.Id}",
+            ServiceUserUpdate body = arg;
+            return await apiClient.Do<ServiceUser>(
+                path: $"/service_users/{arg.Id}",
                 method: new HttpMethod("patch"),
                 body: body,
                 query: query
