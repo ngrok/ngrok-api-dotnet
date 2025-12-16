@@ -60,10 +60,15 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("vault")]
         public Ref Vault { get; set; }
+        // <summary>
+        // Name of the vault the secret is stored in
+        // </summary>
+        [JsonProperty("vault_name")]
+        public string VaultName { get; set; }
 
         public override string ToString()
         {
-            return $"Secret Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  UpdatedAt={ UpdatedAt }  Name={ Name }  Description={ Description }  Metadata={ Metadata }  CreatedBy={ CreatedBy }  LastUpdatedBy={ LastUpdatedBy }  Vault={ Vault } ";
+            return $"Secret Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  UpdatedAt={ UpdatedAt }  Name={ Name }  Description={ Description }  Metadata={ Metadata }  CreatedBy={ CreatedBy }  LastUpdatedBy={ LastUpdatedBy }  Vault={ Vault }  VaultName={ VaultName } ";
         }
 
         public override int GetHashCode()
@@ -91,6 +96,8 @@ namespace NgrokApi
 
                 hash = hash * 23 + (Vault?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (VaultName?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -114,6 +121,7 @@ namespace NgrokApi
                 && this.CreatedBy == other.CreatedBy
                 && this.LastUpdatedBy == other.LastUpdatedBy
                 && this.Vault == other.Vault
+                && this.VaultName == other.VaultName
             );
         }
 

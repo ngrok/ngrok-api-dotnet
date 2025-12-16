@@ -63,7 +63,7 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Get detailed information about an SSH Host Certficate
+        // Get detailed information about an SSH Host Certificate
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ssh-host-certificates-get

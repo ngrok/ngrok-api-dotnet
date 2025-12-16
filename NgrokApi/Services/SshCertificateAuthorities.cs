@@ -62,7 +62,7 @@ namespace NgrokApi
         }
 
         // <summary>
-        // Get detailed information about an SSH Certficate Authority
+        // Get detailed information about an SSH Certificate Authority
         // </summary>
         //
         // https://ngrok.com/docs/api#api-ssh-certificate-authorities-get
@@ -83,14 +83,15 @@ namespace NgrokApi
 
         }
 
-        private async Task<SshCertificateAuthorityList> ListPage(Paging arg)
+        private async Task<SshCertificateAuthorityList> ListPage(FilteredPaging arg)
 
         {
             List<KeyValuePair<string, string>> query = null;
-            Paging body = null;
+            FilteredPaging body = null;
             var queryParams = new List<KeyValuePair<string, string>>();
             if (arg.BeforeId != null) queryParams.Add(new KeyValuePair<string, string>("before_id", arg.BeforeId));
             if (arg.Limit != null) queryParams.Add(new KeyValuePair<string, string>("limit", arg.Limit));
+            if (arg.Filter != null) queryParams.Add(new KeyValuePair<string, string>("filter", arg.Filter));
             query = queryParams;
             return await apiClient.Do<SshCertificateAuthorityList>(
                 path: $"/ssh_certificate_authorities",
@@ -109,7 +110,7 @@ namespace NgrokApi
         {
             return new Iterator<SshCertificateAuthority>(beforeId, async lastId =>
             {
-                var result = await this.ListPage(new Paging()
+                var result = await this.ListPage(new FilteredPaging()
                 {
                     BeforeId = lastId,
                     Limit = limit,

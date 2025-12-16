@@ -42,7 +42,7 @@ namespace NgrokApi
         [JsonProperty("bindings")]
         public List<string> Bindings { get; set; }
         [JsonProperty("pooling_enabled")]
-        public bool PoolingEnabled { get; set; }
+        public bool? PoolingEnabled { get; set; }
 
         public override string ToString()
         {

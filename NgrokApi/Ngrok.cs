@@ -112,6 +112,11 @@ namespace NgrokApi
             get { return new Secrets(apiHttpClient); }
         }
 
+        public ServiceUsers ServiceUsers
+        {
+            get { return new ServiceUsers(apiHttpClient); }
+        }
+
         public SshCertificateAuthorities SshCertificateAuthorities
         {
             get { return new SshCertificateAuthorities(apiHttpClient); }

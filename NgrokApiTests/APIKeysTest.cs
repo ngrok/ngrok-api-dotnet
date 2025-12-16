@@ -27,7 +27,7 @@ namespace NgrokApiTests
             // initial list
             apiHttpClient.PushMockResponse(200, @"{""keys"":[],""uri"":""https://api.ngrok.com/api_keys"",""next_page_uri"":null}");
             var apiKeysList = ngrok.ApiKeys.List();
-            apiKeysList.ToListAsync();
+            await apiKeysList.ToListAsync();
 
             // create api key
             var apiKeyDesc = "hello .NET";
@@ -96,7 +96,7 @@ namespace NgrokApiTests
             // initial list
             apiHttpClient.PushMockResponse(200, @"{""keys"":[],""uri"":""https://api.ngrok.com/api_keys"",""next_page_uri"":null}");
             var apiKeysList = ngrok.ApiKeys.List();
-            apiKeysList.ToListAsync();
+            await apiKeysList.ToListAsync();
 
             // create api key to use for testing Uri
             var apiKeyDesc = "hello .NET";
