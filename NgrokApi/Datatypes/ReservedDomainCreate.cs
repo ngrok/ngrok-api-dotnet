@@ -47,10 +47,16 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("certificate_management_policy")]
         public ReservedDomainCertPolicy CertificateManagementPolicy { get; set; }
+        // <summary>
+        // DNS resolver targets configured for the reserved domain, or empty for "global"
+        // resolution.
+        // </summary>
+        [JsonProperty("resolves_to")]
+        public List<ReservedDomainResolvesToEntry> ResolvesTo { get; set; }
 
         public override string ToString()
         {
-            return $"ReservedDomainCreate Domain={ Domain }  Region={ Region }  Description={ Description }  Metadata={ Metadata }  CertificateId={ CertificateId }  CertificateManagementPolicy={ CertificateManagementPolicy } ";
+            return $"ReservedDomainCreate Domain={ Domain }  Region={ Region }  Description={ Description }  Metadata={ Metadata }  CertificateId={ CertificateId }  CertificateManagementPolicy={ CertificateManagementPolicy }  ResolvesTo={ ResolvesTo } ";
         }
 
         public override int GetHashCode()
@@ -69,6 +75,8 @@ namespace NgrokApi
                 hash = hash * 23 + (CertificateId?.GetHashCode() ?? 0);
 
                 hash = hash * 23 + (CertificateManagementPolicy?.GetHashCode() ?? 0);
+
+                hash = hash * 23 + (ResolvesTo?.GetHashCode() ?? 0);
 
                 return hash;
             }
@@ -89,6 +97,7 @@ namespace NgrokApi
                 && this.Metadata == other.Metadata
                 && this.CertificateId == other.CertificateId
                 && this.CertificateManagementPolicy == other.CertificateManagementPolicy
+                && this.ResolvesTo == other.ResolvesTo
             );
         }
 

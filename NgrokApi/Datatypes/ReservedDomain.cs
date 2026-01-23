@@ -82,10 +82,16 @@ namespace NgrokApi
         // </summary>
         [JsonProperty("acme_challenge_cname_target")]
         public string AcmeChallengeCnameTarget { get; set; }
+        // <summary>
+        // DNS resolver targets configured for the reserved domain, or empty for "global"
+        // resolution.
+        // </summary>
+        [JsonProperty("resolves_to")]
+        public List<ReservedDomainResolvesToEntry> ResolvesTo { get; set; }
 
         public override string ToString()
         {
-            return $"ReservedDomain Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  Domain={ Domain }  Region={ Region }  CnameTarget={ CnameTarget }  Certificate={ Certificate }  CertificateManagementPolicy={ CertificateManagementPolicy }  CertificateManagementStatus={ CertificateManagementStatus }  AcmeChallengeCnameTarget={ AcmeChallengeCnameTarget } ";
+            return $"ReservedDomain Id={ Id }  Uri={ Uri }  CreatedAt={ CreatedAt }  Description={ Description }  Metadata={ Metadata }  Domain={ Domain }  Region={ Region }  CnameTarget={ CnameTarget }  Certificate={ Certificate }  CertificateManagementPolicy={ CertificateManagementPolicy }  CertificateManagementStatus={ CertificateManagementStatus }  AcmeChallengeCnameTarget={ AcmeChallengeCnameTarget }  ResolvesTo={ ResolvesTo } ";
         }
 
         public override int GetHashCode()
@@ -117,6 +123,8 @@ namespace NgrokApi
 
                 hash = hash * 23 + (AcmeChallengeCnameTarget?.GetHashCode() ?? 0);
 
+                hash = hash * 23 + (ResolvesTo?.GetHashCode() ?? 0);
+
                 return hash;
             }
         }
@@ -142,6 +150,7 @@ namespace NgrokApi
                 && this.CertificateManagementPolicy == other.CertificateManagementPolicy
                 && this.CertificateManagementStatus == other.CertificateManagementStatus
                 && this.AcmeChallengeCnameTarget == other.AcmeChallengeCnameTarget
+                && this.ResolvesTo == other.ResolvesTo
             );
         }
 
